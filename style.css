@@ -260,3 +260,22 @@ h1 { font-size: 2.5rem; margin-bottom: 10px; color: #1e293b; }
     border-radius: 4px; /* Sedikit melengkung */
     object-fit: cover;
 }
+
+.icon {
+    width: 20px;          /* Ukuran kecil yang pas */
+    height: 20px;
+    object-fit: contain;  /* Memastikan gambar tidak terpotong */
+    background: transparent; /* Memastikan tidak ada warna latar tambahan */
+    display: block;
+}
+
+.marquee-content span {
+    display: flex;
+    align-items: center;
+    gap: 8px;            /* Jarak antara logo dan teks */
+    padding: 8px 16px;   /* Padding kotak agar lebih proporsional */
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
