@@ -185,3 +185,57 @@ h1 { font-size: 2.5rem; margin-bottom: 10px; color: #1e293b; }
     border-radius: 12px;
     overflow: hidden;
 }
+
+.skill-group {
+    margin-bottom: 30px;
+}
+
+.skill-label {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #64748b;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    border-left: 4px solid #2563eb;
+    padding-left: 12px;
+}
+
+.marquee {
+    background: #ffffff;
+    padding: 15px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    border: 1px solid #e2e8f0;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+}
+
+.marquee-content span {
+    font-weight: 700;
+    color: #1e293b;
+    background: #f1f5f9;
+    padding: 12px 35px;
+    margin: 0 15px;
+    border-radius: 10px;
+    min-width: 120px;
+    text-align: center;
+    box-shadow: 2px 2px 0px #2563eb; /* Efek shadow biar makin keren */
+}
+
+/* Animasi Berlawanan */
+.row1 { animation: jalan-kiri 12s linear infinite; }
+.row2 { animation: jalan-kanan 12s linear infinite; }
+
+@keyframes jalan-kiri {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes jalan-kanan {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
