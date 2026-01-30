@@ -38,3 +38,9 @@ footer {
     padding: 2rem;
     background: #ddd;
 }
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
+    box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
