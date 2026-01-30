@@ -149,3 +149,47 @@ h1 { font-size: 2.5rem; color: var(--dark); margin-bottom: 5px; }
 .marquee:hover .marquee-content {
     animation-play-state: paused;
 }
+
+/* Container Utama Marquee */
+.marquee {
+    width: 100%;
+    overflow: hidden; /* Sembunyikan bagian yang keluar kotak */
+    white-space: nowrap;
+    position: relative;
+    background: #f1f5f9; /* Warna latar belakang halus */
+    padding: 15px 0;
+    border-radius: 12px;
+}
+
+/* Konten yang bergerak */
+.marquee-content {
+    display: inline-block;
+    padding-left: 100%; /* Mulai dari luar layar kanan */
+    animation: scroll-left 20s linear infinite; /* Kecepatan 20 detik */
+}
+
+.marquee-content .tag {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Logika Animasi Gerak Kiri */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Berhenti saat kursor diarahkan (Opsional, agar mudah dibaca) */
+.marquee:hover .marquee-content {
+    animation-play-state: paused;
+}
