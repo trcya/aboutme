@@ -1,3 +1,4 @@
+/* --- DASAR & LAYOUT --- */
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -15,174 +16,25 @@ body {
 
 header {
     margin-bottom: 50px;
-    text-align: left; /* Biar tetap rapi di kiri tapi tidak mepet layar */
+    text-align: left;
 }
 
-h1 { font-size: 2.5rem; margin-bottom: 10px; color: #1e293b; }
-.role { color: #2563eb; font-weight: bold; font-size: 1.2rem; }
+h1 { 
+    font-size: 2.5rem; 
+    margin-bottom: 10px; 
+    color: #1e293b; 
+}
 
-/* --- CSS UNTUK SKILLS BERGERAK --- */
+.role { 
+    color: #2563eb; 
+    font-weight: bold; 
+    font-size: 1.2rem; 
+    margin-bottom: 5px;
+}
+
+/* --- SEKSI SKILLS --- */
 .skills-section {
     margin: 40px 0;
-    overflow: hidden;
-}
-
-.marquee {
-    background: #ffffff;
-    padding: 20px 0;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    display: flex;
-    overflow: hidden; /* Penting agar tidak meluber */
-}
-
-.marquee-content {
-    display: flex;
-    white-space: nowrap;
-    animation: jalan-terus 15s linear infinite; /* Gerak otomatis */
-}
-
-.marquee-content span {
-    font-weight: 600;
-    background: #e2e8f0;
-    padding: 10px 25px;
-    margin: 0 15px;
-    border-radius: 50px;
-    color: #475569;
-}
-
-@keyframes jalan-terus {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); } /* Bergeser setengah panjang konten */
-}
-
-/* Animasi Muncul */
-.fade-in {
-    animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Container Utama Marquee */
-.marquee {
-    background: #ffffff;
-    padding: 15px 0;
-    border-radius: 12px;
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-}
-
-.marquee-content {
-    display: flex;
-    white-space: nowrap;
-}
-
-.marquee-content span {
-    font-weight: 600;
-    background: #f1f5f9;
-    padding: 10px 25px;
-    margin: 0 10px;
-    border-radius: 8px;
-    color: #2563eb;
-    border: 1px solid #e2e8f0;
-}
-
-/* Animasi Baris 1: Ke Kiri */
-.row1 {
-    animation: jalan-kiri 20s linear infinite;
-}
-
-/* Animasi Baris 2: Ke Kanan */
-.row2 {
-    animation: jalan-kanan 20s linear infinite;
-}
-
-@keyframes jalan-kiri {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-@keyframes jalan-kanan {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
-}
-
-/* Efek Berhenti saat disentuh Mouse */
-.marquee:hover .marquee-content {
-    animation-play-state: paused;
-}
-
-.skill-group {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.skill-label {
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #94a3b8; /* Warna abu-abu soft */
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    border-left: 3px solid #2563eb; /* Garis biru di samping tulisan */
-    padding-left: 10px;
-}
-
-/* Modifikasi Marquee agar lebih ramping */
-.marquee {
-    background: #ffffff;
-    padding: 12px 0;
-    border-radius: 10px;
-    display: flex;
-    overflow: hidden;
-    border: 1px solid #e2e8f0;
-}
-
-/* Animasi tetap sama seperti sebelumnya */
-.row1 { animation: jalan-kiri 25s linear infinite; }
-.row2 { animation: jalan-kanan 25s linear infinite; }
-
-@keyframes jalan-kiri {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-@keyframes jalan-kanan {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
-}
-
-/* Sesuaikan kecepatan karena item lebih sedikit */
-.row1 { 
-    animation: jalan-kiri 10s linear infinite; 
-}
-
-.row2 { 
-    animation: jalan-kanan 10s linear infinite; 
-}
-
-.marquee-content span {
-    font-weight: 600;
-    background: #ffffff;
-    padding: 12px 40px; /* Padding diperbesar agar lebih elegan */
-    margin: 0 20px;
-    border-radius: 10px;
-    color: #2563eb;
-    border: 1px solid #e2e8f0;
-    display: inline-block;
-}
-
-/* Memastikan container marquee pas di tengah */
-.marquee {
-    display: flex;
-    align-items: center;
-    background: #f8fafc; /* Warna background sedikit beda agar kontras */
-    padding: 15px 0;
-    border-radius: 12px;
     overflow: hidden;
 }
 
@@ -198,52 +50,31 @@ h1 { font-size: 2.5rem; margin-bottom: 10px; color: #1e293b; }
     margin-bottom: 12px;
     border-left: 4px solid #2563eb;
     padding-left: 12px;
+    text-transform: uppercase;
 }
 
+/* --- MARQUEE (BOX BERGERAK) --- */
 .marquee {
     background: #ffffff;
     padding: 15px 0;
     border-radius: 12px;
-    overflow: hidden;
     display: flex;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
+    width: 100%;
+    align-items: center;
 }
 
 .marquee-content {
     display: flex;
     white-space: nowrap;
-}
-
-.marquee-content span {
-    font-weight: 700;
-    color: #1e293b;
-    background: #f1f5f9;
-    padding: 12px 35px;
-    margin: 0 15px;
-    border-radius: 10px;
-    min-width: 120px;
-    text-align: center;
-    box-shadow: 2px 2px 0px #2563eb; /* Efek shadow biar makin keren */
-}
-
-/* Animasi Berlawanan */
-.row1 { animation: jalan-kiri 12s linear infinite; }
-.row2 { animation: jalan-kanan 12s linear infinite; }
-
-@keyframes jalan-kiri {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-@keyframes jalan-kanan {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
+    width: max-content;
 }
 
 .marquee-content span {
     display: flex;
     align-items: center;
-    gap: 10px; /* Jarak antara gambar dan teks */
+    gap: 10px;
     font-weight: 700;
     color: #1e293b;
     background: #ffffff;
@@ -252,37 +83,29 @@ h1 { font-size: 2.5rem; margin-bottom: 10px; color: #1e293b; }
     border-radius: 10px;
     border: 1px solid #e2e8f0;
     box-shadow: 2px 2px 0px #2563eb;
+    white-space: nowrap;
 }
 
 .icon {
-    width: 24px;   /* Ukuran ikon */
-    height: 24px;
-    border-radius: 4px; /* Sedikit melengkung */
-    object-fit: cover;
-}
-
-.icon {
-    width: 20px;          /* Ukuran kecil yang pas */
+    width: 20px;
     height: 20px;
-    object-fit: contain;  /* Memastikan gambar tidak terpotong */
-    background: transparent; /* Memastikan tidak ada warna latar tambahan */
+    object-fit: contain;
+    background: transparent;
     display: block;
 }
 
-.marquee-content span {
-    display: flex;
-    align-items: center;
-    gap: 8px;            /* Jarak antara logo dan teks */
-    padding: 8px 16px;   /* Padding kotak agar lebih proporsional */
-    background: white;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
-    white-space: nowrap;
+/* --- ANIMASI --- */
+.row1 { 
+    animation: jalan-kiri 15s linear infinite; 
+}
+
+.row2 { 
+    animation: jalan-kanan 15s linear infinite; 
 }
 
 @keyframes jalan-kiri {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Berhenti tepat di tengah konten duplikat */
+    100% { transform: translateX(-50%); }
 }
 
 @keyframes jalan-kanan {
@@ -290,7 +113,17 @@ h1 { font-size: 2.5rem; margin-bottom: 10px; color: #1e293b; }
     100% { transform: translateX(0); }
 }
 
-.marquee-content {
-    display: flex;
-    width: max-content; /* Memastikan lebar otomatis mengikuti jumlah gambar */
+/* Berhenti saat disentuh mouse */
+.marquee:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+/* Animasi Muncul Awal */
+.fade-in {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
