@@ -1,24 +1,47 @@
-/* --- DASAR --- */
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0; padding: 0;
-    background-color: #f8fafc;
-    display: flex; justify-content: center;
-    color: #334155;
+/* PORTFOLIO STYLESHEET - DAVID TERECYA 
+    Optimized & Cleaned Version 2026
+*/
+
+/* --- 1. RESET & DASAR --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container { width: 90%; max-width: 900px; padding: 40px 0; }
+html {
+    scroll-behavior: smooth;
+}
 
-a { text-decoration: none; color: inherit; }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #334155;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-/* --- NAVBAR (TAMBAHAN BARU) --- */
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+/* --- 2. NAVBAR (GLASSMORPHISM) --- */
 .navbar {
     width: 100%;
-    background: rgba(248, 250, 252, 0.8); /* Warna background transparan */
-    backdrop-filter: blur(10px); /* Efek blur kaca */
+    background: rgba(248, 250, 252, 0.8);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid #e2e8f0;
-    position: fixed; /* Tetap di atas saat di-scroll */
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -51,32 +74,33 @@ a { text-decoration: none; color: inherit; }
     display: flex;
     list-style: none;
     gap: 25px;
-    margin: 0;
-    padding: 0;
 }
 
 .nav-links a {
     font-size: 0.9rem;
     font-weight: 500;
     color: #64748b;
-    transition: 0.3s;
 }
 
 .nav-links a:hover {
     color: #2563eb;
 }
 
-/* --- HERO SECTION --- */
+/* --- 3. HERO SECTION --- */
 .hero-section {
     display: flex; 
     align-items: center; 
     justify-content: space-between;
     gap: 30px; 
     margin-bottom: 50px;
-    padding-top: 80px; /* Ditambah agar tidak tertutup Navbar */
+    padding-top: 100px;
+    flex-wrap: wrap; /* Penting agar tidak overlap */
 }
 
-.hero-content { flex: 1; }
+.hero-content {
+    flex: 1;
+    min-width: 300px;
+}
 
 h1 { 
     font-size: 2.5rem; 
@@ -86,24 +110,19 @@ h1 {
     display: flex;
     align-items: baseline; 
     flex-wrap: wrap; 
-    gap: 0; 
 }
 
-h1 span:first-child {
-    margin-right: 12px;
-    white-space: nowrap;
-}
+h1 span:first-child { margin-right: 12px; }
 
 .typing-text {
     color: #2563eb; 
     border-right: 3px solid #2563eb;
     white-space: nowrap;
     overflow: hidden;
-    display: inline-block;
     animation: typing 2s steps(15, end) forwards, blink 0.7s infinite;
 }
 
-@keyframes typing { from { width: 0 } to { width: 125px } }
+@keyframes typing { from { width: 0 } to { width: 130px } }
 @keyframes blink { 50% { border-color: transparent } }
 
 .aka-text {
@@ -111,76 +130,107 @@ h1 span:first-child {
     font-size: 1.1rem; 
     color: #64748b; 
     margin-top: 10px;
-    font-weight: 400;
 }
 
 .role { color: #2563eb; font-weight: bold; font-size: 1.1rem; margin: 15px 0; }
-.description { color: #475569; line-height: 1.6; margin-bottom: 20px; }
+.description { color: #475569; margin-bottom: 20px; }
 
-.hero-image { flex: 1; display: flex; justify-content: flex-end; }
-.hero-image img { width: 100%; max-width: 320px; border-radius: 20px; }
-
-/* --- SOCIAL LINKS --- */
-.social-links {
+.hero-image {
+    flex: 1;
     display: flex;
-    gap: 12px; 
-    margin-top: 20px;
+    justify-content: center;
+    min-width: 300px;
 }
+
+.hero-image img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+/* --- 4. STATS & BADGES --- */
+.hero-stats {
+    display: flex;
+    gap: 25px;
+    margin: 25px 0;
+}
+
+.hero-stats div {
+    text-align: left;
+}
+
+.badge {
+    background: #eff6ff;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-block;
+    margin: 5px 5px 5px 0;
+}
+
+.badge:hover {
+    background: #2563eb;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+/* --- 5. SOCIAL LINKS --- */
+.social-links { display: flex; gap: 12px; margin-top: 20px; }
 
 .btn-social {
-    width: 45px;
-    height: 38px;
-    border: none;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    width: 45px; height: 38px; border: none; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: 0.3s;
 }
 
-.btn-social img {
-    width: 20px;
-    filter: brightness(0) invert(1);
-}
-
-.btn-discord { background: #5865F2; box-shadow: 0 4px 6px rgba(88, 101, 242, 0.2); }
+.btn-social img { width: 20px; filter: brightness(0) invert(1); }
+.btn-discord { background: #5865F2; }
 .btn-instagram { background: #E1306C; }
 .btn-tiktok { background: #000000; }
 .btn-facebook { background: #1877F2; }
 
-.btn-social:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
+.btn-social:hover { transform: translateY(-3px); filter: brightness(1.1); }
 
-/* --- ABOUT CARD --- */
-.about-card {
-    background: #ffffff; padding: 25px;
-    border-radius: 12px; border: 1px solid #e2e8f0;
+/* --- 6. CARDS & SECTIONS --- */
+.about-card, .card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-/* --- MARQUEE --- */
 .skill-label {
     font-size: 0.8rem; font-weight: 900; color: #64748b;
     border-left: 4px solid #2563eb; padding-left: 12px;
-    text-transform: uppercase; margin: 30px 0 15px;
+    text-transform: uppercase; margin: 40px 0 15px;
 }
 
+/* --- 7. MARQUEE OPTIMIZED --- */
 .marquee {
     background: #ffffff; overflow: hidden;
     border: 1px solid #e2e8f0; border-radius: 12px;
+    contain: content;
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.marquee-content { display: flex; width: max-content; padding: 15px 0; }
+.marquee-content {
+    display: flex; width: max-content; padding: 15px 0;
+    will-change: transform;
+}
+
 .marquee-content span {
     background: white; padding: 8px 16px; margin: 0 10px;
     border-radius: 10px; border: 1px solid #e2e8f0;
     font-weight: 700; display: flex; align-items: center;
+    flex-shrink: 0;
 }
 
 .icon { width: 22px; height: 22px; margin-right: 10px; border-radius: 4px; }
@@ -188,144 +238,47 @@ h1 span:first-child {
 .row1 { animation: jalan-kiri 35s linear infinite; }
 .row2 { animation: jalan-kanan 35s linear infinite; }
 
-@keyframes jalan-kiri { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes jalan-kanan { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes jalan-kiri { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+@keyframes jalan-kanan { from { transform: translate3d(-50%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
 
-/* --- MOBILE RESPONSIVE --- */
+/* --- 8. FOOTER --- */
+footer {
+    clear: both; /* Mencegah footer melayang ke samping */
+    margin-top: 80px;
+    padding: 40px 20px;
+    text-align: center;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    width: 100%;
+}
+
+/* --- 9. ANIMATIONS --- */
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 10. MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-    /* Munculkan kembali nav-links tapi atur posisinya agar rapi */
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .nav-container {
-        flex-direction: column; /* Susun logo dan menu secara vertikal */
-        gap: 10px;
-        padding: 10px 5%;
-    }
-
-    .nav-links {
-        display: flex; /* Aktifkan kembali menu di mobile */
-        gap: 15px;      /* Perkecil jarak antar menu agar muat satu baris */
-    }
-
-    .nav-links a {
-        font-size: 0.8rem; /* Perkecil ukuran teks menu di mobile */
-    }
-
-    .nav-logo {
-        font-size: 1rem;
-    }
-
-    /* Penyesuaian Hero Section agar tidak tertutup Navbar yang membesar */
+    .nav-container { flex-direction: column; gap: 10px; }
+    .nav-links { gap: 15px; }
+    
     .hero-section {
         flex-direction: column-reverse;
         text-align: center;
-        padding-top: 130px; /* Jarak ditambah karena navbar jadi 2 baris */
+        padding-top: 140px;
     }
 
-    .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center; 
-    }
-
-    h1 {
-        font-size: 1.8rem; 
-        justify-content: center;
-        align-items: baseline;
-    }
-
-    h1 span:first-child { margin-right: 8px; }
-
-    .typing-text { font-size: 1.8rem; }
-    
-    /* Animasi typing khusus HP */
-    @keyframes typing { from { width: 0 } to { width: 92px } }
-
-    .aka-text { font-size: 0.9rem; }
+    .hero-stats { justify-content: center; }
     .social-links { justify-content: center; }
-    .hero-image img { max-width: 200px; }
-}
+    
+    h1 { font-size: 1.8rem; justify-content: center; }
+    @keyframes typing { from { width: 0 } to { width: 95px } }
 
-/* --- MARQUEE (OPTIMIZED FOR MOBILE) --- */
-.skill-label {
-    font-size: 0.8rem; font-weight: 900; color: #64748b;
-    border-left: 4px solid #2563eb; padding-left: 12px;
-    text-transform: uppercase; margin: 30px 0 15px;
-}
-
-.marquee {
-    background: #ffffff; 
-    overflow: hidden;
-    border: 1px solid #e2e8f0; 
-    border-radius: 12px;
-    /* Optimasi: Mencegah kalkulasi ulang layout di luar kotak marquee */
-    contain: content; 
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.marquee-content { 
-    display: flex; 
-    width: max-content; 
-    padding: 15px 0;
-    /* PENTING: Memaksa HP menggunakan GPU (Akselerasi Hardware) */
-    will-change: transform;
-    transform: translate3d(0, 0, 0); 
-    backface-visibility: hidden;
-}
-
-.marquee-content span {
-    background: white; 
-    padding: 8px 16px; 
-    margin: 0 10px;
-    border-radius: 10px; 
-    border: 1px solid #e2e8f0;
-    font-weight: 700; 
-    display: flex; 
-    align-items: center;
-    /* Mencegah gambar menyusut secara aneh saat loading */
-    flex-shrink: 0; 
-}
-
-.icon { 
-    width: 22px; 
-    height: 22px; 
-    margin-right: 10px; 
-    border-radius: 4px;
-    object-fit: cover;
-}
-
-/* Animasi menggunakan transform (lebih ringan daripada margin/left) */
-.row1 { animation: jalan-kiri 35s linear infinite; }
-.row2 { animation: jalan-kanan 35s linear infinite; }
-
-@keyframes jalan-kiri { 
-    from { transform: translate3d(0, 0, 0); } 
-    to { transform: translate3d(-50%, 0, 0); } 
-}
-
-@keyframes jalan-kanan { 
-    from { transform: translate3d(-50%, 0, 0); } 
-    to { transform: translate3d(0, 0, 0); } 
-}
-
-/* --- TAMBAHAN OPTIMASI MOBILE --- */
-@media (max-width: 768px) {
-    /* Membuat pergerakan lebih lambat di HP agar render lebih stabil */
-    .row1, .row2 {
-        animation-duration: 45s; 
-    }
-
-    .marquee-content span {
-        padding: 6px 12px;
-        font-size: 0.85rem;
-    }
-
-    /* Menghilangkan blur berlebih yang berat di HP spek rendah */
-    .navbar {
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-    }
+    .row1, .row2 { animation-duration: 45s; }
 }

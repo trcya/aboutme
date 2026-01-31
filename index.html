@@ -6,13 +6,63 @@
     <title>David | Junior Web Developer</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #1e293b; background-color: #f8fafc; }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        /* Fix Footer & Layout */
+        .main-content { min-height: calc(100vh - 150px); } /* Memastikan konten utama cukup tinggi */
+        
+        .badge {
+            background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe;
+            padding: 6px 14px; border-radius: 100px; font-size: 0.75rem;
+            font-weight: 600; transition: 0.3s; display: inline-block;
+        }
+        .badge:hover { background: #2563eb; color: white; transform: scale(1.05); }
+
+        /* Hero Section Fix */
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 0 50px;
+            gap: 40px;
+        }
+        .hero-content { flex: 1; min-width: 320px; }
+        .hero-image { flex: 1; min-width: 320px; text-align: center; }
+        .hero-image img { max-width: 100%; height: auto; border-radius: 24px; }
+
+        /* Footer Fix - INI KUNCINYA */
+        footer {
+            clear: both;
+            display: block;
+            width: 100%;
+            background: white;
+            padding: 40px 0;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Grid System */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; transition: 0.3s; }
+        .card:hover { border-color: #2563eb; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        html { scroll-behavior: smooth; }
+        #toTop:hover { transform: translateY(-5px); background: #1d4ed8 !important; }
+    </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="logo" width="30">
                 <span>David Terecya</span>
             </div>
             <ul class="nav-links">
@@ -23,109 +73,98 @@
         </div>
     </nav>
 
-    <div class="container">
-        <header class="fade-in">
-            <section class="hero-section">
-                <div class="hero-content">
-                    <h1><span>Hi, I'm</span><span class="typing-text">David</span></h1>
-                    <span class="aka-text">(also known as Terecya)</span>
-                    
-                    <p class="role">Junior Web Developer • Discord Admin</p>
-                    <p class="description">
-                        I am a web developer focused on building responsive and interactive web applications.
-                    </p>
+    <div class="main-content">
+        <div class="container">
+            <header class="fade-in">
+                <section class="hero-section">
+                    <div class="hero-content">
+                        <h1><span>Hi, I'm</span> <span class="typing-text" style="color: #2563eb;">David</span></h1>
+                        <span class="aka-text" style="color: #64748b; font-size: 0.9rem;">(also known as Terecya)</span>
+                        <p class="role" style="font-weight: 600; margin-top: 10px;">Junior Web Developer • Discord Admin</p>
+                        <p class="description" style="color: #475569; margin-top: 10px;">I am a web developer focused on building responsive and interactive web applications.</p>
 
-                    <div class="social-links">
-                        <button class="btn-social btn-discord" onclick="copyDiscord()" title="Copy Discord ID">
-                            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord">
-                        </button>
+                        <div class="hero-stats" style="display: flex; gap: 30px; margin: 25px 0;">
+                            <div>
+                                <span style="display: block; font-size: 1.5rem; font-weight: 800; color: #2563eb;">2+</span>
+                                <small style="text-transform: uppercase; font-size: 0.65rem; letter-spacing: 1px; color: #94a3b8;">Years Exp</small>
+                            </div>
+                            <div style="border-left: 1px solid #e2e8f0; padding-left: 30px;">
+                                <span style="display: block; font-size: 1.5rem; font-weight: 800; color: #2563eb;">10+</span>
+                                <small style="text-transform: uppercase; font-size: 0.65rem; letter-spacing: 1px; color: #94a3b8;">Communities</small>
+                            </div>
+                        </div>
 
-                        <a href="https://instagram.com/rere_.gt" target="_blank" class="btn-social btn-instagram" title="Instagram">
-                            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-                        </a>
-
-                        <a href="https://tiktok.com/@terecya__" target="_blank" class="btn-social btn-tiktok" title="TikTok">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
-                        </a>
-
-                        <a href="https://www.facebook.com/share/1Czth35dZk/" target="_blank" class="btn-social btn-facebook" title="Facebook">
-                            <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
-                        </a>
+                        <div class="social-links" style="display: flex; gap: 12px;">
+                            <button class="btn-social" onclick="copyDiscord()" style="border: none; background: none; cursor: pointer;">
+                                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" width="30">
+                            </button>
+                            <a href="https://instagram.com/rere_.gt" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="30"></a>
+                            <a href="https://tiktok.com/@terecya__" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="30"></a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="hero-image">
-                    <img src="photo/me.png" alt="David's Profile">
+                    <div class="hero-image">
+                        <img src="photo/me.png" alt="David's Profile">
+                    </div>
+                </section>
+            </header>
+
+            <section id="about" style="padding-top: 40px;">
+                <h4 class="skill-label" style="color: #2563eb; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px;">About Me</h4>
+                <div class="card" style="margin-top: 15px;">
+                    <p>Hello! I'm <strong>David</strong>, a <strong>Junior Web Developer</strong> who loves building clean and functional digital environments.</p>
+                    <p style="margin-top: 10px;">As a <strong>Discord Admin</strong>, I specialize in server management and providing excellent customer support.</p>
                 </div>
             </section>
-        </header>
 
-        
+            <section style="margin-top: 50px;">
+                <h4 class="skill-label" style="color: #2563eb; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px;">Current Stack</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                    <span class="badge">Next.js 15</span>
+                    <span class="badge">Tailwind CSS</span>
+                    <span class="badge">TypeScript</span>
+                    <span class="badge">Node.js</span>
+                </div>
+            </section>
 
-        <section id="about" class="about-section fade-in">
-            <h4 class="skill-label">About Me</h4>
-            <div class="about-card">
-                <p>
-                    Hello! I'm <strong>David</strong> (also known as <strong>Terecya</strong>), a 
-                    <strong>Junior Web Developer</strong> who loves building clean, functional, and user-friendly 
-                    digital environments.
-                </p>
-                <p>
-                    As a <strong>Discord Admin</strong>, I specialize in server management and <strong>customer service</strong>. 
-                    I am dedicated to maintaining an orderly community and providing excellent support to ensure 
-                    every member has a smooth experience.
-                </p>
-            </div>
-        </section>
-
-        <section class="skills-section fade-in">
-            <div class="skill-group">
-                <h4 class="skill-label">STAFF</h4>
-                <div class="marquee">
-                    <div class="marquee-content row1">
-                        <a href="https://discord.gg/getsades" target="_blank"><span><img src="my-portfolio/public/icons/atom.jpg" class="icon"> Atomic</span></a>
-                        <a href="https://discord.gg/8smZnzdy" target="_blank"><span><img src="my-portfolio/public/icons/rockhub.jpg"class="icon"> Rockhub</span></a>
-                        <a href="https://discord.gg/AcmC2RYN" target="_blank"><span><img src="my-portfolio/public/icons/p4kong.png" class="icon"> P4kongtools</span></a>
-                         <a href="https://discord.gg/getsades" target="_blank"><span><img src="my-portfolio/public/icons/atom.jpg" class="icon"> Atomic</span></a>
-                        <a href="https://discord.gg/8smZnzdy" target="_blank"><span><img src="my-portfolio/public/icons/rockhub.jpg"class="icon"> Rockhub</span></a>
-                        <a href="https://discord.gg/AcmC2RYN" target="_blank"><span><img src="my-portfolio/public/icons/p4kong.png" class="icon"> P4kongtools</span></a>
-                        <a href="https://discord.gg/getsades" target="_blank"><span><img src="my-portfolio/public/icons/atom.jpg" class="icon"> Atomic</span></a>
-                        <a href="https://discord.gg/8smZnzdy" target="_blank"><span><img src="my-portfolio/public/icons/rockhub.jpg"class="icon"> Rockhub</span></a>
-                        <a href="https://discord.gg/AcmC2RYN" target="_blank"><span><img src="my-portfolio/public/icons/p4kong.png" class="icon"> P4kongtools</span></a>
+            <section id="projects" style="margin-top: 60px;">
+                <h4 class="skill-label" style="color: #2563eb; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px;">Projects</h4>
+                <div class="project-grid">
+                    <div class="card">
+                        <h5 style="font-size: 1.1rem; margin-bottom: 8px;">Portfolio Website</h5>
+                        <p style="font-size: 0.85rem; color: #64748b;">Personal portfolio built with modern web technologies.</p>
+                    </div>
+                    <div class="card">
+                        <h5 style="font-size: 1.1rem; margin-bottom: 8px;">Community Bot</h5>
+                        <p style="font-size: 0.85rem; color: #64748b;">Automated management system for Discord servers.</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="skill-group" style="margin-top: 25px;">
-                <h4 class="skill-label">HELPER</h4>
-                <div class="marquee">
-                    <div class="marquee-content row2">
-                         <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                       <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                        <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                        <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                       <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                        <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                           <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                       <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                        <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                         <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                     <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                       <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-                        <a href="https://discord.gg/kbRmXvbX" target="_blank"><span><img src="my-portfolio/public/icons/vora.jpg" class="icon"> Vorahub</span></a>
-
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
 
+    <footer>
+        <div class="container">
+            <p style="font-weight: 700; color: #1e293b;">David Terecya</p>
+            <p style="color: #64748b; font-size: 0.8rem; margin-top: 4px;">© 2026 • Build with Passion</p>
+        </div>
+    </footer>
+
+    <button id="toTop" onclick="scrollToTop()" style="display: none; position: fixed; bottom: 25px; right: 25px; z-index: 99; background: #2563eb; color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.4); font-weight: bold;">↑</button>
+
     <script>
-        function copyDiscord() {
-            const textToCopy = "terecya"; 
-            navigator.clipboard.writeText(textToCopy);
-            alert("Discord ID copied: " + textToCopy);
+        async function copyDiscord() {
+            try {
+                await navigator.clipboard.writeText("terecya");
+                alert("Discord ID copied: terecya");
+            } catch (err) { console.error(err); }
         }
+        window.onscroll = function() {
+            const btn = document.getElementById("toTop");
+            if (window.scrollY > 300) { btn.style.display = "block"; } 
+            else { btn.style.display = "none"; }
+        };
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     </script>
 </body>
 </html>
