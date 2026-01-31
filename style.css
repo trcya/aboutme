@@ -11,6 +11,61 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
+/* --- NAVBAR (TAMBAHAN BARU) --- */
+.navbar {
+    width: 100%;
+    background: rgba(248, 250, 252, 0.8); /* Warna background transparan */
+    backdrop-filter: blur(10px); /* Efek blur kaca */
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0;
+    position: fixed; /* Tetap di atas saat di-scroll */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 1.1rem;
+}
+
+.nav-logo img {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #64748b;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
 /* --- HERO SECTION --- */
 .hero-section {
     display: flex; 
@@ -18,7 +73,7 @@ a { text-decoration: none; color: inherit; }
     justify-content: space-between;
     gap: 30px; 
     margin-bottom: 50px;
-    padding-top: 60px;
+    padding-top: 80px; /* Ditambah agar tidak tertutup Navbar */
 }
 
 .hero-content { flex: 1; }
@@ -29,12 +84,11 @@ h1 {
     margin: 0; 
     line-height: 1.2;
     display: flex;
-    align-items: baseline; /* Menyejajarkan teks berdasarkan garis bawah huruf agar lurus */
+    align-items: baseline; 
     flex-wrap: wrap; 
-    gap: 0; /* Jarak diatur manual lewat margin span untuk hindari bug Android */
+    gap: 0; 
 }
 
-/* Membungkus "Hi, I'm" untuk kunci spasi */
 h1 span:first-child {
     margin-right: 12px;
     white-space: nowrap;
@@ -49,7 +103,6 @@ h1 span:first-child {
     animation: typing 2s steps(15, end) forwards, blink 0.7s infinite;
 }
 
-/* Lebar animasi untuk Desktop */
 @keyframes typing { from { width: 0 } to { width: 125px } }
 @keyframes blink { 50% { border-color: transparent } }
 
@@ -140,10 +193,12 @@ h1 span:first-child {
 
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
+    .nav-links { display: none; } /* Sembunyikan menu teks di HP agar rapi */
+    
     .hero-section {
         flex-direction: column-reverse;
         text-align: center;
-        padding-top: 30px;
+        padding-top: 100px;
     }
 
     .hero-content {
@@ -162,7 +217,6 @@ h1 span:first-child {
 
     .typing-text { font-size: 1.8rem; }
     
-    /* Lebar animasi typing disesuaikan khusus untuk layar HP */
     @keyframes typing { from { width: 0 } to { width: 92px } }
 
     .aka-text { font-size: 1rem; }
