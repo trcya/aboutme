@@ -1,224 +1,104 @@
 /* --- DASAR --- */
 body {
     font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     background-color: #f8fafc;
-    display: flex;
-    justify-content: center;
+    display: flex; justify-content: center;
+    color: #334155;
 }
 
-.container {
-    width: 90%;
-    max-width: 800px;
-    padding: 40px 0;
-}
+.container { width: 90%; max-width: 900px; padding: 40px 0; }
 
-header {
-    margin-bottom: 50px;
-    text-align: left;
-}
-
-h1 { font-size: 2.5rem; color: #1e293b; margin-bottom: 10px; }
-.role { color: #2563eb; font-weight: bold; font-size: 1.2rem; }
-
-/* --- ABOUT SECTION --- */
-.about-card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 2px 2px 0px #2563eb;
-    color: #475569;
-    line-height: 1.6;
-    margin-bottom: 40px;
-}
-
-/* --- MARQUEE (BAR BERGERAK) --- */
-.skill-label {
-    font-size: 0.8rem;
-    font-weight: 900;
-    color: #64748b;
-    border-left: 4px solid #2563eb;
-    padding-left: 12px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.marquee {
-    background: #ffffff;
-    padding: 15px 0;
-    border-radius: 12px;
-    display: flex;
-    overflow: hidden;
-    border: 1px solid #e2e8f0;
-    width: 100%;
-    position: relative;
-}
-
-.marquee-content {
-    display: flex;
-    width: max-content;
-    gap: 0; /* Jarak diatur via margin pada span */
-}
-
-.marquee-content a {
+/* Hapus Underline */
+a {
     text-decoration: none;
-    display: flex;
-    align-items: center;
+    color: inherit;
 }
 
-.marquee-content span {
-    display: inline-flex;
-    align-items: center;
-    background: white;
-    padding: 8px 16px;
-    margin: 0 10px;
-    border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 2px 2px 0px #2563eb;
+/* --- HERO SECTION --- */
+.hero-section {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    gap: 20px; 
+    margin-bottom: 50px;
+    padding-top: 60px; /* Diturunkan agar tidak terlalu ke atas */
+}
+
+h1 { 
+    font-size: 2.5rem; 
+    color: #1e293b; 
+    margin: 0; 
+    line-height: 1.2; 
+}
+
+.typing-text {
+    color: #2563eb; 
+    border-right: 3px solid #2563eb;
     white-space: nowrap;
-    font-weight: 700;
-    color: #1e293b;
-}
-
-/* FIX: Mencegah gambar hilang atau jadi raksasa */
-.icon {
-    width: 24px !important;
-    height: 24px !important;
-    min-width: 24px !important;
-    min-height: 24px !important;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-right: 10px;
-    flex-shrink: 0;
-}
-
-/* --- ANIMASI --- */
-.row1 { animation: jalan-kiri 20s linear infinite; }
-.row2 { animation: jalan-kanan 20s linear infinite; }
-
-@keyframes jalan-kiri {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-@keyframes jalan-kanan {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
-}
-
-/* --- FADE IN --- */
-.fade-in { animation: fadeInUp 1s ease-out; }
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- ANIMASI MARQUEE SMOOTH --- */
-.marquee {
-    background: #ffffff;
-    padding: 15px 0;
-    border-radius: 12px;
-    display: flex;
     overflow: hidden;
-    border: 1px solid #e2e8f0;
-    width: 100%;
-    /* Memberikan efek pudar di pinggir agar lebih smooth di mata */
+    display: inline-block;
+    vertical-align: middle; /* Sejajar dengan teks "Hi, I'm" */
+    animation: typing 2s steps(15, end) forwards, blink 0.7s infinite;
+}
+
+@keyframes typing { from { width: 0 } to { width: 140px } }
+@keyframes blink { 50% { border-color: transparent } }
+
+.aka-text {
+    display: block; 
+    font-size: 0.6em;
+    color: #64748b; 
+    margin-top: 10px;
+}
+
+.role { color: #2563eb; font-weight: bold; font-size: 1.1rem; margin: 15px 0; }
+.description { color: #475569; line-height: 1.6; margin-bottom: 20px; }
+
+.hero-image { flex: 1; display: flex; justify-content: flex-end; }
+.hero-image img { width: 100%; max-width: 320px; border-radius: 20px; }
+
+/* --- ABOUT CARD --- */
+.about-card {
+    background: #ffffff; padding: 25px;
+    border-radius: 12px; border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Shadow tipis & bersih */
+    transition: 0.3s;
+}
+
+/* --- MARQUEE --- */
+.skill-label {
+    font-size: 0.8rem; font-weight: 900; color: #64748b;
+    border-left: 4px solid #2563eb; padding-left: 12px;
+    text-transform: uppercase; margin: 30px 0 15px;
+}
+
+.marquee {
+    background: #ffffff; overflow: hidden;
+    border: 1px solid #e2e8f0; border-radius: 12px;
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.marquee-content {
-    display: flex;
-    width: max-content;
-    will-change: transform; /* Mengoptimalkan performa browser */
+.marquee-content { display: flex; width: max-content; padding: 15px 0; }
+.marquee-content span {
+    background: white; padding: 8px 16px; margin: 0 10px;
+    border-radius: 10px; border: 1px solid #e2e8f0;
+    font-weight: 700; display: flex; align-items: center;
 }
 
-/* Durasi 30 detik membuat gerakan terasa tenang dan profesional */
-.row1 { 
-    animation: jalan-kiri 30s linear infinite; 
-}
+.icon { width: 22px; height: 22px; margin-right: 10px; border-radius: 4px; }
 
-.row2 { 
-    animation: jalan-kanan 30s linear infinite; 
-}
+.row1 { animation: jalan-kiri 35s linear infinite; }
+.row2 { animation: jalan-kanan 35s linear infinite; }
 
-@keyframes jalan-kiri {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Berhenti tepat di tengah duplikasi */
-}
+@keyframes jalan-kiri { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes jalan-kanan { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-@keyframes jalan-kanan {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+/* --- BUTTON --- */
+.btn-copy {
+    padding: 10px 20px; background: #1e293b; color: white;
+    border: none; border-radius: 8px; cursor: pointer; transition: 0.3s;
+    font-weight: 600;
 }
-
-/* Biar tetap smooth saat kursor diarahkan */
-.marquee:hover .marquee-content {
-    animation-play-state: paused;
-}
-
-/* CSS */
-.hero-container {
-  display: flex;         /* Mengaktifkan mode flex */
-  align-items: center;    /* Menyejajarkan teks dan foto secara vertikal di tengah */
-  gap: 20px;             /* Memberikan jarak antara teks dan foto */
-}
-
-.profile-pic {
-  width: 100px;          /* Atur ukuran foto */
-  height: 100px;
-  border-radius: 50%;    /* Membuat foto jadi lingkaran (opsional) */
-  object-fit: cover;     /* Menjaga rasio foto agar tidak gepeng */
-}
-
-.hero-section {
-  display: flex;
-  align-items: center;      /* Supaya teks dan foto sejajar tengah secara vertikal */
-  justify-content: space-between; /* Mendorong teks ke kiri dan foto ke kanan */
-  padding: 50px;
-  max-width: 1200px;
-  margin: 0 auto;           /* Membuat konten berada di tengah halaman */
-}
-
-.hero-content {
-  flex: 1;                  /* Mengambil ruang yang tersedia di kiri */
-  padding-right: 20px;
-}
-
-.hero-image img {
-  width: 300px;             /* Sesuaikan ukuran foto */
-  height: auto;
-  border-radius: 20px;      /* Memberikan efek melengkung seperti di gambar */
-}
-
-/* Responsif untuk HP */
-@media (max-width: 768px) {
-  .hero-section {
-    flex-direction: column-reverse; /* Foto pindah ke atas teks saat di HP */
-    text-align: center;
-  }
-}
-
-/* Membuat teks tambahan turun ke bawah */
-.aka-text {
-  display: block;      /* Ini kuncinya agar tulisan pindah ke bawah */
-  font-size: 0.7em;    /* Mengecilkan sedikit ukuran teks tambahan (opsional) */
-  margin-top: 5px;     /* Memberi sedikit jarak dari nama utama */
-  color: #333;         /* Warna teks */
-}
-
-/* Layout utama tetap menggunakan Flexbox agar GIF ada di kanan */
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 50px 10%;
-}
-
-.hero-image img {
-  max-width: 350px;
-  height: auto;
-  border-radius: 20px;
-}
+.btn-copy:hover { background: #2563eb; transform: translateY(-2px); }
