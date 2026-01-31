@@ -193,12 +193,35 @@ h1 span:first-child {
 
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Sembunyikan menu teks di HP agar rapi */
-    
+    /* Munculkan kembali nav-links tapi atur posisinya agar rapi */
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .nav-container {
+        flex-direction: column; /* Susun logo dan menu secara vertikal */
+        gap: 10px;
+        padding: 10px 5%;
+    }
+
+    .nav-links {
+        display: flex; /* Aktifkan kembali menu di mobile */
+        gap: 15px;      /* Perkecil jarak antar menu agar muat satu baris */
+    }
+
+    .nav-links a {
+        font-size: 0.8rem; /* Perkecil ukuran teks menu di mobile */
+    }
+
+    .nav-logo {
+        font-size: 1rem;
+    }
+
+    /* Penyesuaian Hero Section agar tidak tertutup Navbar yang membesar */
     .hero-section {
         flex-direction: column-reverse;
         text-align: center;
-        padding-top: 100px;
+        padding-top: 130px; /* Jarak ditambah karena navbar jadi 2 baris */
     }
 
     .hero-content {
@@ -217,9 +240,10 @@ h1 span:first-child {
 
     .typing-text { font-size: 1.8rem; }
     
+    /* Animasi typing khusus HP */
     @keyframes typing { from { width: 0 } to { width: 92px } }
 
-    .aka-text { font-size: 1rem; }
+    .aka-text { font-size: 0.9rem; }
     .social-links { justify-content: center; }
-    .hero-image img { max-width: 220px; }
+    .hero-image img { max-width: 200px; }
 }
