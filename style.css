@@ -29,9 +29,15 @@ h1 {
     margin: 0; 
     line-height: 1.2;
     display: flex;
-    align-items: center; /* Menjaga teks 'Hi, I'm' dan 'David' sejajar vertikal */
+    align-items: baseline; /* Menyejajarkan teks berdasarkan garis bawah huruf agar lurus */
     flex-wrap: wrap; 
-    gap: 10px;
+    gap: 0; /* Jarak diatur manual lewat margin span untuk hindari bug Android */
+}
+
+/* Membungkus "Hi, I'm" untuk kunci spasi */
+h1 span:first-child {
+    margin-right: 12px;
+    white-space: nowrap;
 }
 
 .typing-text {
@@ -43,12 +49,13 @@ h1 {
     animation: typing 2s steps(15, end) forwards, blink 0.7s infinite;
 }
 
-@keyframes typing { from { width: 0 } to { width: 130px } }
+/* Lebar animasi untuk Desktop */
+@keyframes typing { from { width: 0 } to { width: 125px } }
 @keyframes blink { 50% { border-color: transparent } }
 
 .aka-text {
     display: block; 
-    font-size: 1.1rem; /* disesuaikan agar proporsional */
+    font-size: 1.1rem; 
     color: #64748b; 
     margin-top: 10px;
     font-weight: 400;
@@ -146,15 +153,19 @@ h1 {
     }
 
     h1 {
-        font-size: 2rem; 
+        font-size: 1.8rem; 
         justify-content: center;
+        align-items: baseline;
     }
 
-    .typing-text { font-size: 2rem; }
+    h1 span:first-child { margin-right: 8px; }
+
+    .typing-text { font-size: 1.8rem; }
+    
+    /* Lebar animasi typing disesuaikan khusus untuk layar HP */
+    @keyframes typing { from { width: 0 } to { width: 92px } }
 
     .aka-text { font-size: 1rem; }
-
     .social-links { justify-content: center; }
-
     .hero-image img { max-width: 220px; }
 }
