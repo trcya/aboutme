@@ -209,3 +209,60 @@ h1 {
 .btn-social:active {
     transform: scale(0.95);
 }
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column-reverse; /* Foto di atas, teks di bawah */
+        text-align: center;
+        gap: 20px;
+        padding-top: 20px;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Semua teks rata tengah di HP */
+    }
+
+    /* Ukuran Font H1 lebih kecil agar tidak pecah di HP */
+    h1 {
+        font-size: 1.8rem; 
+        line-height: 1.3;
+        display: block; /* Agar nama David bisa turun jika layar sangat sempit */
+    }
+
+    .typing-text {
+        font-size: 1.8rem;
+        vertical-align: middle;
+    }
+
+    .aka-text {
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    .role {
+        font-size: 1rem;
+        margin: 10px 0;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        padding: 0 10px; /* Jarak teks dari pinggir layar */
+    }
+
+    /* Merapikan Tombol Sosmed di Tengah */
+    .social-links {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero-image {
+        justify-content: center;
+    }
+
+    .hero-image img {
+        max-width: 200px; /* Ukuran foto lebih kecil di HP */
+    }
+}
