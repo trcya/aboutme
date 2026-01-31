@@ -142,3 +142,35 @@ h1 {
     border-color: #2563eb;
     cursor: pointer;
 }
+
+.marquee-content {
+    display: flex;
+    width: max-content;
+    will-change: transform; /* Memberitahu browser untuk mengoptimalkan animasi */
+}
+
+/* Row 1: Gerak ke kiri dengan durasi lebih lambat agar tidak pusing */
+.row1 {
+    animation: jalan-kiri 30s linear infinite;
+}
+
+/* Row 2: Gerak ke kanan */
+.row2 {
+    animation: jalan-kanan 30s linear infinite;
+}
+
+@keyframes jalan-kiri {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Berhenti tepat di tengah konten total */
+}
+
+@keyframes jalan-kanan {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+/* Hilangkan flicker/kedipan pada gambar */
+.icon {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
