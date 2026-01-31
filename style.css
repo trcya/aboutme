@@ -247,3 +247,85 @@ h1 span:first-child {
     .social-links { justify-content: center; }
     .hero-image img { max-width: 200px; }
 }
+
+/* --- MARQUEE (OPTIMIZED FOR MOBILE) --- */
+.skill-label {
+    font-size: 0.8rem; font-weight: 900; color: #64748b;
+    border-left: 4px solid #2563eb; padding-left: 12px;
+    text-transform: uppercase; margin: 30px 0 15px;
+}
+
+.marquee {
+    background: #ffffff; 
+    overflow: hidden;
+    border: 1px solid #e2e8f0; 
+    border-radius: 12px;
+    /* Optimasi: Mencegah kalkulasi ulang layout di luar kotak marquee */
+    contain: content; 
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content { 
+    display: flex; 
+    width: max-content; 
+    padding: 15px 0;
+    /* PENTING: Memaksa HP menggunakan GPU (Akselerasi Hardware) */
+    will-change: transform;
+    transform: translate3d(0, 0, 0); 
+    backface-visibility: hidden;
+}
+
+.marquee-content span {
+    background: white; 
+    padding: 8px 16px; 
+    margin: 0 10px;
+    border-radius: 10px; 
+    border: 1px solid #e2e8f0;
+    font-weight: 700; 
+    display: flex; 
+    align-items: center;
+    /* Mencegah gambar menyusut secara aneh saat loading */
+    flex-shrink: 0; 
+}
+
+.icon { 
+    width: 22px; 
+    height: 22px; 
+    margin-right: 10px; 
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* Animasi menggunakan transform (lebih ringan daripada margin/left) */
+.row1 { animation: jalan-kiri 35s linear infinite; }
+.row2 { animation: jalan-kanan 35s linear infinite; }
+
+@keyframes jalan-kiri { 
+    from { transform: translate3d(0, 0, 0); } 
+    to { transform: translate3d(-50%, 0, 0); } 
+}
+
+@keyframes jalan-kanan { 
+    from { transform: translate3d(-50%, 0, 0); } 
+    to { transform: translate3d(0, 0, 0); } 
+}
+
+/* --- TAMBAHAN OPTIMASI MOBILE --- */
+@media (max-width: 768px) {
+    /* Membuat pergerakan lebih lambat di HP agar render lebih stabil */
+    .row1, .row2 {
+        animation-duration: 45s; 
+    }
+
+    .marquee-content span {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Menghilangkan blur berlebih yang berat di HP spek rendah */
+    .navbar {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+}
