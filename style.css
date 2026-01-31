@@ -127,3 +127,18 @@ h1 {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* Menghilangkan dekorasi link pada marquee */
+.marquee-content a {
+    text-decoration: none;
+    color: inherit; /* Mengikuti warna teks yang sudah kita buat */
+    display: flex;
+}
+
+/* Efek sedikit membesar saat diarahkan (hover) */
+.marquee-content span:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+    border-color: #2563eb;
+    cursor: pointer;
+}
