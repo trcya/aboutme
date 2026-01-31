@@ -20,8 +20,22 @@
                     <p class="description">
                         I am a web developer focused on building responsive and interactive web applications.
                     </p>
-                    <div class="social-links">
-                        <button class="btn-copy" onclick="copyDiscord()">Copy Discord ID</button>
+                     <div class="social-links">
+                          <button class="btn-social btn-discord" onclick="copyDiscord()" title="Copy Discord ID">
+                              <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord">
+                                  </button>
+
+                                  <a href="https://instagram.com/rere_.gt" target="_blank" class="btn-social btn-instagram" title="Instagram">
+                              <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+                            </a>
+
+                            <a href="https://tiktok.com/@terecya__" target="_blank" class="btn-social btn-tiktok" title="TikTok">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+                                 </a>
+
+                          <a href="https://www.facebook.com/share/1Czth35dZk/" target="_blank" class="btn-social btn-facebook" title="Facebook">
+                              <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
+                             </a>
                     </div>
                 </div>
 
@@ -52,16 +66,16 @@
                 <h4 class="skill-label">STAFF</h4>
                 <div class="marquee">
                     <div class="marquee-content row1">
-                        <a href="https://discord.gg/getsades" target="_blank"><span><img src="photo/atomic.jpg" class="icon"> Atomic</span></a>
+                        <a href="https://discord.gg/getsades" target="_blank"><span><img src="photo/atom.jpg" class="icon"> Atomic</span></a>
                         <a href="https://discord.gg/8smZnzdy" target="_blank"><span><img src="photo/rockhub.jpg" class="icon"> Rockhub</span></a>
                         <a href="https://discord.gg/AcmC2RYN" target="_blank"><span><img src="photo/p4kong.png" class="icon"> P4kongtools</span></a>
-                        <a href="https://discord.gg/getsades" target="_blank"><span><img src="photo/atomic.jpg" class="icon"> Atomic</span></a>
+                        <a href="https://discord.gg/getsades" target="_blank"><span><img src="photo/atom.jpg" class="icon"> Atomic</span></a>
                         <a href="https://discord.gg/8smZnzdy" target="_blank"><span><img src="photo/rockhub.jpg" class="icon"> Rockhub</span></a>
                         <a href="https://discord.gg/AcmC2RYN" target="_blank"><span><img src="photo/p4kong.png" class="icon"> P4kongtools</span></a>
-                         <a href="https://discord.gg/getsades" target="_blank"><span><img src="photo/atomic.jpg" class="icon"> Atomic</span></a>
+                         <a href="https://discord.gg/getsades" target="_blank"><span><img src="photo/atom.jpg" class="icon"> Atomic</span></a>
                         <a href="https://discord.gg/8smZnzdy" target="_blank"><span><img src="photo/rockhub.jpg" class="icon"> Rockhub</span></a>
                         <a href="https://discord.gg/AcmC2RYN" target="_blank"><span><img src="photo/p4kong.png" class="icon"> P4kongtools</span></a>
-                        <a href="https://discord.gg/getsades" target="_blank"><span><img src="photo/atomic.jpg" class="icon"> Atomic</span></a>
+                        <a href="https://discord.gg/getsades" target="_blank"><span><img src="photo/atom.jpg" class="icon"> Atomic</span></a>
                         <a href="https://discord.gg/8smZnzdy" target="_blank"><span><img src="photo/rockhub.jpg" class="icon"> Rockhub</span></a>
                         <a href="https://discord.gg/AcmC2RYN" target="_blank"><span><img src="photo/p4kong.png" class="icon"> P4kongtools</span></a>
                     </div>
@@ -93,11 +107,19 @@
     </div>
 
     <script>
-        function copyDiscord() {
-            const discordID = "Terecya#1234";
-            navigator.clipboard.writeText(discordID);
-            alert("Discord ID copied: " + discordID);
-        }
+      function copyDiscord() {
+    const textToCopy = "terecya"; // Sesuaikan dengan username kamu
+    navigator.clipboard.writeText(textToCopy);
+    
+    // Opsional: Ubah teks sementara untuk memberi tahu user sudah tersalin
+    const btnText = document.querySelector(".btn-copy-icon span");
+    const originalText = btnText.innerText;
+    
+    btnText.innerText = "Copied!";
+    setTimeout(() => {
+        btnText.innerText = originalText;
+    }, 2000);
+}
     </script>
 </body>
 </html>
