@@ -94,21 +94,21 @@
                             </div>
                         </div>
 
-                      <div class="social-links" style="display: flex; gap: 12px; align-items: center;">
-    <button class="btn-social btn-discord" onclick="copyDiscord()" style="border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" width="30" alt="Discord">
+     <div class="social-links" style="display: flex; gap: 12px; align-items: center;">
+    <button class="btn-social btn-discord" onclick="copyDiscord()" title="Copy Discord ID">
+        <img src="https://cdn.simpleicons.org/discord/white" width="22" alt="Discord">
     </button>
 
     <a href="https://instagram.com/rere_.gt" target="_blank" class="btn-social btn-instagram">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="30" alt="Instagram">
+        <img src="https://cdn.simpleicons.org/instagram/white" width="22" alt="Instagram">
     </a>
 
     <a href="https://tiktok.com/@terecya__" target="_blank" class="btn-social btn-tiktok">
-        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="30" alt="TikTok">
+        <img src="https://cdn.simpleicons.org/tiktok/white" width="22" alt="TikTok">
     </a>
 
     <a href="https://www.facebook.com/share/1Czth35dZk/" target="_blank" class="btn-social btn-facebook">
-        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" width="30" alt="Facebook">
+        <img src="https://cdn.simpleicons.org/facebook/white" width="22" alt="Facebook">
     </a>
 </div>
                     </div>
@@ -272,5 +272,76 @@
         };
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     </script>
+    <button id="darkModeToggle" onclick="toggleDarkMode()">🌙</button>
+
+<script>
+    // Cek preferensi pengguna di local storage
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('darkModeToggle').textContent = '☀️';
+    }
+
+    function toggleDarkMode() {
+        const body = document.body;
+        const btn = document.getElementById('darkModeToggle');
+        
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            btn.textContent = '☀️';
+        } else {
+            localStorage.setItem('theme', 'light');
+            btn.textContent = '🌙';
+        }
+    }
+
+    
+</script>
+<button id="darkModeToggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
+
+    <script>
+        // Fungsi Toggle Dark Mode
+        function toggleDarkMode() {
+            const body = document.body;
+            const btn = document.getElementById('darkModeToggle');
+            
+            body.classList.toggle('dark-mode');
+            
+            // Simpan pilihan user & ganti icon
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                btn.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                btn.textContent = '🌙';
+            }
+        }
+
+        // Cek tema saat halaman dimuat
+        window.onload = function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeToggle').textContent = '☀️';
+            }
+        };
+
+        // Script To Top (yang sudah ada)
+        window.onscroll = function() {
+            const btnTop = document.getElementById("toTop");
+            const btnDark = document.getElementById("darkModeToggle");
+            
+            if (window.scrollY > 300) { 
+                btnTop.style.display = "block"; 
+            } else { 
+                btnTop.style.display = "none"; 
+            }
+        };
+
+        function scrollToTop() { 
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        }
+    </script>
+    
 </body>
 </html>

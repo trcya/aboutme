@@ -1,5 +1,5 @@
 /* PORTFOLIO STYLESHEET - DAVID TERECYA 
-    Optimized & Cleaned Version 2026
+    Final Cleaned & Optimized Version 2026
 */
 
 /* --- 1. RESET & DASAR --- */
@@ -34,7 +34,22 @@ a {
     transition: 0.3s;
 }
 
-/* --- 2. NAVBAR (GLASSMORPHISM) --- */
+/* --- 2. CUSTOM SCROLLBAR --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
+}
+
+/* --- 3. NAVBAR (GLASSMORPHISM) --- */
 .navbar {
     width: 100%;
     background: rgba(248, 250, 252, 0.8);
@@ -50,7 +65,7 @@ a {
 .nav-container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 15px 5%;
+    padding: 10px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -59,15 +74,21 @@ a {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-weight: 700;
     color: #1e293b;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 
 .nav-logo img {
-    width: 24px;
-    height: 24px;
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover img {
+    transform: scale(1.1);
 }
 
 .nav-links {
@@ -86,7 +107,7 @@ a {
     color: #2563eb;
 }
 
-/* --- 3. HERO SECTION --- */
+/* --- 4. HERO SECTION --- */
 .hero-section {
     display: flex; 
     align-items: center; 
@@ -94,7 +115,7 @@ a {
     gap: 30px; 
     margin-bottom: 50px;
     padding-top: 100px;
-    flex-wrap: wrap; /* Penting agar tidak overlap */
+    flex-wrap: wrap;
 }
 
 .hero-content {
@@ -149,7 +170,7 @@ h1 span:first-child { margin-right: 12px; }
     object-fit: cover;
 }
 
-/* --- 4. STATS & BADGES --- */
+/* --- 5. STATS & BADGES --- */
 .hero-stats {
     display: flex;
     gap: 25px;
@@ -180,30 +201,50 @@ h1 span:first-child { margin-right: 12px; }
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
-/* --- 5. SOCIAL LINKS --- */
-.social-links { display: flex; gap: 12px; margin-top: 20px; }
-
-.btn-social {
-    width: 45px; height: 38px; border: none; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: 0.3s;
+/* --- 6. SOCIAL LINKS --- */
+.social-links { 
+    display: flex; 
+    gap: 15px; 
+    margin-top: 25px; 
 }
 
-.btn-social img { width: 20px; filter: brightness(0) invert(1); }
+.btn-social {
+    width: 45px; 
+    height: 42px; 
+    border: none; 
+    border-radius: 10px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    cursor: pointer; 
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn-social img { 
+    width: 24px; 
+    filter: none !important; /* Warna asli ikon tetap muncul */
+}
+
+.btn-social:hover { 
+    transform: translateY(-4px); 
+    filter: brightness(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
 .btn-discord { background: #5865F2; }
 .btn-instagram { background: #E1306C; }
 .btn-tiktok { background: #000000; }
 .btn-facebook { background: #1877F2; }
 
-.btn-social:hover { transform: translateY(-3px); filter: brightness(1.1); }
-
-/* --- 6. CARDS & SECTIONS --- */
-.about-card, .card {
+/* --- 7. CARDS & SECTIONS --- */
+.card {
     background: #ffffff;
     padding: 25px;
     border-radius: 12px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
 }
 
 .skill-label {
@@ -212,7 +253,36 @@ h1 span:first-child { margin-right: 12px; }
     text-transform: uppercase; margin: 40px 0 15px;
 }
 
-/* --- 7. MARQUEE OPTIMIZED --- */
+/* Animasi Halus pada Project Cards */
+.project-grid .card {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-grid .card::after {
+    content: "View Details →";
+    position: absolute;
+    bottom: -30px;
+    right: 20px;
+    font-size: 0.75rem;
+    color: #2563eb;
+    font-weight: 700;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.project-grid .card:hover {
+    transform: translateY(-5px);
+    border-color: #2563eb;
+    padding-bottom: 40px;
+}
+
+.project-grid .card:hover::after {
+    bottom: 15px;
+    opacity: 1;
+}
+
+/* --- 8. MARQUEE --- */
 .marquee {
     background: #ffffff; overflow: hidden;
     border: 1px solid #e2e8f0; border-radius: 12px;
@@ -226,11 +296,26 @@ h1 span:first-child { margin-right: 12px; }
     will-change: transform;
 }
 
+.marquee-content a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
 .marquee-content span {
     background: white; padding: 8px 16px; margin: 0 10px;
     border-radius: 10px; border: 1px solid #e2e8f0;
     font-weight: 700; display: flex; align-items: center;
     flex-shrink: 0;
+    white-space: nowrap;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.marquee-content span:hover {
+    background-color: #f1f5f9;
+    border-color: #2563eb;
 }
 
 .icon { width: 22px; height: 22px; margin-right: 10px; border-radius: 4px; }
@@ -241,9 +326,9 @@ h1 span:first-child { margin-right: 12px; }
 @keyframes jalan-kiri { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
 @keyframes jalan-kanan { from { transform: translate3d(-50%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
 
-/* --- 8. FOOTER --- */
+/* --- 9. FOOTER --- */
 footer {
-    clear: both; /* Mencegah footer melayang ke samping */
+    clear: both;
     margin-top: 80px;
     padding: 40px 20px;
     text-align: center;
@@ -252,7 +337,7 @@ footer {
     width: 100%;
 }
 
-/* --- 9. ANIMATIONS --- */
+/* --- 10. ANIMATIONS --- */
 .fade-in {
     opacity: 0;
     animation: fadeInUp 0.8s ease forwards;
@@ -263,11 +348,14 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- 10. MOBILE RESPONSIVE --- */
+/* --- 11. MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
     .nav-container { flex-direction: column; gap: 10px; }
     .nav-links { gap: 15px; }
     
+    .nav-logo img { width: 32px; height: 32px; }
+    .nav-logo { font-size: 1.15rem; }
+
     .hero-section {
         flex-direction: column-reverse;
         text-align: center;
@@ -282,23 +370,168 @@ footer {
 
     .row1, .row2 { animation-duration: 45s; }
 }
+/* --- 11. EXTRA REFINEMENT --- */
 
-.marquee-content a {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    align-items: center;
+/* Mempercantik Scrollbar (Biar makin pro) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
 }
 
-.marquee-content span:hover {
-    background-color: #f1f5f9;
-    border-color: #2563eb;
+/* Animasi Halus pada Project Cards */
+.project-grid .card {
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
 }
 
-.marquee-content span {
-    white-space: nowrap; /* Mencegah teks turun ke bawah */
+.project-grid .card::after {
+    content: "View Details →";
+    position: absolute;
+    bottom: -30px;
+    right: 20px;
+    font-size: 0.75rem;
+    color: #2563eb;
+    font-weight: 700;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.project-grid .card:hover::after {
+    bottom: 15px;
+    opacity: 1;
+}
+
+.project-grid .card:hover {
+    padding-bottom: 35px; /* Memberi ruang untuk teks detail */
+}
+
+/* --- DARK MODE STYLES --- */
+body.dark-mode {
+    background-color: #0f172a; /* Slate 900 */
+    color: #f1f5f9;
+}
+
+.dark-mode .navbar {
+    background: rgba(15, 23, 42, 0.8);
+    border-bottom: 1px solid #1e293b;
+}
+
+.dark-mode .nav-logo span, 
+.dark-mode h1, 
+.dark-mode footer p:first-child {
+    color: #f1f5f9;
+}
+
+.dark-mode .nav-links a, 
+.dark-mode .aka-text, 
+.dark-mode .description,
+.dark-mode footer p:last-child {
+    color: #94a3b8;
+}
+
+.dark-mode .card {
+    background: #1e293b; /* Slate 800 */
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+.dark-mode .card h5 {
+    color: #f1f5f9;
+}
+
+.dark-mode .marquee, 
+.dark-mode .marquee-content span {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+.dark-mode .badge {
+    background: #1e3a8a;
+    color: #60a5fa;
+    border-color: #1e40af;
+}
+
+.dark-mode footer {
+    background: #0f172a;
+    border-top: 1px solid #1e293b;
+}
+
+/* Tombol Toggle Floating */
+#darkModeToggle {
+    position: fixed;
+    bottom: 25px;
+    left: 25px; /* Di sisi berlawanan dengan To Top */
+    z-index: 99;
+    background: #1e293b;
+    color: #f1f5f9;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.dark-mode #darkModeToggle {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+/* --- DARK MODE REFINEMENT --- */
+.dark-mode .typing-text {
+    color: #60a5fa !important; /* Biru cerah agar kontras di background gelap */
+    border-right-color: #60a5fa !important;
+}
+
+.dark-mode .aka-text, 
+.dark-mode .description, 
+.dark-mode .hero-stats small {
+    color: #94a3b8 !important; /* Abu-abu terang */
+}
+
+.dark-mode .role, 
+.dark-mode .hero-stats span,
+.dark-mode .skill-label {
+    color: #38bdf8 !important; /* Biru terang menyala */
+}
+
+.dark-mode .hero-stats div {
+    border-left-color: #334155 !important;
+}
+
+.dark-mode .card p {
+    color: #cbd5e1 !important;
+}
+
+.dark-mode footer p {
+    color: #94a3b8 !important;
+}
+
+.dark-mode footer p[style*="font-weight: 700"] {
+    color: #f1f5f9 !important;
+}
+
+/* Penyesuaian ikon agar tidak terlalu silau */
+.dark-mode .btn-social {
+    filter: brightness(0.9);
+}
+
+.dark-mode .btn-social:hover {
+    filter: brightness(1.2);
 }
