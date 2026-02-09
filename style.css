@@ -2,536 +2,146 @@
     Final Cleaned & Optimized Version 2026
 */
 
-/* --- 1. RESET & DASAR --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* --- 1. VARIABLES --- */
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-glow: rgba(37, 99, 235, 0.2);
+    --bg: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-body: #334155;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --radius: 12px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
+/* --- 2. RESET & BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f8fafc;
-    color: #334155;
+    background-color: var(--bg);
+    color: var(--text-body);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
 }
+.container { width: 90%; max-width: 900px; margin: 0 auto; padding: 40px 0; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
 
-.container {
-    width: 90%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 0;
-}
+/* --- 3. CUSTOM SCROLLBAR --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: 0.3s;
-}
-
-/* --- 2. CUSTOM SCROLLBAR --- */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #f1f5f9;
-}
-::-webkit-scrollbar-thumb {
-    background: #2563eb;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #1d4ed8;
-}
-
-/* --- 3. NAVBAR (GLASSMORPHISM) --- */
+/* --- 4. NAVBAR --- */
 .navbar {
-    width: 100%;
-    background: rgba(248, 250, 252, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e2e8f0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+    width: 100%; background: rgba(248, 250, 252, 0.8);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    position: fixed; top: 0; left: 0; z-index: 1000;
 }
+.nav-container { max-width: 900px; margin: 0 auto; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; }
+.nav-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--text-main); font-size: 1.3rem; }
+.nav-logo img { width: 38px; height: 38px; border-radius: 8px; object-fit: contain; }
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
 
-.nav-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 10px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 700;
-    color: #1e293b;
-    font-size: 1.3rem;
-}
-
-.nav-logo img {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.nav-logo:hover img {
-    transform: scale(1.1);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.nav-links a {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #64748b;
-}
-
-.nav-links a:hover {
-    color: #2563eb;
-}
-
-/* --- 4. HERO SECTION --- */
+/* --- 5. HERO SECTION --- */
 .hero-section {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-    gap: 30px; 
-    margin-bottom: 50px;
-    padding-top: 100px;
-    flex-wrap: wrap;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 30px; padding-top: 150px; flex-wrap: wrap; margin-bottom: 50px;
 }
+.hero-content { flex: 1; min-width: 300px; }
+h1 { font-size: 3rem; color: var(--text-main); line-height: 1.1; margin-bottom: 15px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
 
-.hero-content {
-    flex: 1;
-    min-width: 300px;
-}
-
-h1 { 
-    font-size: 2.5rem; 
-    color: #1e293b; 
-    margin: 0; 
-    line-height: 1.2;
-    display: flex;
-    align-items: baseline; 
-    flex-wrap: wrap; 
-}
-
-h1 span:first-child { margin-right: 12px; }
-
+/* PERBAIKAN UTAMA: Lebar disesuaikan agar 'Terecya' tidak terpotong */
 .typing-text {
-    color: #2563eb; 
-    border-right: 3px solid #2563eb;
+    color: var(--primary); 
+    background: linear-gradient(to right, var(--primary), #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-right: 3px solid var(--primary);
     white-space: nowrap;
     overflow: hidden;
-    animation: typing 2s steps(15, end) forwards, blink 0.7s infinite;
-}
-
-@keyframes typing { from { width: 0 } to { width: 130px } }
-@keyframes blink { 50% { border-color: transparent } }
-
-.aka-text {
-    display: block; 
-    font-size: 1.1rem; 
-    color: #64748b; 
-    margin-top: 10px;
-}
-
-.role { color: #2563eb; font-weight: bold; font-size: 1.1rem; margin: 15px 0; }
-.description { color: #475569; margin-bottom: 20px; }
-
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    min-width: 300px;
-}
-
-.hero-image img {
-    width: 100%;
-    max-width: 320px;
-    border-radius: 20px;
-    object-fit: cover;
-}
-
-/* --- 5. STATS & BADGES --- */
-.hero-stats {
-    display: flex;
-    gap: 25px;
-    margin: 25px 0;
-}
-
-.hero-stats div {
-    text-align: left;
-}
-
-.badge {
-    background: #eff6ff;
-    color: #2563eb;
-    border: 1px solid #bfdbfe;
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    transition: 0.3s;
     display: inline-block;
-    margin: 5px 5px 5px 0;
+    vertical-align: bottom;
+    animation: typing 2.5s steps(7, end) forwards, blink 0.7s infinite;
 }
 
-.badge:hover {
-    background: #2563eb;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+@keyframes typing { 
+    from { width: 0; } 
+    to { width: 195px; } /* Angka ini sudah saya besarkan agar muat */
 }
+@keyframes blink { 50% { border-color: transparent; } }
 
-/* --- 6. SOCIAL LINKS --- */
-.social-links { 
-    display: flex; 
-    gap: 15px; 
-    margin-top: 25px; 
+.hero-image img { 
+    width: 100%; max-width: 320px; border-radius: 30px; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    animation: float 6s ease-in-out infinite;
 }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-.btn-social {
-    width: 45px; 
-    height: 42px; 
-    border: none; 
-    border-radius: 10px;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    cursor: pointer; 
-    transition: 0.3s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.btn-social img { 
-    width: 24px; 
-    filter: none !important; /* Warna asli ikon tetap muncul */
-}
-
-.btn-social:hover { 
-    transform: translateY(-4px); 
-    filter: brightness(1.1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
+/* --- 6. BUTTONS & BADGES --- */
+.social-links { display: flex; gap: 12px; margin-top: 30px; }
+.btn-social { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); border: none; }
 .btn-discord { background: #5865F2; }
 .btn-instagram { background: #E1306C; }
-.btn-tiktok { background: #000000; }
-.btn-facebook { background: #1877F2; }
+.btn-tiktok { background: #000; }
+.badge { background: rgba(37, 99, 235, 0.08); color: var(--primary); border: 1px solid rgba(37, 99, 235, 0.2); padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin: 0 8px 8px 0; }
 
-/* --- 7. CARDS & SECTIONS --- */
-.card {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    transition: 0.3s;
-}
-
-.skill-label {
-    font-size: 0.8rem; font-weight: 900; color: #64748b;
-    border-left: 4px solid #2563eb; padding-left: 12px;
-    text-transform: uppercase; margin: 40px 0 15px;
-}
-
-/* Animasi Halus pada Project Cards */
-.project-grid .card {
-    position: relative;
-    overflow: hidden;
-}
-
-.project-grid .card::after {
-    content: "View Details →";
-    position: absolute;
-    bottom: -30px;
-    right: 20px;
-    font-size: 0.75rem;
-    color: #2563eb;
-    font-weight: 700;
-    transition: 0.3s;
-    opacity: 0;
-}
-
-.project-grid .card:hover {
-    transform: translateY(-5px);
-    border-color: #2563eb;
-    padding-bottom: 40px;
-}
-
-.project-grid .card:hover::after {
-    bottom: 15px;
-    opacity: 1;
-}
+/* --- 7. PROJECTS --- */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+.project-card { background: var(--bg-card); border-radius: 24px; border: 1px solid var(--border); overflow: hidden; transition: all 0.4s ease; }
+.project-card:hover { transform: translateY(-12px); border-color: var(--primary); }
+.project-image { height: 200px; background: linear-gradient(135deg, #2563eb, #60a5fa); position: relative; }
+.project-info { padding: 25px; }
 
 /* --- 8. MARQUEE --- */
-.marquee {
-    background: #ffffff; overflow: hidden;
-    border: 1px solid #e2e8f0; border-radius: 12px;
-    contain: content;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.marquee-content {
-    display: flex; width: max-content; padding: 15px 0;
-    will-change: transform;
-}
-
-.marquee-content a {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    align-items: center;
-}
-
-.marquee-content span {
-    background: white; padding: 8px 16px; margin: 0 10px;
-    border-radius: 10px; border: 1px solid #e2e8f0;
-    font-weight: 700; display: flex; align-items: center;
-    flex-shrink: 0;
-    white-space: nowrap;
-    gap: 8px;
-    transition: 0.3s;
-}
-
-.marquee-content span:hover {
-    background-color: #f1f5f9;
-    border-color: #2563eb;
-}
-
-.icon { width: 22px; height: 22px; margin-right: 10px; border-radius: 4px; }
-
-.row1 { animation: jalan-kiri 35s linear infinite; }
-.row2 { animation: jalan-kanan 35s linear infinite; }
-
-@keyframes jalan-kiri { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
-@keyframes jalan-kanan { from { transform: translate3d(-50%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
+.marquee { background: var(--bg-card); overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); margin: 40px 0; }
+.marquee-content { display: flex; width: max-content; padding: 20px 0; }
+.marquee-content span { background: var(--bg-card); padding: 10px 20px; margin: 0 15px; border-radius: 12px; border: 1px solid var(--border); font-weight: 700; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.row1 { animation: jalan-kiri 40s linear infinite; }
+@keyframes jalan-kiri { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* --- 9. FOOTER --- */
-footer {
-    clear: both;
-    margin-top: 80px;
-    padding: 40px 20px;
-    text-align: center;
-    background: white;
-    border-top: 1px solid #e2e8f0;
-    width: 100%;
-}
+footer { margin-top: 100px; padding: 80px 0 40px; border-top: 1px solid var(--border); background-color: var(--bg-card); }
+.footer-main { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+.now-playing-card { display: flex; align-items: center; gap: 15px; background: var(--bg); padding: 10px 15px; border-radius: 50px; }
+.np-img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; animation: rotate 8s linear infinite; }
+.np-info { display: flex; flex-direction: column; }
+#discord-name { font-size: 0.9rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; }
+#discord-detail { font-size: 0.75rem; color: var(--text-muted); }
+.status-dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 8px; background: #94a3b8; }
+.status-online { background: #10b981; box-shadow: 0 0 8px #10b981; }
+.status-idle { background: #f59e0b; }
+.status-dnd { background: #ef4444; }
 
-/* --- 10. ANIMATIONS --- */
-.fade-in {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- 11. MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-    .nav-container { flex-direction: column; gap: 10px; }
-    .nav-links { gap: 15px; }
-    
-    .nav-logo img { width: 32px; height: 32px; }
-    .nav-logo { font-size: 1.15rem; }
-
-    .hero-section {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding-top: 140px;
-    }
-
-    .hero-stats { justify-content: center; }
-    .social-links { justify-content: center; }
-    
-    h1 { font-size: 1.8rem; justify-content: center; }
-    @keyframes typing { from { width: 0 } to { width: 95px } }
-
-    .row1, .row2 { animation-duration: 45s; }
-}
-/* --- 11. EXTRA REFINEMENT --- */
-
-/* Mempercantik Scrollbar (Biar makin pro) */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #f1f5f9;
-}
-::-webkit-scrollbar-thumb {
-    background: #2563eb;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #1d4ed8;
-}
-
-/* Animasi Halus pada Project Cards */
-.project-grid .card {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.project-grid .card::after {
-    content: "View Details →";
-    position: absolute;
-    bottom: -30px;
-    right: 20px;
-    font-size: 0.75rem;
-    color: #2563eb;
-    font-weight: 700;
-    transition: 0.3s;
-    opacity: 0;
-}
-
-.project-grid .card:hover::after {
-    bottom: 15px;
-    opacity: 1;
-}
-
-.project-grid .card:hover {
-    padding-bottom: 35px; /* Memberi ruang untuk teks detail */
-}
-
-/* --- DARK MODE STYLES --- */
+/* --- 10. DARK MODE --- */
 body.dark-mode {
-    background-color: #0f172a; /* Slate 900 */
-    color: #f1f5f9;
+    --bg: #0f172a; --bg-card: #1e293b; --text-main: #f1f5f9; --text-body: #cbd5e1; --text-muted: #94a3b8; --border: #334155; --primary: #60a5fa;
+}
+#darkModeToggle { position: fixed; bottom: 25px; left: 25px; z-index: 1000; background: #1e293b; color: #f1f5f9; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.4s; }
+
+/* --- 11. CURSOR --- */
+.cursor-dot, .cursor-outline { pointer-events: none; position: fixed; transform: translate(-50%, -50%); border-radius: 50%; z-index: 999999; opacity: 0; }
+@media (min-width: 768px) {
+    body { cursor: none; }
+    .cursor-dot { width: 8px; height: 8px; background-color: var(--primary); opacity: 1; }
+    .cursor-outline { width: 40px; height: 40px; border: 2px solid var(--primary); opacity: 1; }
 }
 
-.dark-mode .navbar {
-    background: rgba(15, 23, 42, 0.8);
-    border-bottom: 1px solid #1e293b;
-}
-
-.dark-mode .nav-logo span, 
-.dark-mode h1, 
-.dark-mode footer p:first-child {
-    color: #f1f5f9;
-}
-
-.dark-mode .nav-links a, 
-.dark-mode .aka-text, 
-.dark-mode .description,
-.dark-mode footer p:last-child {
-    color: #94a3b8;
-}
-
-.dark-mode .card {
-    background: #1e293b; /* Slate 800 */
-    border-color: #334155;
-    color: #cbd5e1;
-}
-
-.dark-mode .card h5 {
-    color: #f1f5f9;
-}
-
-.dark-mode .marquee, 
-.dark-mode .marquee-content span {
-    background: #1e293b;
-    border-color: #334155;
-    color: #f1f5f9;
-}
-
-.dark-mode .badge {
-    background: #1e3a8a;
-    color: #60a5fa;
-    border-color: #1e40af;
-}
-
-.dark-mode footer {
-    background: #0f172a;
-    border-top: 1px solid #1e293b;
-}
-
-/* Tombol Toggle Floating */
-#darkModeToggle {
-    position: fixed;
-    bottom: 25px;
-    left: 25px; /* Di sisi berlawanan dengan To Top */
-    z-index: 99;
-    background: #1e293b;
-    color: #f1f5f9;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-}
-
-.dark-mode #darkModeToggle {
-    background: #f1f5f9;
-    color: #1e293b;
-}
-
-/* --- DARK MODE REFINEMENT --- */
-.dark-mode .typing-text {
-    color: #60a5fa !important; /* Biru cerah agar kontras di background gelap */
-    border-right-color: #60a5fa !important;
-}
-
-.dark-mode .aka-text, 
-.dark-mode .description, 
-.dark-mode .hero-stats small {
-    color: #94a3b8 !important; /* Abu-abu terang */
-}
-
-.dark-mode .role, 
-.dark-mode .hero-stats span,
-.dark-mode .skill-label {
-    color: #38bdf8 !important; /* Biru terang menyala */
-}
-
-.dark-mode .hero-stats div {
-    border-left-color: #334155 !important;
-}
-
-.dark-mode .card p {
-    color: #cbd5e1 !important;
-}
-
-.dark-mode footer p {
-    color: #94a3b8 !important;
-}
-
-.dark-mode footer p[style*="font-weight: 700"] {
-    color: #f1f5f9 !important;
-}
-
-/* Penyesuaian ikon agar tidak terlalu silau */
-.dark-mode .btn-social {
-    filter: brightness(0.9);
-}
-
-.dark-mode .btn-social:hover {
-    filter: brightness(1.2);
+/* --- 12. RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero-section { flex-direction: column-reverse; text-align: center; padding-top: 140px; gap: 50px; }
+    .nav-links { display: none; }
+    h1 { font-size: 2.2rem; justify-content: center; }
+    /* Penyesuaian typing di HP */
+    @keyframes typing { 
+        from { width: 0; } 
+        to { width: 145px; } 
+    }
 }
