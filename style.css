@@ -36,16 +36,41 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 ::-webkit-scrollbar-track { background: #f1f5f9; }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-/* --- 4. NAVBAR --- */
+/* --- 4. NAVBAR (Updated for David) --- */
 .navbar {
     width: 100%; background: rgba(248, 250, 252, 0.8);
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     position: fixed; top: 0; left: 0; z-index: 1000;
 }
-.nav-container { max-width: 900px; margin: 0 auto; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; }
-.nav-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--text-main); font-size: 1.3rem; }
-.nav-logo img { width: 38px; height: 38px; border-radius: 8px; object-fit: contain; }
+
+.nav-container { 
+    max-width: 900px; margin: 0 auto; padding: 10px 5%; 
+    display: flex; justify-content: space-between; align-items: center; 
+}
+
+.nav-logo { 
+    display: flex; align-items: center; gap: 12px; 
+    font-weight: 700; color: var(--text-main); font-size: 1.3rem; 
+}
+
+/* Bagian inti untuk menghilangkan background logo */
+.nav-logo img { 
+    width: 38px; height: 38px; 
+    border-radius: 8px; 
+    object-fit: contain;
+    /* Multiply akan menghilangkan warna putih pada background terang */
+    mix-blend-mode: multiply; 
+    filter: contrast(1.1); 
+}
+
+/* Penyesuaian saat Dark Mode aktif */
+body.dark-mode .nav-logo img {
+    /* Screen akan menghilangkan warna gelap/hitam agar logo menyatu di mode gelap */
+    mix-blend-mode: screen;
+    filter: brightness(1.2);
+}
+
 .nav-links { display: flex; list-style: none; gap: 25px; }
 .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
 
@@ -144,4 +169,14 @@ body.dark-mode {
         from { width: 0; } 
         to { width: 145px; } 
     }
+}
+
+img {
+  /* Mode 'screen' akan membuat warna putih menjadi transparan */
+  mix-blend-mode: screen;
+}
+
+img {
+  /* Cara ekstrim: membalikkan warna lalu membuang yang tidak perlu */
+  filter: contrast(200%) brightness(150%);
 }
