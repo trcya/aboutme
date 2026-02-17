@@ -93,3 +93,43 @@ async function getDiscordStatus() {
 
 setInterval(getDiscordStatus, 5000);
 getDiscordStatus();
+
+// 1. Logic Hamburger Menu
+const hamburger = document.getElementById('hamburger-menu');
+const sideNav = document.getElementById('side-nav');
+
+if(hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        sideNav.classList.toggle('active');
+    });
+}
+
+// 2. Lanyard API Status
+async function updateDiscordStatus() {
+    try {
+        const response = await fetch('https://api.lanyard.rest/v1/users/985719845314256907');
+        const { data } = await response.json();
+        
+        const dot = document.getElementById('status-dot');
+        const card = document.querySelector('.discord-status-card');
+        const activity = document.getElementById('discord-activity');
+
+        // Update dot & glow card
+        dot.className = 'discord-indicator ' + data.discord_status;
+        card.classList.remove('status-glow-online', 'status-glow-idle', 'status-glow-dnd');
+        if(data.discord_status !== 'offline') card.classList.add('status-glow-' + data.discord_status);
+
+        // Update Text
+        if (data.listening_to_spotify) {
+            activity.innerText = "Listening to Spotify";
+        } else if (data.activities.length > 0) {
+            activity.innerText = "Playing: " + data.activities[0].name;
+        } else {
+            activity.innerText = data.discord_status.toUpperCase();
+        }
+    } catch (e) { console.error("Discord API Error"); }
+}
+
+setInterval(updateDiscordStatus, 10000);
+updateDiscordStatus();
