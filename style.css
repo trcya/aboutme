@@ -1260,80 +1260,76 @@ body {
     justify-content: center;
 }
 
-/* --- INTEGRASI HAMBURGER & RESPONSIVE (FIXED) --- */
+/* --- DESKTOP DEFAULT --- */
+.desktop-only { display: flex; }
+
+/* --- MOBILE OPTIMIZATION (Max-width 768px) --- */
 @media (max-width: 768px) {
-    /* Reset Body agar tidak memaksakan flex ke samping */
-    body {
-        display: block !important; 
-        padding: 80px 15px 40px 15px !important; /* Tambah padding samping */
-        overflow-x: hidden;
-    }
+    .desktop-only { display: none !important; }
 
-    /* 1. Header Mobile (Tombol Hamburger) */
-    .mobile-header {
-        display: flex !important;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 65px;
-        background: rgba(2, 6, 23, 0.9);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        z-index: 10001;
-        justify-content: space-between;
-        align-items: center;
-        /* Padding ini yang mengatur jarak logo & hamburger dari ujung layar */
-        padding: 0 25px; 
-        border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-        box-sizing: border-box; /* WAJIB agar padding tidak menambah lebar */
-    }
-
-    .mobile-logo {
-        font-weight: 800;
-        letter-spacing: 2px;
-        color: var(--accent-blue);
-        font-size: 1rem;
-        text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-    }
-
-    /* Perbaikan Tombol Hamburger */
-    .hamburger {
-        display: flex !important;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(59, 130, 246, 0.2);
-        border-radius: 12px;
-        width: 45px;
-        height: 45px;
-        padding: 0;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    .hamburger:active {
-        transform: scale(0.9);
-    }
-
-    .bar {
-        width: 20px;
-        height: 2px;
-        margin: 2px 0; /* Jarak antar garis lebih rapat agar rapi */
-        background-color: var(--accent-blue);
-        transition: 0.4s;
-    }
-
-    /* 2. Side Nav (Slide Menu) */
     .side-nav {
         position: fixed;
-        left: -100%; /* Sembunyi */
-        top: 0;
-        height: 100vh;
-        width: 280px;
-        z-index: 10002; /* Harus di atas mobile-header */
-        transition: 0.
-    }}
+        bottom: 20px; /* Jarak dari bawah */
+        top: auto;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%); /* Rata tengah sempurna */
+        width: 90%; /* Lebar menu di mobile */
+        height: auto;
+        max-width: 400px;
+        background: rgba(10, 15, 24, 0.7) !important;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 25px; /* Membuat lonjong rapi */
+        padding: 10px 15px;
+        flex-direction: row; /* Berjejer ke samping */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
 
+    .nav-container-box {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+    }
+
+    .nav-group {
+        flex-direction: row;
+        gap: 5px;
+        margin-bottom: 0;
+    }
+
+    .nav-item {
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px;
+        background: transparent;
+        border: none;
+        font-size: 0.6rem;
+    }
+
+    .nav-item i {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .nav-item span {
+        display: block; /* Munculkan teks kecil di bawah ikon */
+    }
+
+    .discord-status-card {
+        margin-top: 0;
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    .discord-avatar-wrapper {
+        width: 35px;
+        height: 35px;
+    }
+}
+    
     

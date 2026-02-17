@@ -11,17 +11,16 @@
 
 <div id="nav-overlay" class="nav-overlay"></div>
 
-<nav class="side-nav" id="side-nav">
+<nav class="side-nav" id="main-nav">
     <div class="nav-container-box">
-        
         <div class="nav-group">
-            <a href="#about" class="nav-item"><i data-lucide="user"></i> ABOUT ME</a>
-            <a href="#experience" class="nav-item"><i data-lucide="briefcase"></i> EXPERIENCE</a>
-            <a href="#specs" class="nav-item"><i data-lucide="cpu"></i> MY SPECS</a>
-            <a href="#spotify" class="nav-item"><i data-lucide="music"></i> SPOTIFY</a>
+            <a href="#about" class="nav-item"><i data-lucide="user"></i><span>ABOUT</span></a>
+            <a href="#experience" class="nav-item"><i data-lucide="briefcase"></i><span>EXP</span></a>
+            <a href="#specs" class="nav-item"><i data-lucide="cpu"></i><span>SPECS</span></a>
+            <a href="#spotify" class="nav-item"><i data-lucide="music"></i><span>SONG</span></a>
         </div>
 
-        <div class="malang-clock">
+        <div class="malang-clock desktop-only">
             <div class="clock-label">MALANG, ID</div>
             <div class="analog-clock">
                 <div class="hand hour" id="hour"></div>
@@ -35,18 +34,15 @@
         <div class="discord-status-card">
             <div class="discord-info">
                 <div class="discord-avatar-wrapper">
-                    <img src="photo/me.png" alt="Discord Avatar" id="discord-img" class="discord-avatar">
-                    <div class="status-frame">
-                        <div id="status-dot" class="discord-indicator"></div>
-                    </div>
+                    <img src="photo/me.png" alt="Avatar" id="discord-img" class="discord-avatar">
+                    <div id="status-dot" class="discord-indicator"></div>
                 </div>
-                <div class="discord-user-details">
+                <div class="discord-user-details desktop-only">
                     <div class="discord-name">Terecya</div>
                     <div id="discord-activity" class="discord-activity">Loading...</div>
                 </div>
             </div>
         </div>
-        
     </div>
 </nav>
 
