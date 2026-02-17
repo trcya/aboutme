@@ -76,6 +76,8 @@ async function updateDiscordStatus() {
     }
 }
 
+
+
 // Jalankan update status setiap 10 detik
 setInterval(updateDiscordStatus, 10000);
 updateDiscordStatus();
