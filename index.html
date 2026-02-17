@@ -1,35 +1,275 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance - TERECYA</title>
-    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="maintenance-page">
-    <div id="particles-js"></div> <div class="maintenance-container">
-        <div class="maintenance-card">
-            <div class="icon-box">
-                <i class="fas fa-tools"></i>
+    <title> Portofolio | Terecya </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+<div id="nav-overlay" class="nav-overlay"></div>
+
+<nav class="side-nav" id="side-nav">
+    <div class="nav-container-box">
+        
+        <div class="nav-group">
+            <a href="#about" class="nav-item"><i data-lucide="user"></i> ABOUT ME</a>
+            <a href="#experience" class="nav-item"><i data-lucide="briefcase"></i> EXPERIENCE</a>
+            <a href="#specs" class="nav-item"><i data-lucide="cpu"></i> MY SPECS</a>
+            <a href="#spotify" class="nav-item"><i data-lucide="music"></i> SPOTIFY</a>
+        </div>
+
+        <div class="malang-clock">
+            <div class="clock-label">MALANG, ID</div>
+            <div class="analog-clock">
+                <div class="hand hour" id="hour"></div>
+                <div class="hand minute" id="minute"></div>
+                <div class="hand second" id="second"></div>
+                <div class="center-dot"></div>
             </div>
-            <h1>UNDER MAINTENANCE</h1>
-            <p>Halo David di sini! Saya sedang merapikan beberapa fitur agar website ini semakin <strong>Pixel Perfect</strong>.</p>
-            
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
+            <div id="digital-clock" class="clock-time">00:00:00</div>
+        </div>
+
+        <div class="discord-status-card">
+            <div class="discord-info">
+                <div class="discord-avatar-wrapper">
+                    <img src="photo/me.png" alt="Discord Avatar" id="discord-img" class="discord-avatar">
+                    <div class="status-frame">
+                        <div id="status-dot" class="discord-indicator"></div>
+                    </div>
+                </div>
+                <div class="discord-user-details">
+                    <div class="discord-name">Terecya</div>
+                    <div id="discord-activity" class="discord-activity">Loading...</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</nav>
+
+<body class="dark-theme">
+       
+</script>
+<body class="dark-theme">
+
+    <div id="particles-js"></div>
+
+    <div class="container"> 
+        
+        <div class="bento-container reveal">
+            <header class="section-header">
+                <h2>ABOUT ME</h2>
+                <div class="underline"></div>
+            </header>
+
+            <div class="main-layout">
+               <aside class="profile-card">
+    <div class="image-wrapper">
+        <img src="photo/me.jpg" alt="Profile">
+    </div>
+</aside>
+
+                <div class="right-content">
+                    <div class="info-grid">
+                        <div class="small-card">
+                            <div class="card-header">
+                                <div class="badge"><i data-lucide="star"></i><span class="label">PENNAME</span></div>
+                            </div>
+                            <p class="value">Terecya</p>
+                        </div>
+
+                        <div class="small-card">
+                            <div class="card-header">
+                                <div class="badge"><i data-lucide="utensils"></i><span class="label">FAVORITE-FOOD</span></div>
+                            </div>
+                            <p class="value">Fried Chicken, Salad, Noodles</p>
+                        </div>
+
+                        <div class="small-card">
+                            <div class="card-header">
+                                <div class="badge"><i data-lucide="map-pin"></i><span class="label">LOCATION</span></div>
+                            </div>
+                            <p class="value">Malang, ID</p>
+                        </div>
+
+                        <div class="small-card">
+                            <div class="card-header">
+                                <div class="badge"><i data-lucide="user"></i><span class="label">REALNAME</span></div>
+                            </div>
+                            <p class="value">David</p>
+                        </div>
+
+                        <div class="small-card">
+                            <div class="card-header">
+                                <div class="badge"><i data-lucide="coffee"></i><span class="label">FAVORITE-DRINK</span></div>
+                            </div>
+                            <p class="value">Matcha, Milk, Coffee</p>
+                        </div>
+
+                        <div class="small-card">
+                            <div class="card-header">
+                                <div class="badge"><i data-lucide="calendar"></i><span class="label">AGE</span></div>
+                            </div>
+                            <p class="value">16</p>
+                        </div>
+                    </div> 
+
+                    <div class="large-card description">
+                        <p>👋 My name is <strong>David Terecya</strong>.</p>
+                        <p>💻 I work as a <strong>Junior Web Developer</strong>.</p>
+                        <p>🚀 I have many projects in development and love learning new tech.</p>
+                    </div>
+                </div> </div> </div> <section class="commission-section">
+       <div class="container">
+    <div class="experience-container reveal">
+        <header class="section-header">
+            <h2>EXPERIENCE</h2>
+            <div class="underline"></div>
+        </header>
+
+        <div class="commission-grid">
+            <div class="comm-card">
+                <div class="card-image">
+                    <img src="icons/atom.jpg" alt="Atomic">
+                    <span class="status-badge">STAFF</span>
+                </div>
+                <div class="card-content">
+                    <h3>ATOMIC</h3>
+                    <p>Professional graphic design commission for Ronix branding and visual identity.</p>
+                    <div class="tags"><span class="tag">94K+ MEMBERS</span></div>
+                    <button class="btn-hire">HIRE ME!</button>
+                </div>
             </div>
 
-            <div class="social-links">
-                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <div class="comm-card">
+                <div class="card-image">
+                    <img src="icons/p4kong.jpeg" alt="Project">
+                    <span class="status-badge">STAFF</span>
+                </div>
+                <div class="card-content">
+                    <h3>P4KONGTOOLS</h3>
+                    <p>Brief description of your awesome project here.</p>
+                    <div class="tags"><span class="tag">16K+ MEMBERS</span></div>
+                    <button class="btn-hire">HIRE ME!</button>
+                </div>
             </div>
 
-            <div class="back-text">Silakan kembali dalam beberapa saat.</div>
+            <div class="comm-card">
+                <div class="card-image">
+                    <img src="icons/rockhub.jpeg" alt="Infinity">
+                    <span class="status-badge">STAFF</span>
+                </div>
+                <div class="card-content">
+                    <h3>ROCKHUB</h3>
+                    <p>Premium graphic design for corporate identity and innovative concepts.</p>
+                    <div class="tags"><span class="tag">7K+ MEMBERS</span></div>
+                    <button class="btn-hire">HIRE ME!</button>
+                </div>
+            </div>
+
+            <div class="comm-card">
+                <div class="card-image">
+                    <img src="photo/project4.png" alt="SHADEX">
+                    <span class="status-badge">STAFF</span>
+                </div>
+                <div class="card-content">
+                    <h3>SHADEX</h3>
+                    <p>Deskripsi pengalaman atau proyek keempat kamu di sini.</p>
+                    <div class="tags"><span class="tag">COOMING SOON</span></div>
+                    <button class="btn-hire">HIRE ME!</button>
+                </div>
+            </div>
+
+            <div class="comm-card">
+                <div class="card-image">
+                    <img src="icons/vora.jpg" alt="Project 5">
+                    <span class="status-badge">HELPER</span>
+                </div>
+                <div class="card-content">
+                    <h3>VORAHUB</h3>
+                    <p>Deskripsi pengalaman atau proyek kelima kamu di sini.</p>
+                    <div class="tags"><span class="tag">Branding</span></div>
+                    <button class="btn-hire">HIRE ME!</button>
+                </div>
+            </div>
+
+            <div class="comm-card">
+                <div class="card-image">
+                    <img src="photo/project6.png" alt="Project 6">
+                    <span class="status-badge">STAFF</span>
+                </div>
+                <div class="card-content">
+                    <h3>Experience 6</h3>
+                    <p>Deskripsi pengalaman atau proyek keenam kamu di sini.</p>
+                    <div class="tags"><span class="tag">Web Dev</span></div>
+                    <button class="btn-hire">HIRE ME!</button>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+
+    </div> <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
+    <script>
+// Inisialisasi Icon Lucide
+    lucide.createIcons();
+    
+    // Animasi Reveal saat Scroll
+    const observerOptions = { threshold: 0.15 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // FUNGSI JAM GABUNGAN (Analog + Digital)
+    function updateClocks() {
+        const now = new Date();
+        
+        // Format Waktu Malang (WIB)
+        const options = { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+        const formatter = new Intl.DateTimeFormat('en-GB', options);
+        const timeParts = formatter.formatToParts(now);
+        
+        const h = parseInt(timeParts.find(p => p.type === 'hour').value);
+        const m = parseInt(timeParts.find(p => p.type === 'minute').value);
+        const s = parseInt(timeParts.find(p => p.type === 'second').value);
+
+        // 1. Gerakkan Jarum Analog
+        const hourDeg = (h % 12) * 30 + (m / 60) * 30;
+        const minDeg = m * 6;
+        const secDeg = s * 6;
+
+        const hEl = document.getElementById('hour');
+        const mEl = document.getElementById('minute');
+        const sEl = document.getElementById('second');
+        const dEl = document.getElementById('digital-clock');
+
+        if(hEl) hEl.style.transform = `rotate(${hourDeg}deg)`;
+        if(mEl) mEl.style.transform = `rotate(${minDeg}deg)`;
+        if(sEl) sEl.style.transform = `rotate(${secDeg}deg)`;
+
+        // 2. Update Jam Digital
+        if(dEl) {
+            dEl.textContent = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+    }
+
+    // Jalankan tiap detik
+    setInterval(updateClocks, 1000);
+    updateClocks();
+    </script>
+    
 </body>
+
 </html>
+
