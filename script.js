@@ -94,16 +94,18 @@ async function getDiscordStatus() {
 setInterval(getDiscordStatus, 5000);
 getDiscordStatus();
 
-// 1. Logic Hamburger Menu
 const hamburger = document.getElementById('hamburger-menu');
 const sideNav = document.getElementById('side-nav');
+const overlay = document.getElementById('nav-overlay');
 
-if(hamburger) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        sideNav.classList.toggle('active');
-    });
+function toggleMenu() {
+    hamburger.classList.toggle('active');
+    sideNav.classList.toggle('active');
+    overlay.style.display = sideNav.classList.contains('active') ? 'block' : 'none';
 }
+
+hamburger.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu); // Tutup menu jika klik area gelap
 
 // 2. Lanyard API Status
 async function updateDiscordStatus() {
@@ -133,3 +135,4 @@ async function updateDiscordStatus() {
 
 setInterval(updateDiscordStatus, 10000);
 updateDiscordStatus();
+
