@@ -33,76 +33,32 @@ particlesJS("particles-js", {
     retina_detect: true
 });
 
-/* ===== NAVIGATION LOGIC ===== */
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.getElementById('hamburger-menu');
-    const sideNav = document.getElementById('side-nav');
-    const overlay = document.getElementById('nav-overlay');
-
-    function toggleMenu() {
-        if (!hamburger || !sideNav) return;
-        
-        hamburger.classList.toggle('active');
-        sideNav.classList.toggle('active');
-        
-        if (overlay) {
-            overlay.style.display = sideNav.classList.contains('active') ? 'block' : 'none';
-        }
-        
-        document.body.style.overflow = sideNav.classList.contains('active') ? 'hidden' : '';
-    }
-
-    if (hamburger) hamburger.addEventListener('click', toggleMenu);
-    if (overlay) overlay.addEventListener('click', toggleMenu);
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && sideNav?.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
-});
-
 /* ===== DISCORD STATUS WITH LANYARD API ===== */
-const DISCORD_ID = "985719845314256907"; // Ganti dengan ID Discord Anda
+const DISCORD_ID = "985719845314256907";
 
-// Fungsi untuk format durasi
+// Format durasi
 function formatDuration(ms) {
     if (!ms || ms < 0) return "0m";
-    
     const seconds = Math.floor(ms / 1000);
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
-    
-    if (hours > 0) {
-        return `${hours}h ${minutes}m`;
-    } else if (minutes > 0) {
-        return `${minutes}m`;
-    } else {
-        return `${seconds}s`;
-    }
+    if (hours > 0) return `${hours}h ${minutes}m`;
+    if (minutes > 0) return `${minutes}m`;
+    return `${seconds}s`;
 }
 
-// Fungsi untuk menghitung durasi sejak timestamp
+// Hitung durasi dari timestamp
 function getDurationSince(timestamp) {
     if (!timestamp) return null;
-    const now = Date.now();
-    const diff = now - timestamp;
-    return formatDuration(diff);
+    return formatDuration(Date.now() - timestamp);
 }
 
 async function updateDiscordStatus() {
     try {
         const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
+        if (!response.ok) throw new Error(`HTTP error!`);
         const data = await response.json();
-        
-        if (!data.success) {
-            throw new Error('API response unsuccessful');
-        }
+        if (!data.success) throw new Error('API failed');
 
         const discordData = data.data;
         const dot = document.getElementById('statusDot');
@@ -111,70 +67,44 @@ async function updateDiscordStatus() {
 
         if (!dot || !card || !activity) return;
 
-        // Update status dot
         dot.className = 'discord-indicator ' + discordData.discord_status;
         
-        // Update glow card
-        card.classList.remove(
-            'status-glow-online', 
-            'status-glow-idle', 
-            'status-glow-dnd', 
-            'status-glow-offline'
-        );
+        card.classList.remove('status-glow-online', 'status-glow-idle', 'status-glow-dnd', 'status-glow-offline');
         card.classList.add('status-glow-' + discordData.discord_status);
 
-        // CARI ACTIVITY YANG SEDANG DILAKUKAN
         let statusText = '';
         
-        // Cek Spotify dulu
         if (discordData.listening_to_spotify && discordData.spotify) {
             const spotify = discordData.spotify;
-            const startTime = spotify.timestamps?.start;
-            const duration = startTime ? getDurationSince(startTime) : '';
+            const duration = getDurationSince(spotify.timestamps?.start);
             statusText = `🎵 ${spotify.song} - ${spotify.artist} ${duration ? '· ' + duration : ''}`;
-        } 
-        // Cek game (type 0 = game)
-        else {
+        } else {
             const game = discordData.activities.find(act => act.type === 0);
             if (game) {
-                const startTime = game.timestamps?.start;
-                const duration = startTime ? getDurationSince(startTime) : '';
+                const duration = getDurationSince(game.timestamps?.start);
                 statusText = `🎮 ${game.name} ${duration ? '· ' + duration : ''}`;
-            } 
-            else {
-                // TIDAK ADA ACTIVITY - tampilkan status dengan durasi online
+            } else {
                 let statusName = '';
                 let since = null;
-                
                 switch(discordData.discord_status) {
                     case 'online':
                         statusName = 'Online';
                         since = discordData.active_on_discord_web || discordData.active_on_discord_desktop;
                         break;
-                    case 'idle':
-                        statusName = 'Idle';
-                        break;
-                    case 'dnd':
-                        statusName = 'Do Not Disturb';
-                        break;
-                    default:
-                        statusName = 'Offline';
+                    case 'idle': statusName = 'Idle'; break;
+                    case 'dnd': statusName = 'Do Not Disturb'; break;
+                    default: statusName = 'Offline';
                 }
-                
                 const duration = since ? getDurationSince(since) : '';
                 statusText = `${statusName} ${duration ? '· ' + duration : ''}`;
             }
         }
 
         activity.textContent = statusText;
-
     } catch (error) { 
         console.error("Discord API Error:", error);
-        
-        // Fallback status if API fails
         const dot = document.getElementById('statusDot');
         const activity = document.getElementById('discordActivity');
-        
         if (dot) dot.className = 'discord-indicator offline';
         if (activity) activity.textContent = 'Offline';
     }
@@ -188,7 +118,7 @@ function updateGearProgress() {
     if (!track || !progressBar || window.innerWidth <= 768) return;
     
     const cards = track.children.length;
-    const visibleCards = window.innerWidth > 1024 ? 4 : 3;
+    const visibleCards = window.innerWidth > 1024 ? 3 : 2;
     const maxProgress = ((cards - visibleCards) / cards) * 100;
     
     const transform = window.getComputedStyle(track).transform;
@@ -199,7 +129,7 @@ function updateGearProgress() {
         translateX = matrix.m41;
     }
     
-    const cardWidth = 340;
+    const cardWidth = 300;
     const gap = 20;
     const maxTranslate = -(cardWidth * (cards - visibleCards) + gap * (cards - visibleCards));
     
@@ -263,6 +193,65 @@ function initRevealAnimation() {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
+/* ===== HAMBURGER MENU ===== */
+function initHamburgerMenu() {
+    const hamburger = document.getElementById('hamburgerBtn');
+    const sideNav = document.getElementById('mainNav');
+    const overlay = document.getElementById('navOverlay');
+    const body = document.body;
+
+    if (!hamburger || !sideNav || !overlay) return;
+
+    function toggleMenu(force) {
+        const isActive = force !== undefined ? force : !sideNav.classList.contains('active');
+        
+        if (isActive) {
+            hamburger.classList.add('active');
+            sideNav.classList.add('active');
+            overlay.classList.add('active');
+            body.style.overflow = 'hidden';
+        } else {
+            hamburger.classList.remove('active');
+            sideNav.classList.remove('active');
+            overlay.classList.remove('active');
+            body.style.overflow = '';
+        }
+    }
+
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    overlay.addEventListener('click', () => toggleMenu(false));
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sideNav.classList.contains('active')) {
+            toggleMenu(false);
+        }
+    });
+
+    // Smooth scroll untuk nav items
+    document.querySelectorAll('.nav-item').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                if (window.innerWidth <= 768) {
+                    toggleMenu(false);
+                    setTimeout(() => {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 150);
+                } else {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+}
+
 /* ===== INITIALIZE ALL FUNCTIONS ===== */
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Lucide Icons
@@ -274,11 +263,11 @@ document.addEventListener('DOMContentLoaded', function() {
     updateClocks();
     setInterval(updateClocks, 1000);
     
-    // Start Discord status updates (HANYA SEKALI)
+    // Start Discord status updates
     updateDiscordStatus();
-    setInterval(updateDiscordStatus, 5000); // Update setiap 5 detik
+    setInterval(updateDiscordStatus, 5000);
     
-    // Start gear progress updates
+    // Start gear progress updates (desktop only)
     if (window.innerWidth > 768) {
         updateGearProgress();
         setInterval(updateGearProgress, 100);
@@ -286,6 +275,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize reveal animation
     initRevealAnimation();
+    
+    // Initialize hamburger menu
+    initHamburgerMenu();
     
     // Handle window resize
     window.addEventListener('resize', function() {
