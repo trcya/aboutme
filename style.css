@@ -1261,13 +1261,21 @@ body {
 }
 
 @media (max-width: 768px) {
-    /* Pastikan body dan html tidak ada scroll horizontal */
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
-        margin: 0;
-        padding: 0;
+    /* Pastikan halaman bisa di-scroll dan konten muncul */
+    body {
+        display: block !important;
+        overflow-y: auto !important;
+        padding-bottom: 100px !important; /* Ruang agar tidak tertutup navbar */
     }
+
+    /* Paksa container bento ke tengah */
+    .bento-container, .main-content {
+        width: 95% !important;
+        margin: 20px auto !important;
+        position: relative !important;
+        display: block !important;
+    }
+}
 
     /* Kontainer utama harus pas di tengah */
     .main-container, .about-section, .bento-grid { 
@@ -1291,7 +1299,7 @@ body {
         width: 100% !important; /* Biar penuh di dalam kontainer 92% tadi */
         margin-bottom: 10px;
     }
-}
+
     
     @media (max-width: 768px) {
     /* Pastikan Side Nav tidak sembunyi di kiri */
@@ -1365,3 +1373,4 @@ body {
         padding: 0 !important;
     }
 }
+
