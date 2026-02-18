@@ -259,7 +259,28 @@
             dEl.textContent = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
         }
     }
+// Maintenance Timer Countdown
+function updateMaintenanceTimer() {
+    const timerEl = document.getElementById('maintenance-timer');
+    if (!timerEl) return;
+    
+    const now = new Date();
+    const target = new Date();
+    target.setHours(23, 59, 59); // Target midnight
+    
+    const diff = target - now;
+    
+    if (diff > 0) {
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        timerEl.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+}
 
+setInterval(updateMaintenanceTimer, 1000);
+updateMaintenanceTimer();
     // Jalankan tiap detik
     setInterval(updateClocks, 1000);
     updateClocks();
@@ -269,3 +290,20 @@
 
 </html>
 
+<!-- Maintenance Overlay -->
+<div class="maintenance-overlay">
+    <div class="maintenance-content">
+        <div class="maintenance-icon">🔧</div>
+        <h1>MAINTENANCE MODE</h1>
+        <p>Website sedang dalam perbaikan</p>
+        <div class="maintenance-progress">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="maintenance-timer" id="maintenance-timer">00:00:00</div>
+        <div class="maintenance-social">
+            <a href="#" class="social-icon"><i data-lucide="github"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="twitter"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="instagram"></i></a>
+        </div>
+    </div>
+</div>
