@@ -66,7 +66,8 @@ body {
 .small-card,
 .large-card,
 .comm-card,
-.nav-container-box {
+.nav-container-box,
+.social-nav {
     background: rgba(10, 15, 24, 0.4) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px);
@@ -112,7 +113,8 @@ body {
 
 /* ===== LAYOUT UTAMA ===== */
 .main-content {
-    margin-right: 220px;
+    margin-left: 80px;  /* Untuk social nav di kiri */
+    margin-right: 220px; /* Untuk side nav di kanan */
     padding: 40px 20px;
 }
 
@@ -198,12 +200,25 @@ body {
     border-radius: 8px;
     gap: 6px;
     border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: all 0.3s ease;
 }
 
 .badge i {
     width: 14px;
     height: 14px;
     color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge:hover {
+    background: rgba(59, 130, 246, 0.25);
+    border-color: var(--accent-blue);
+}
+
+.badge:hover i {
+    color: white;
 }
 
 .label {
@@ -386,19 +401,31 @@ body {
 /* ===== GEAR SECTION ===== */
 .gear-slider {
     width: 100%;
-    overflow: hidden;
+    overflow-x: auto;
     margin: 25px 0 15px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #3b82f6 transparent;
+}
+
+.gear-slider::-webkit-scrollbar {
+    height: 6px;
+}
+
+.gear-slider::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.gear-slider::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 10px;
 }
 
 .gear-track {
     display: flex;
     gap: 20px;
-    animation: slideGear 40s linear infinite;
     width: fit-content;
-}
-
-.gear-track:hover {
-    animation-play-state: paused;
 }
 
 .gear-card {
@@ -460,6 +487,10 @@ body {
 .category-icon {
     width: 12px;
     height: 12px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gear-content {
@@ -506,6 +537,9 @@ body {
     width: 14px;
     height: 14px;
     color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gear-spec-item span {
@@ -532,21 +566,7 @@ body {
 }
 
 .gear-progress {
-    width: 100%;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    margin: 15px 0 10px;
-    overflow: hidden;
-}
-
-.gear-progress-bar {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent-blue), #60a5fa, var(--accent-blue));
-    border-radius: 10px;
-    transition: width 0.1s linear;
-    animation: shimmer 2s infinite;
+    display: none;
 }
 
 .gear-scroll-hint {
@@ -607,21 +627,36 @@ body {
     transition: all 0.3s ease;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
 }
 
 .nav-item i {
     width: 18px;
     height: 18px;
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-item:hover {
     color: white;
     background: rgba(59, 130, 246, 0.2);
-    transform: translateX(5px);
+    border-color: var(--accent-blue);
 }
 
 .nav-item:hover i {
-    color: var(--accent-blue);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--accent-blue);
+}
+
+.nav-item.active i {
+    color: white;
 }
 
 /* ===== MALANG CLOCK ===== */
@@ -859,11 +894,6 @@ body {
     to { transform: rotate(360deg); }
 }
 
-@keyframes slideGear {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-300px * 3 - 20px * 3)); }
-}
-
 @keyframes shimmer {
     0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
@@ -885,6 +915,153 @@ body {
     display: none;
 }
 
+/* ===== SOCIAL MEDIA LEFT NAVIGATION ===== */
+.social-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 80px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    background: rgba(10, 15, 24, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.social-nav-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 30px 0;
+}
+
+.social-nav-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-nav-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.social-nav-line {
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(180deg, var(--accent-blue), transparent);
+}
+
+.social-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+.social-nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Style untuk semua icon (Lucide dan Font Awesome) */
+.social-nav-link i,
+.social-nav-link i.fab,
+.social-nav-link i.fas,
+.social-nav-link i.far {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-blue);
+    transition: all 0.3s ease;
+}
+
+.social-nav-link:hover {
+    background: var(--accent-blue);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px var(--accent-glow);
+}
+
+.social-nav-link:hover i,
+.social-nav-link:hover i.fab,
+.social-nav-link:hover i.fas,
+.social-nav-link:hover i.far {
+    color: white;
+}
+
+.social-nav-tooltip {
+    position: absolute;
+    left: 60px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--accent-blue);
+    pointer-events: none;
+    z-index: 10000;
+    line-height: 1;
+}
+
+.social-nav-link:hover .social-nav-tooltip {
+    opacity: 1;
+    visibility: visible;
+    left: 70px;
+}
+
+.social-nav-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-nav-follow {
+    writing-mode: vertical-rl;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ===== MOBILE SOCIAL ===== */
+.mobile-social {
+    display: none;
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
     .main-layout {
@@ -900,14 +1077,11 @@ body {
     .info-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
-    @keyframes slideGear {
-        100% { transform: translateX(calc(-300px * 2 - 20px * 2)); }
-    }
 }
 
 @media (max-width: 768px) {
     .main-content {
+        margin-left: 0;
         margin-right: 0;
         padding: 80px 15px 30px;
     }
@@ -997,6 +1171,54 @@ body {
         display: none !important;
     }
 
+    .social-nav {
+        display: none;
+    }
+
+    .mobile-social {
+        display: flex;
+        gap: 15px;
+        margin-left: auto;
+        margin-right: 10px;
+        align-items: center;
+    }
+
+    .mobile-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .mobile-social a i,
+    .mobile-social a i.fab,
+    .mobile-social a i.fas {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-blue);
+    }
+
+    .mobile-social a:hover {
+        background: var(--accent-blue);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px var(--accent-glow);
+    }
+
+    .mobile-social a:hover i,
+    .mobile-social a:hover i.fab {
+        color: white;
+    }
+
     .bento-container,
     .experience-container,
     .gear-container {
@@ -1016,7 +1238,6 @@ body {
         min-width: 260px;
     }
 
-    /* GEAR MOBILE FIX */
     .gear-slider {
         overflow-x: auto !important;
         -webkit-overflow-scrolling: touch;
@@ -1024,7 +1245,6 @@ body {
     }
 
     .gear-track {
-        animation: none !important;
         gap: 15px;
         padding: 5px 0 15px;
         width: max-content;

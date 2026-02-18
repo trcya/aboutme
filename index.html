@@ -7,6 +7,8 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk icon sosial media yang tidak ada di Lucide -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,6 +18,20 @@
     <!-- Mobile Header -->
     <header class="mobile-header">
         <div class="mobile-logo">TERECYA</div>
+        
+        <!-- Social Media untuk Mobile -->
+        <div class="mobile-social">
+            <a href="https://github.com/terecya" target="_blank" title="GitHub">
+                <i data-lucide="github"></i>
+            </a>
+            <a href="https://instagram.com/terecya" target="_blank" title="Instagram">
+                <i data-lucide="instagram"></i>
+            </a>
+            <a href="https://twitter.com/terecya" target="_blank" title="Twitter">
+                <i data-lucide="twitter"></i>
+            </a>
+        </div>
+
         <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -26,7 +42,66 @@
     <!-- Navigation Overlay -->
     <div id="navOverlay" class="nav-overlay"></div>
 
-    <!-- Side Navigation -->
+    <!-- ===== SOCIAL MEDIA LEFT NAVIGATION (DILUAR MAIN CONTENT) ===== -->
+    <nav class="social-nav">
+        <div class="social-nav-container">
+            <div class="social-nav-header">
+                <div class="social-nav-title">SOCIAL</div>
+                <div class="social-nav-line"></div>
+            </div>
+
+            <div class="social-nav-links">
+                <!-- GitHub -->
+                <a href="https://github.com/terecya" target="_blank" class="social-nav-link" title="GitHub">
+                    <i data-lucide="github"></i>
+                    <span class="social-nav-tooltip">GitHub</span>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://instagram.com/terecya" target="_blank" class="social-nav-link" title="Instagram">
+                    <i data-lucide="instagram"></i>
+                    <span class="social-nav-tooltip">Instagram</span>
+                </a>
+
+                <!-- Twitter -->
+                <a href="https://twitter.com/terecya" target="_blank" class="social-nav-link" title="Twitter">
+                    <i data-lucide="twitter"></i>
+                    <span class="social-nav-tooltip">Twitter</span>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com/@terecya" target="_blank" class="social-nav-link" title="YouTube">
+                    <i data-lucide="youtube"></i>
+                    <span class="social-nav-tooltip">YouTube</span>
+                </a>
+
+                <!-- TikTok (Font Awesome) -->
+                <a href="https://tiktok.com/@terecya" target="_blank" class="social-nav-link" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                    <span class="social-nav-tooltip">TikTok</span>
+                </a>
+
+                <!-- Discord (Font Awesome) -->
+                <a href="https://discord.gg/terecya" target="_blank" class="social-nav-link" title="Discord">
+                    <i class="fab fa-discord"></i>
+                    <span class="social-nav-tooltip">Discord</span>
+                </a>
+
+                <!-- Spotify (Font Awesome) -->
+                <a href="https://open.spotify.com/user/terecya" target="_blank" class="social-nav-link" title="Spotify">
+                    <i class="fab fa-spotify"></i>
+                    <span class="social-nav-tooltip">Spotify</span>
+                </a>
+            </div>
+
+            <div class="social-nav-footer">
+                <div class="social-nav-line"></div>
+                <div class="social-nav-follow">FOLLOW</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Navigation (Kanan) -->
     <nav class="side-nav" id="mainNav">
         <div class="nav-container-box">
             <div class="nav-group">
@@ -303,7 +378,7 @@
 
                     <!-- Scroll Hint untuk Mobile -->
                     <div class="gear-scroll-hint">
-                        <span>← Geser untuk lihat gear lainnya (5 items) →</span>
+                        <span>← Geser untuk lihat gear lainnya (6 items) →</span>
                     </div>
 
                     <!-- Sliding Gear Container -->
@@ -312,7 +387,7 @@
                             <!-- 1. Lenovo LOQ M100 -->
                             <div class="gear-card">
                                 <div class="gear-image">
-                                    <img src="https://via.placeholder.com/280x160/1e293b/3b82f6?text=LOQ+M100" alt="Lenovo LOQ M100">
+                                    <img src="gear/loq.png" alt="Lenovo LOQ M100">
                                     <div class="gear-category">
                                         <i data-lucide="mouse-pointer" class="category-icon"></i>
                                         <span>MOUSE</span>
@@ -341,10 +416,43 @@
                                 </div>
                             </div>
 
-                            <!-- 2. WAWAWA WA-26 -->
+                            <!-- 2. Miniso M38T -->
                             <div class="gear-card">
                                 <div class="gear-image">
-                                    <img src="https://via.placeholder.com/280x160/1e293b/3b82f6?text=WAWAWA+WA-26" alt="WAWAWA WA-26">
+                                    <img src="gear/miniso.png" alt="Miniso M38T">
+                                    <div class="gear-category">
+                                        <i data-lucide="headphones" class="category-icon"></i>
+                                        <span>TWS</span>
+                                    </div>
+                                </div>
+                                <div class="gear-content">
+                                    <h3>Miniso M38T</h3>
+                                    <div class="gear-specs">
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="bluetooth" class="spec-icon"></i>
+                                            <span>BT5.3</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="battery" class="spec-icon"></i>
+                                            <span>30h</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="mic" class="spec-icon"></i>
+                                            <span>Mic</span>
+                                        </div>
+                                    </div>
+                                    <div class="gear-badges">
+                                        <span class="gear-badge">Miniso</span>
+                                        <span class="gear-badge">M38T</span>
+                                        <span class="gear-badge">Wireless</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. WAWAWA WA-26 -->
+                            <div class="gear-card">
+                                <div class="gear-image">
+                                    <img src="gear/wawawa.png" alt="WAWAWA WA-26">
                                     <div class="gear-category">
                                         <i data-lucide="headphones" class="category-icon"></i>
                                         <span>TWS</span>
@@ -373,10 +481,10 @@
                                 </div>
                             </div>
 
-                            <!-- 3. Poco X3 GT -->
+                            <!-- 4. Poco X3 GT -->
                             <div class="gear-card">
                                 <div class="gear-image">
-                                    <img src="https://via.placeholder.com/280x160/1e293b/3b82f6?text=Poco+X3+GT" alt="Poco X3 GT">
+                                    <img src="gear/poco.png" alt="Poco X3 GT">
                                     <div class="gear-category">
                                         <i data-lucide="smartphone" class="category-icon"></i>
                                         <span>PHONE</span>
@@ -406,10 +514,10 @@
                                 </div>
                             </div>
 
-                            <!-- 4. HP Victus 15 -->
+                            <!-- 5. HP Victus 15 -->
                             <div class="gear-card">
                                 <div class="gear-image">
-                                    <img src="https://via.placeholder.com/280x160/1e293b/3b82f6?text=Victus+15" alt="HP Victus 15">
+                                    <img src="gear/victus.png" alt="HP Victus 15">
                                     <div class="gear-category">
                                         <i data-lucide="laptop" class="category-icon"></i>
                                         <span>LAPTOP</span>
@@ -438,10 +546,10 @@
                                 </div>
                             </div>
 
-                            <!-- 5. Vortex Mono V2 -->
+                            <!-- 6. Vortex Mono V2 -->
                             <div class="gear-card">
                                 <div class="gear-image">
-                                    <img src="https://via.placeholder.com/280x160/1e293b/3b82f6?text=Vortex+V2" alt="Vortex Mono V2">
+                                    <img src="gear/vortex.png" alt="Vortex Mono V2">
                                     <div class="gear-category">
                                         <i data-lucide="keyboard" class="category-icon"></i>
                                         <span>KEYBOARD</span>

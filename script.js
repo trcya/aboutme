@@ -110,37 +110,6 @@ async function updateDiscordStatus() {
     }
 }
 
-/* ===== GEAR SLIDER PROGRESS BAR ===== */
-function updateGearProgress() {
-    const track = document.getElementById('gearTrack');
-    const progressBar = document.getElementById('gearProgressBar');
-    
-    if (!track || !progressBar || window.innerWidth <= 768) return;
-    
-    const cards = track.children.length;
-    const visibleCards = window.innerWidth > 1024 ? 3 : 2;
-    const maxProgress = ((cards - visibleCards) / cards) * 100;
-    
-    const transform = window.getComputedStyle(track).transform;
-    let translateX = 0;
-    
-    if (transform && transform !== 'none') {
-        const matrix = new DOMMatrix(transform);
-        translateX = matrix.m41;
-    }
-    
-    const cardWidth = 300;
-    const gap = 20;
-    const maxTranslate = -(cardWidth * (cards - visibleCards) + gap * (cards - visibleCards));
-    
-    let currentProgress = 0;
-    if (maxTranslate !== 0) {
-        currentProgress = Math.abs((translateX / maxTranslate) * maxProgress);
-    }
-    
-    progressBar.style.width = Math.min(currentProgress, maxProgress) + '%';
-}
-
 /* ===== CLOCK FUNCTION ===== */
 function updateClocks() {
     const now = new Date();
@@ -267,22 +236,14 @@ document.addEventListener('DOMContentLoaded', function() {
     updateDiscordStatus();
     setInterval(updateDiscordStatus, 5000);
     
-    // Start gear progress updates (desktop only)
-    if (window.innerWidth > 768) {
-        updateGearProgress();
-        setInterval(updateGearProgress, 100);
-    }
-    
     // Initialize reveal animation
     initRevealAnimation();
     
     // Initialize hamburger menu
     initHamburgerMenu();
     
-    // Handle window resize
+    // Handle window resize (optional)
     window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            updateGearProgress();
-        }
+        // Tidak ada yang perlu diupdate
     });
 });
