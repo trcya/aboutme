@@ -7,7 +7,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome untuk icon sosial media yang tidak ada di Lucide -->
+    <!-- Font Awesome untuk icon sosial media -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,20 +18,6 @@
     <!-- Mobile Header -->
     <header class="mobile-header">
         <div class="mobile-logo">TERECYA</div>
-        
-        <!-- Social Media untuk Mobile -->
-        <div class="mobile-social">
-            <a href="https://github.com/terecya" target="_blank" title="GitHub">
-                <i data-lucide="github"></i>
-            </a>
-            <a href="https://instagram.com/terecya" target="_blank" title="Instagram">
-                <i data-lucide="instagram"></i>
-            </a>
-            <a href="https://twitter.com/terecya" target="_blank" title="Twitter">
-                <i data-lucide="twitter"></i>
-            </a>
-        </div>
-
         <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -42,8 +28,8 @@
     <!-- Navigation Overlay -->
     <div id="navOverlay" class="nav-overlay"></div>
 
-    <!-- ===== SOCIAL MEDIA LEFT NAVIGATION (DILUAR MAIN CONTENT) ===== -->
-    <nav class="social-nav">
+    <!-- ===== SOCIAL MEDIA LEFT NAVIGATION (DESKTOP ONLY) ===== -->
+    <nav class="social-nav desktop-only">
         <div class="social-nav-container">
             <div class="social-nav-header">
                 <div class="social-nav-title">SOCIAL</div>
@@ -75,19 +61,19 @@
                     <span class="social-nav-tooltip">YouTube</span>
                 </a>
 
-                <!-- TikTok (Font Awesome) -->
+                <!-- TikTok -->
                 <a href="https://tiktok.com/@terecya" target="_blank" class="social-nav-link" title="TikTok">
                     <i class="fab fa-tiktok"></i>
                     <span class="social-nav-tooltip">TikTok</span>
                 </a>
 
-                <!-- Discord (Font Awesome) -->
+                <!-- Discord -->
                 <a href="https://discord.gg/terecya" target="_blank" class="social-nav-link" title="Discord">
                     <i class="fab fa-discord"></i>
                     <span class="social-nav-tooltip">Discord</span>
                 </a>
 
-                <!-- Spotify (Font Awesome) -->
+                <!-- Spotify -->
                 <a href="https://open.spotify.com/user/terecya" target="_blank" class="social-nav-link" title="Spotify">
                     <i class="fab fa-spotify"></i>
                     <span class="social-nav-tooltip">Spotify</span>
@@ -101,9 +87,10 @@
         </div>
     </nav>
 
-    <!-- Side Navigation (Kanan) -->
+    <!-- Side Navigation (Kanan) - VERSI BARU LEBIH BERSIH -->
     <nav class="side-nav" id="mainNav">
         <div class="nav-container-box">
+            <!-- Navigation Menu -->
             <div class="nav-group">
                 <a href="#about" class="nav-item">
                     <i data-lucide="user"></i>
@@ -115,7 +102,7 @@
                 </a>
                 <a href="#gear" class="nav-item">
                     <i data-lucide="cpu"></i>
-                    <span>MY GEAR</span>
+                    <span>GEAR</span>
                 </a>
                 <a href="#spotify" class="nav-item">
                     <i data-lucide="music"></i>
@@ -123,8 +110,27 @@
                 </a>
             </div>
 
+            <!-- Spacer -->
+            <div class="nav-spacer"></div>
+
+            <!-- ===== SIMPLE STATS (BARU, TIDAK SESAK) ===== -->
+            <div class="simple-stats">
+                <div class="simple-stat">
+                    <i data-lucide="code"></i>
+                    <span>6</span>
+                </div>
+                <div class="simple-stat">
+                    <i data-lucide="award"></i>
+                    <span>2</span>
+                </div>
+                <div class="simple-stat">
+                    <i data-lucide="clock"></i>
+                    <span>1y</span>
+                </div>
+            </div>
+
             <!-- Clock Section -->
-            <div class="malang-clock desktop-only">
+            <div class="malang-clock">
                 <div class="clock-label">MALANG, ID</div>
                 <div class="analog-clock">
                     <div class="hand hour" id="hourHand"></div>
@@ -146,6 +152,41 @@
                         <div class="discord-name">Terecya</div>
                         <div id="discordActivity" class="discord-activity">Loading...</div>
                     </div>
+                </div>
+            </div>
+
+            <!-- ===== SOCIAL MEDIA UNTUK MOBILE ===== -->
+            <div class="mobile-social-menu">
+                <div class="social-menu-title">SOCIAL</div>
+                <div class="social-menu-links">
+                    <a href="https://github.com/terecya" target="_blank" class="social-menu-link">
+                        <i data-lucide="github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://instagram.com/terecya" target="_blank" class="social-menu-link">
+                        <i data-lucide="instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://twitter.com/terecya" target="_blank" class="social-menu-link">
+                        <i data-lucide="twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="https://youtube.com/@terecya" target="_blank" class="social-menu-link">
+                        <i data-lucide="youtube"></i>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://tiktok.com/@terecya" target="_blank" class="social-menu-link">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="https://discord.gg/terecya" target="_blank" class="social-menu-link">
+                        <i class="fab fa-discord"></i>
+                        <span>Discord</span>
+                    </a>
+                    <a href="https://open.spotify.com/user/terecya" target="_blank" class="social-menu-link">
+                        <i class="fab fa-spotify"></i>
+                        <span>Spotify</span>
+                    </a>
                 </div>
             </div>
         </div>
