@@ -1260,6 +1260,108 @@ body {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    /* Pastikan body dan html tidak ada scroll horizontal */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
 
+    /* Kontainer utama harus pas di tengah */
+    .main-container, .about-section, .bento-grid { 
+        width: 92% !important; /* Beri sedikit jarak di kiri-kanan */
+        margin: 20px auto !important; /* AUTO membuat elemen ke tengah */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Foto Profile agar tidak terlalu besar */
+    .profile-img-container img {
+        width: 100% !important;
+        max-width: 300px; /* Batasi agar tidak pecah */
+        height: auto;
+        border-radius: 15px;
+    }
+
+    /* Kartu Detail (Nama, Makanan, dll) */
+    .info-card {
+        width: 100% !important; /* Biar penuh di dalam kontainer 92% tadi */
+        margin-bottom: 10px;
+    }
+}
     
-    
+    @media (max-width: 768px) {
+    /* Pastikan Side Nav tidak sembunyi di kiri */
+    .side-nav {
+        display: flex !important; /* Paksa muncul */
+        position: fixed !important;
+        bottom: 20px !important; /* Jarak dari bawah layar HP */
+        top: auto !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important; /* Kunci posisi tengah */
+        
+        width: 90% !important; 
+        max-width: 400px !important;
+        height: 70px !important;
+        
+        background: rgba(15, 23, 42, 0.9) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px);
+        
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 20px !important;
+        z-index: 999999 !important; /* Angka paling tinggi agar di atas bento card */
+        padding: 0 10px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* Susunan isi navbar agar horizontal */
+    .nav-container-box {
+        flex-direction: row !important;
+        justify-content: space-around !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        gap: 0 !important;
+    }
+
+    /* Sembunyikan elemen yang bikin penuh di HP */
+    .malang-clock, .desktop-only, .discord-user-details {
+        display: none !important;
+    }
+
+    .nav-group {
+        flex-direction: row !important;
+        gap: 10px !important;
+    }
+
+    .nav-item {
+        flex-direction: column !important;
+        padding: 5px !important;
+        min-width: 50px !important;
+        background: transparent !important;
+        border: none !important;
+    }
+
+    .nav-item i {
+        font-size: 1.2rem !important;
+        margin-bottom: 3px !important;
+    }
+
+    .nav-item span {
+        display: block !important;
+        font-size: 0.6rem !important;
+        color: #94a3b8;
+    }
+
+    /* Avatar Discord di ujung kanan */
+    .discord-status-card {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
