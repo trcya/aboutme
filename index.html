@@ -10,9 +10,27 @@
     <!-- Font Awesome untuk icon sosial media -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Background untuk mobile (sementara, akan diganti JS) */
+        body.mobile-device {
+            background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
+        }
+        
+        body.mobile-device::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.03) 0px, transparent 100px);
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
-    <!-- ===== BACKGROUND ===== -->
+    <!-- ===== BACKGROUND (PARTICLES) ===== -->
     <div id="particles-js"></div>
 
     <!-- ===== MOBILE HEADER ===== -->
@@ -277,7 +295,7 @@
                             <div class="large-card description">
                                 <div class="description-item">
                                     <i data-lucide="user" class="description-icon"></i>
-                                    <p>My name is <strong>David </strong>.</p>
+                                    <p>My name is <strong>David</strong>.</p>
                                 </div>
                                 <div class="description-item">
                                     <i data-lucide="code" class="description-icon"></i>
@@ -360,7 +378,7 @@
                                 <h3>SHADEX</h3>
                                 <p>COMING SOON.</p>
                                 <div class="tags">
-                                        <span class="tag">COMING SOON.</span>
+                                    <span class="tag">COMING SOON.</span>
                                 </div>
                                 <a href="https://discord.gg/shadex" target="_blank" class="btn-join">JOIN</a>
                             </div>
@@ -373,14 +391,14 @@
                             </div>
                             <div class="card-content">
                                 <h3>VORAHUB</h3>
-                                <p>Customer Support & Community Management for player assistance and communication</p>
+                                <p>Customer Support & Community Management for player assistance and communication.</p>
                                 <div class="tags">
                                     <span class="tag">11K+ MEMBERS</span>
                                 </div>
                                 <a href="https://discord.gg/vorahub" target="_blank" class="btn-join">JOIN</a>
                             </div>
                         </div>
-                        <!-- Experience 6 -->
+                        <!-- Terehub -->
                         <div class="comm-card">
                             <div class="card-image">
                                 <img src="icons/terehub.png" alt="Terehub">
@@ -398,234 +416,223 @@
                     </div>
                 </div>
             </section>
-<!-- ===== MY GEAR SECTION ===== -->
-<section id="gear">
-    <div class="gear-container reveal">
-        <header class="section-header">
-            <div class="header-with-icon">
-                <i data-lucide="smartphone" class="header-icon"></i>
-                <h2>MY GEAR</h2>
-            </div>
-            <div class="underline"></div>
-        </header>
 
-        <!-- Scroll Hint untuk Mobile -->
-        <div class="gear-scroll-hint">
-            <span>← Geser untuk lihat gear lainnya (6 items) →</span>
-        </div>
+            <!-- ===== MY GEAR SECTION ===== -->
+            <section id="gear">
+                <div class="gear-container reveal">
+                    <header class="section-header">
+                        <div class="header-with-icon">
+                            <i data-lucide="smartphone" class="header-icon"></i>
+                            <h2>MY GEAR</h2>
+                        </div>
+                        <div class="underline"></div>
+                    </header>
 
-        <!-- Sliding Gear Container -->
-        <div class="gear-slider">
-            <div class="gear-track" id="gearTrack">
-                <!-- 1. Lenovo LOQ M100 - MOUSE -->
-                <div class="gear-card">
-                    <div class="gear-image">
-                        <img src="gear/loq.png" alt="Lenovo LOQ M100">
-                        <!-- BADGE KATEGORI DIHAPUS DARI SINI -->
+                    <!-- Scroll Hint untuk Mobile -->
+                    <div class="gear-scroll-hint">
+                        <span>← Geser untuk lihat gear lainnya (6 items) →</span>
                     </div>
-                    <div class="gear-content">
-                        <!-- KATEGORI DIPINDAH KE ATAS MERK -->
-                        <div class="gear-category-above">
-                            <i data-lucide="mouse-pointer" class="category-icon"></i>
-                            <span>MOUSE</span>
-                        </div>
-                        <h3>Lenovo LOQ M100</h3>
-                        <div class="gear-specs">
-                            <div class="gear-spec-item">
-                                <i data-lucide="target" class="spec-icon"></i>
-                                <span>8K DPI</span>
+
+                    <!-- Sliding Gear Container -->
+                    <div class="gear-slider">
+                        <div class="gear-track" id="gearTrack">
+                            <!-- 1. Lenovo LOQ M100 - MOUSE -->
+                            <div class="gear-card">
+                                <div class="gear-image">
+                                    <img src="gear/loq.png" alt="Lenovo LOQ M100">
+                                    <div class="gear-category">
+                                        <i data-lucide="mouse-pointer" class="category-icon"></i>
+                                        <span>MOUSE</span>
+                                    </div>
+                                </div>
+                                <div class="gear-content">
+                                    <h3>Lenovo LOQ M100</h3>
+                                    <div class="gear-specs">
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="target" class="spec-icon"></i>
+                                            <span>8K DPI</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="mouse-pointer" class="spec-icon"></i>
+                                            <span>Gaming</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="usb" class="spec-icon"></i>
+                                            <span>Wired</span>
+                                        </div>
+                                    </div>
+                                    <div class="gear-badges">
+                                        <span class="gear-badge">RGB</span>
+                                        <span class="gear-badge">6Btn</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="mouse-pointer" class="spec-icon"></i>
-                                <span>Gaming</span>
+                            
+                            <!-- 2. Miniso M38T - TWS -->
+                            <div class="gear-card">
+                                <div class="gear-image">
+                                    <img src="gear/miniso.png" alt="Miniso M38T">
+                                    <div class="gear-category">
+                                        <i data-lucide="headphones" class="category-icon"></i>
+                                        <span>TWS</span>
+                                    </div>
+                                </div>
+                                <div class="gear-content">
+                                    <h3>Miniso M38T</h3>
+                                    <div class="gear-specs">
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="bluetooth" class="spec-icon"></i>
+                                            <span>BT5.3</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="battery-charging" class="spec-icon"></i>
+                                            <span>30h</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="mic" class="spec-icon"></i>
+                                            <span>Mic</span>
+                                        </div>
+                                    </div>
+                                    <div class="gear-badges">
+                                        <span class="gear-badge">Miniso</span>
+                                        <span class="gear-badge">M38T</span>
+                                        <span class="gear-badge">Wireless</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="usb" class="spec-icon"></i>
-                                <span>Wired</span>
+                            
+                            <!-- 3. WAWAWA WA-26 - TWS -->
+                            <div class="gear-card">
+                                <div class="gear-image">
+                                    <img src="gear/wawawa.png" alt="WAWAWA WA-26">
+                                    <div class="gear-category">
+                                        <i data-lucide="headphones" class="category-icon"></i>
+                                        <span>TWS</span>
+                                    </div>
+                                </div>
+                                <div class="gear-content">
+                                    <h3>WAWAWA WA-26</h3>
+                                    <div class="gear-specs">
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="bluetooth" class="spec-icon"></i>
+                                            <span>BT5.0</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="battery-charging" class="spec-icon"></i>
+                                            <span>24h</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="mic" class="spec-icon"></i>
+                                            <span>Mic</span>
+                                        </div>
+                                    </div>
+                                    <div class="gear-badges">
+                                        <span class="gear-badge">Default</span>
+                                        <span class="gear-badge">IPX4</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="gear-badges">
-                            <span class="gear-badge">RGB</span>
-                            <span class="gear-badge">6Btn</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 2. Miniso M38T - TWS -->
-                <div class="gear-card">
-                    <div class="gear-image">
-                        <img src="gear/miniso.png" alt="Miniso M38T">
-                        <!-- BADGE KATEGORI DIHAPUS DARI SINI -->
-                    </div>
-                    <div class="gear-content">
-                        <!-- KATEGORI DIPINDAH KE ATAS MERK -->
-                        <div class="gear-category-above">
-                            <i data-lucide="headphones" class="category-icon"></i>
-                            <span>TWS</span>
-                        </div>
-                        <h3>Miniso M38T</h3>
-                        <div class="gear-specs">
-                            <div class="gear-spec-item">
-                                <i data-lucide="bluetooth" class="spec-icon"></i>
-                                <span>BT5.3</span>
+                            
+                            <!-- 4. Poco X3 GT - PHONE -->
+                            <div class="gear-card">
+                                <div class="gear-image">
+                                    <img src="gear/poco.png" alt="Poco X3 GT">
+                                    <div class="gear-category">
+                                        <i data-lucide="smartphone" class="category-icon"></i>
+                                        <span>PHONE</span>
+                                    </div>
+                                </div>
+                                <div class="gear-content">
+                                    <h3>Poco X3 GT</h3>
+                                    <div class="gear-specs">
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="hard-drive" class="spec-icon"></i>
+                                            <span>256GB</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="cpu" class="spec-icon"></i>
+                                            <span>Dimensity</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="eye" class="spec-icon"></i>
+                                            <span>120Hz</span>
+                                        </div>
+                                    </div>
+                                    <div class="gear-badges">
+                                        <span class="gear-badge">8GB</span>
+                                        <span class="gear-badge">5G</span>
+                                        <span class="gear-badge">67W</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="battery-charging" class="spec-icon"></i>
-                                <span>30h</span>
+                            
+                            <!-- 5. HP Victus 15 - LAPTOP -->
+                            <div class="gear-card">
+                                <div class="gear-image">
+                                    <img src="gear/victus.png" alt="HP Victus 15">
+                                    <div class="gear-category">
+                                        <i data-lucide="laptop" class="category-icon"></i>
+                                        <span>LAPTOP</span>
+                                    </div>
+                                </div>
+                                <div class="gear-content">
+                                    <h3>HP Victus 15</h3>
+                                    <div class="gear-specs">
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="cpu" class="spec-icon"></i>
+                                            <span>R5 7000</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="gpu" class="spec-icon"></i>
+                                            <span>RTX 2050</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="hard-drive" class="spec-icon"></i>
+                                            <span>512GB</span>
+                                        </div>
+                                    </div>
+                                    <div class="gear-badges">
+                                        <span class="gear-badge">16GB</span>
+                                        <span class="gear-badge">144Hz</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="mic" class="spec-icon"></i>
-                                <span>Mic</span>
+                            
+                            <!-- 6. Vortex Mono V2 - KEYBOARD -->
+                            <div class="gear-card">
+                                <div class="gear-image">
+                                    <img src="gear/vortex.png" alt="Vortex Mono V2">
+                                    <div class="gear-category">
+                                        <i data-lucide="keyboard" class="category-icon"></i>
+                                        <span>KEYBOARD</span>
+                                    </div>
+                                </div>
+                                <div class="gear-content">
+                                    <h3>Vortex Mono V2</h3>
+                                    <div class="gear-specs">
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="maximize" class="spec-icon"></i>
+                                            <span>75%</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="type" class="spec-icon"></i>
+                                            <span>Gateron</span>
+                                        </div>
+                                        <div class="gear-spec-item">
+                                            <i data-lucide="palette" class="spec-icon"></i>
+                                            <span>RGB</span>
+                                        </div>
+                                    </div>
+                                    <div class="gear-badges">
+                                        <span class="gear-badge">Hot-swap</span>
+                                        <span class="gear-badge">Wireless</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="gear-badges">
-                            <span class="gear-badge">Miniso</span>
-                            <span class="gear-badge">M38T</span>
-                            <span class="gear-badge">Wireless</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 3. WAWAWA WA-26 - TWS -->
-                <div class="gear-card">
-                    <div class="gear-image">
-                        <img src="gear/wawawa.png" alt="WAWAWA WA-26">
-                        <!-- BADGE KATEGORI DIHAPUS DARI SINI -->
-                    </div>
-                    <div class="gear-content">
-                        <!-- KATEGORI DIPINDAH KE ATAS MERK -->
-                        <div class="gear-category-above">
-                            <i data-lucide="headphones" class="category-icon"></i>
-                            <span>TWS</span>
-                        </div>
-                        <h3>WAWAWA WA-26</h3>
-                        <div class="gear-specs">
-                            <div class="gear-spec-item">
-                                <i data-lucide="bluetooth" class="spec-icon"></i>
-                                <span>BT5.0</span>
-                            </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="battery-charging" class="spec-icon"></i>
-                                <span>24h</span>
-                            </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="mic" class="spec-icon"></i>
-                                <span>Mic</span>
-                            </div>
-                        </div>
-                        <div class="gear-badges">
-                            <span class="gear-badge">Default</span>
-                            <span class="gear-badge">IPX4</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 4. Poco X3 GT - PHONE -->
-                <div class="gear-card">
-                    <div class="gear-image">
-                        <img src="gear/poco.png" alt="Poco X3 GT">
-                        <!-- BADGE KATEGORI DIHAPUS DARI SINI -->
-                    </div>
-                    <div class="gear-content">
-                        <!-- KATEGORI DIPINDAH KE ATAS MERK -->
-                        <div class="gear-category-above">
-                            <i data-lucide="smartphone" class="category-icon"></i>
-                            <span>PHONE</span>
-                        </div>
-                        <h3>Poco X3 GT</h3>
-                        <div class="gear-specs">
-                            <div class="gear-spec-item">
-                                <i data-lucide="hard-drive" class="spec-icon"></i>
-                                <span>256GB</span>
-                            </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="cpu" class="spec-icon"></i>
-                                <span>Dimensity</span>
-                            </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="eye" class="spec-icon"></i>
-                                <span>120Hz</span>
-                            </div>
-                        </div>
-                        <div class="gear-badges">
-                            <span class="gear-badge">8GB</span>
-                            <span class="gear-badge">5G</span>
-                            <span class="gear-badge">67W</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 5. HP Victus 15 - LAPTOP -->
-                <div class="gear-card">
-                    <div class="gear-image">
-                        <img src="gear/victus.png" alt="HP Victus 15">
-                        <!-- BADGE KATEGORI DIHAPUS DARI SINI -->
-                    </div>
-                    <div class="gear-content">
-                        <!-- KATEGORI DIPINDAH KE ATAS MERK -->
-                        <div class="gear-category-above">
-                            <i data-lucide="laptop" class="category-icon"></i>
-                            <span>LAPTOP</span>
-                        </div>
-                        <h3>HP Victus 15</h3>
-                        <div class="gear-specs">
-                            <div class="gear-spec-item">
-                                <i data-lucide="cpu" class="spec-icon"></i>
-                                <span>R5 7000</span>
-                            </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="gpu" class="spec-icon"></i>
-                                <span>RTX 2050</span>
-                            </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="hard-drive" class="spec-icon"></i>
-                                <span>512GB</span>
-                            </div>
-                        </div>
-                        <div class="gear-badges">
-                            <span class="gear-badge">16GB</span>
-                            <span class="gear-badge">144Hz</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 6. Vortex Mono V2 - KEYBOARD -->
-                <div class="gear-card">
-                    <div class="gear-image">
-                        <img src="gear/vortex.png" alt="Vortex Mono V2">
-                        <!-- BADGE KATEGORI DIHAPUS DARI SINI -->
-                    </div>
-                    <div class="gear-content">
-                        <!-- KATEGORI DIPINDAH KE ATAS MERK -->
-                        <div class="gear-category-above">
-                            <i data-lucide="keyboard" class="category-icon"></i>
-                            <span>KEYBOARD</span>
-                        </div>
-                        <h3>Vortex Mono V2</h3>
-                        <div class="gear-specs">
-                            <div class="gear-spec-item">
-                                <i data-lucide="maximize" class="spec-icon"></i>
-                                <span>75%</span>
-                            </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="type" class="spec-icon"></i>
-                                <span>Gateron</span>
-                            </div>
-                            <div class="gear-spec-item">
-                                <i data-lucide="palette" class="spec-icon"></i>
-                                <span>RGB</span>
-                            </div>
-                        </div>
-                        <div class="gear-badges">
-                            <span class="gear-badge">Hot-swap</span>
-                            <span class="gear-badge">Wireless</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
 
             <!-- ===== SPOTIFY PLAYLIST SECTION ===== -->
             <section id="spotify">
@@ -688,6 +695,33 @@
     <!-- ===== SCRIPTS ===== -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Deteksi mobile/desktop
+        (function() {
+            function isMobile() {
+                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+            }
+            
+            // Jika mobile, matikan particles dan tambah class
+            if (isMobile()) {
+                // Sembunyikan particles
+                var particles = document.getElementById('particles-js');
+                if (particles) particles.style.display = 'none';
+                
+                // Tambah class ke body untuk background mobile
+                document.body.classList.add('mobile-device');
+                
+                console.log('Mode mobile: particles dimatikan');
+            } else {
+                // Desktop: jalankan particles
+                if (typeof particlesJS !== 'undefined') {
+                    particlesJS.load('particles-js', 'particles.json', function() {
+                        console.log('Particles.js loaded - Desktop mode');
+                    });
+                }
+            }
+        })();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
