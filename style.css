@@ -29,7 +29,7 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-/* Background untuk mobile (akan diaktifkan oleh JS) */
+/* Background untuk mobile (diaktifkan oleh JS) */
 body.mobile-device {
     background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
 }
@@ -500,7 +500,7 @@ body.mobile-device::before {
 }
 
 /* ==========================================================================
-   #GEAR SECTION - BADGE LINGKARAN DI POJOK GAMBAR
+   #GEAR SECTION - BADGE LINGKARAN (HANYA ICON)
    ========================================================================== */
 .gear-slider {
     width: 100%;
@@ -570,18 +570,17 @@ body.mobile-device::before {
     transform: scale(1.1);
 }
 
-/* BADGE LINGKARAN DI POJOK GAMBAR */
+/* BADGE LINGKARAN - HANYA ICON (TANPA TEKS) */
 .gear-category {
     position: absolute !important;
     top: 12px !important;
     left: 12px !important;
     z-index: 10 !important;
     display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 55px !important;
-    height: 55px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 50px !important;
+    height: 50px !important;
     padding: 0 !important;
     border: 2px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 50% !important;
@@ -590,23 +589,17 @@ body.mobile-device::before {
 }
 
 .gear-category .category-icon {
-    width: 20px !important;
-    height: 20px !important;
-    margin-bottom: 2px !important;
+    width: 24px !important;
+    height: 24px !important;
     color: white !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
 
+/* SEMBUNYIKAN TEKS DI DALAM LINGKARAN */
 .gear-category span {
-    font-size: 0.6rem !important;
-    font-weight: 800 !important;
-    line-height: 1 !important;
-    text-align: center !important;
-    color: white !important;
-    display: block !important;
-    max-width: 100% !important;
+    display: none !important;
 }
 
 /* Sembunyikan kategori di atas merk (jika ada) */
@@ -1544,7 +1537,7 @@ body.mobile-device::before {
 }
 
 /* ==========================================================================
-   #ICON STYLES - PERBAIKAN EKSTRA
+   #ICON STYLES
    ========================================================================== */
 
 /* Paksa semua icon menggunakan warna tema */
@@ -1826,21 +1819,17 @@ button:hover svg,
         height: 140px;
     }
 
-    /* Badge lingkaran untuk mobile */
+    /* Badge lingkaran untuk mobile - HANYA ICON */
     .gear-category {
-        width: 45px !important;
-        height: 45px !important;
+        width: 42px !important;
+        height: 42px !important;
         top: 8px !important;
         left: 8px !important;
     }
 
     .gear-category .category-icon {
-        width: 16px !important;
-        height: 16px !important;
-    }
-
-    .gear-category span {
-        font-size: 0.55rem !important;
+        width: 20px !important;
+        height: 20px !important;
     }
 
     .gear-progress {
@@ -1980,19 +1969,15 @@ button:hover svg,
         font-size: 0.6rem;
     }
 
-    /* Badge lingkaran untuk small mobile */
+    /* Badge lingkaran untuk small mobile - HANYA ICON */
     .gear-category {
-        width: 40px !important;
-        height: 40px !important;
+        width: 38px !important;
+        height: 38px !important;
     }
 
     .gear-category .category-icon {
-        width: 14px !important;
-        height: 14px !important;
-    }
-
-    .gear-category span {
-        font-size: 0.5rem !important;
+        width: 18px !important;
+        height: 18px !important;
     }
 
     .spotify-embed iframe {
