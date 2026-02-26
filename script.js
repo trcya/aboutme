@@ -36,7 +36,6 @@ particlesJS("particles-js", {
 /* ===== DISCORD STATUS WITH LANYARD API ===== */
 const DISCORD_ID = "985719845314256907";
 
-// Format durasi
 function formatDuration(ms) {
     if (!ms || ms < 0) return "0m";
     const seconds = Math.floor(ms / 1000);
@@ -47,7 +46,6 @@ function formatDuration(ms) {
     return `${seconds}s`;
 }
 
-// Hitung durasi dari timestamp
 function getDurationSince(timestamp) {
     if (!timestamp) return null;
     return formatDuration(Date.now() - timestamp);
@@ -68,7 +66,6 @@ async function updateDiscordStatus() {
         if (!dot || !card || !activity) return;
 
         dot.className = 'discord-indicator ' + discordData.discord_status;
-        
         card.classList.remove('status-glow-online', 'status-glow-idle', 'status-glow-dnd', 'status-glow-offline');
         card.classList.add('status-glow-' + discordData.discord_status);
 
@@ -113,7 +110,6 @@ async function updateDiscordStatus() {
 /* ===== CLOCK FUNCTION ===== */
 function updateClocks() {
     const now = new Date();
-    
     const options = { 
         timeZone: 'Asia/Jakarta', 
         hour: '2-digit', 
@@ -146,19 +142,12 @@ function updateClocks() {
 
 /* ===== REVEAL ANIMATION ===== */
 function initRevealAnimation() {
-    const observerOptions = { 
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
+    const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('active');
         });
     }, observerOptions);
-    
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
@@ -173,7 +162,6 @@ function initHamburgerMenu() {
 
     function toggleMenu(force) {
         const isActive = force !== undefined ? force : !sideNav.classList.contains('active');
-        
         if (isActive) {
             hamburger.classList.add('active');
             sideNav.classList.add('active');
@@ -187,32 +175,21 @@ function initHamburgerMenu() {
         }
     }
 
-    hamburger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-    });
-
+    hamburger.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
     overlay.addEventListener('click', () => toggleMenu(false));
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && sideNav.classList.contains('active')) {
-            toggleMenu(false);
-        }
+        if (e.key === 'Escape' && sideNav.classList.contains('active')) toggleMenu(false);
     });
 
-    // Smooth scroll untuk nav items
     document.querySelectorAll('.nav-item').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
+            const targetSection = document.querySelector(link.getAttribute('href'));
             if (targetSection) {
                 if (window.innerWidth <= 768) {
                     toggleMenu(false);
-                    setTimeout(() => {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }, 150);
+                    setTimeout(() => targetSection.scrollIntoView({ behavior: 'smooth' }), 150);
                 } else {
                     targetSection.scrollIntoView({ behavior: 'smooth' });
                 }
@@ -221,29 +198,115 @@ function initHamburgerMenu() {
     });
 }
 
+/* ===== THEME SWITCHER ===== */
+function initThemeSwitcher() {
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themePanel = document.getElementById('themePanel');
+    const themeClose = document.getElementById('themeClose');
+    const themeColors = document.querySelectorAll('.theme-color');
+    const themeReset = document.getElementById('themeReset');
+    
+    const themeColorsMap = {
+        'blue': { hex: '#3b82f6', rgb: '59, 130, 246' },
+        'purple': { hex: '#8b5cf6', rgb: '139, 92, 246' },
+        'green': { hex: '#10b981', rgb: '16, 185, 129' },
+        'red': { hex: '#ef4444', rgb: '239, 68, 68' },
+        'orange': { hex: '#f97316', rgb: '249, 115, 22' },
+        'pink': { hex: '#ec4899', rgb: '236, 72, 153' },
+        'cyan': { hex: '#06b6d4', rgb: '6, 182, 212' },
+        'yellow': { hex: '#eab308', rgb: '234, 179, 8' }
+    };
+    
+    if (!themeToggleBtn) return;
+
+    // Buka/tutup panel
+    themeToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themePanel.classList.toggle('active');
+    });
+    
+    if (themeClose) themeClose.addEventListener('click', () => themePanel.classList.remove('active'));
+    
+    document.addEventListener('click', (e) => {
+        if (themePanel && themeToggleBtn && 
+            !themePanel.contains(e.target) && !themeToggleBtn.contains(e.target)) {
+            themePanel.classList.remove('active');
+        }
+    });
+
+    function forceIconUpdate(hexValue) {
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+        document.querySelectorAll('i, svg, [data-lucide], .fab, .fas, .far').forEach(icon => {
+            icon.style.color = hexValue;
+            if (icon.tagName === 'SVG' || icon.hasAttribute('data-lucide')) icon.style.stroke = hexValue;
+        });
+    }
+
+    function setTheme(color, colorData) {
+        const hexValue = colorData.hex;
+        const rgbValue = colorData.rgb;
+        
+        document.documentElement.style.setProperty('--accent-blue', hexValue);
+        document.documentElement.style.setProperty('--accent-blue-rgb', rgbValue);
+        document.documentElement.style.setProperty('--accent-glow', `rgba(${rgbValue}, 0.5)`);
+        
+        if (window.pJSDom?.[0]?.pJS) {
+            pJSDom[0].pJS.particles.color.value = hexValue;
+            pJSDom[0].pJS.particles.line_linked.color = hexValue;
+            pJSDom[0].pJS.fn.particlesRefresh();
+        }
+        
+        forceIconUpdate(hexValue);
+        
+        themeColors.forEach(el => {
+            el.classList.toggle('active', el.dataset.color === color);
+        });
+        
+        localStorage.setItem('theme-color', color);
+        localStorage.setItem('theme-hex', hexValue);
+        localStorage.setItem('theme-rgb', rgbValue);
+    }
+
+    themeColors.forEach(colorEl => {
+        colorEl.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const colorData = themeColorsMap[colorEl.dataset.color];
+            if (colorData) {
+                setTheme(colorEl.dataset.color, colorData);
+                themePanel.classList.remove('active');
+            }
+        });
+    });
+
+    if (themeReset) {
+        themeReset.addEventListener('click', () => {
+            setTheme('blue', themeColorsMap['blue']);
+            themePanel.classList.remove('active');
+        });
+    }
+
+    const savedColor = localStorage.getItem('theme-color');
+    const savedHex = localStorage.getItem('theme-hex');
+    const savedRgb = localStorage.getItem('theme-rgb');
+    
+    if (savedColor && savedHex && savedRgb && themeColorsMap[savedColor]) {
+        setTheme(savedColor, { hex: savedHex, rgb: savedRgb });
+    } else {
+        setTheme('blue', themeColorsMap['blue']);
+    }
+}
+
 /* ===== INITIALIZE ALL FUNCTIONS ===== */
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Lucide Icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+    if (typeof lucide !== 'undefined') lucide.createIcons();
     
-    // Start clock updates
     updateClocks();
     setInterval(updateClocks, 1000);
     
-    // Start Discord status updates
     updateDiscordStatus();
     setInterval(updateDiscordStatus, 5000);
     
-    // Initialize reveal animation
     initRevealAnimation();
-    
-    // Initialize hamburger menu
     initHamburgerMenu();
-    
-    // Handle window resize (optional)
-    window.addEventListener('resize', function() {
-        // Tidak ada yang perlu diupdate
-    });
+    initThemeSwitcher();
 });
