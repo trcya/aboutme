@@ -1963,3 +1963,77 @@ button:hover svg,
         font-size: 0.9rem;
     }
 }
+
+/* ==========================================================================
+   #OPTIMASI UNTUK MOBILE - AGAR RINGAN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Matikan particles.js di mobile */
+    #particles-js {
+        display: none !important;
+    }
+    
+    /* Kurangi blur efek */
+    .glass,
+    .bento-container,
+    .experience-container,
+    .gear-container,
+    .spotify-container,
+    .profile-card,
+    .small-card,
+    .large-card,
+    .comm-card,
+    .nav-container-box,
+    .social-nav {
+        backdrop-filter: blur(4px) !important;
+        -webkit-backdrop-filter: blur(4px) !important;
+    }
+    
+    /* Matikan animasi glow yang berat */
+    .bento-container::after,
+    .experience-container::after,
+    .gear-container::after,
+    .spotify-container::after {
+        animation: none !important;
+        opacity: 0.2 !important;
+    }
+    
+    /* Kurangi box-shadow */
+    .gear-card:hover,
+    .comm-card:hover,
+    .small-card:hover {
+        box-shadow: 0 5px 15px var(--accent-glow) !important;
+    }
+    
+    /* Sederhanakan gradient background */
+    .bento-container::before,
+    .experience-container::before,
+    .gear-container::before,
+    .spotify-container::before {
+        background-image: radial-gradient(circle at 20% 30%, rgba(var(--accent-blue-rgb), 0.05) 0px, transparent 50px) !important;
+    }
+    
+    /* Optimasi gear slider */
+    .gear-slider {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: auto;
+    }
+}
+
+/* Untuk android low-end */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+    /* Matikan semua transisi */
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    /* Background polos */
+    .gear-container,
+    .bento-container,
+    .experience-container,
+    .spotify-container {
+        background: rgba(10, 15, 24, 0.6) !important;
+    }
+}
