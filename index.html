@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Portofolio | Terecya</title>
     
     <!-- Fonts & CSS -->
@@ -13,29 +13,10 @@
     
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
-    
-    <style>
-        /* Background untuk mobile (diaktifkan oleh JS) */
-        body.mobile-device {
-            background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
-        }
-        
-        body.mobile-device::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.03) 0px, transparent 100px);
-            pointer-events: none;
-            z-index: -1;
-        }
-    </style>
 </head>
 <body>
-    <!-- ===== BACKGROUND (PARTICLES) ===== -->
-    <div id="particles-js"></div>
+    <!-- ===== BACKGROUND (PARTICLES DIMATIKAN) ===== -->
+    <div id="particles-js" style="display:none !important;"></div>
 
     <!-- ===== MOBILE HEADER ===== -->
     <header class="mobile-header">
@@ -60,43 +41,43 @@
 
             <div class="social-nav-links">
                 <!-- GitHub -->
-                <a href="https://github.com/terecya" target="_blank" class="social-nav-link" title="GitHub">
+                <a href="https://github.com/trcya" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="GitHub">
                     <i data-lucide="github"></i>
                     <span class="social-nav-tooltip">GitHub</span>
                 </a>
                 
                 <!-- Instagram -->
-                <a href="https://www.instagram.com/rere_.gt?igsh=dWp2aXZybHVtMTls" target="_blank" class="social-nav-link" title="Instagram">
+                <a href="https://www.instagram.com/rere_.gt?igsh=dWp2aXZybHVtMTls" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Instagram">
                     <i data-lucide="instagram"></i>
                     <span class="social-nav-tooltip">Instagram</span>
                 </a>
                 
                 <!-- Twitter -->
-                <a href="https://x.com/DavidFlashs" target="_blank" class="social-nav-link" title="Twitter">
+                <a href="https://x.com/DavidFlashs" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Twitter">
                     <i data-lucide="twitter"></i>
                     <span class="social-nav-tooltip">Twitter</span>
                 </a>
                 
                 <!-- YouTube -->
-                <a href="https://youtube.com/@terecya?si=JFKqtoXitT9EW4VQ" target="_blank" class="social-nav-link" title="YouTube">
+                <a href="https://youtube.com/@terecya?si=JFKqtoXitT9EW4VQ" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="YouTube">
                     <i data-lucide="youtube"></i>
                     <span class="social-nav-tooltip">YouTube</span>
                 </a>
                 
                 <!-- TikTok -->
-                <a href="https://www.tiktok.com/@terecya__?_r=1&_t=ZS-94FQPJcBNNy" target="_blank" class="social-nav-link" title="TikTok">
+                <a href="https://www.tiktok.com/@terecya__?_r=1&_t=ZS-94FQPJcBNNy" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="TikTok">
                     <i class="fab fa-tiktok"></i>
                     <span class="social-nav-tooltip">TikTok</span>
                 </a>
                 
                 <!-- Discord -->
-                <a href="https://discord.com/users/985719845314256907" target="_blank" class="social-nav-link" title="Discord">
+                <a href="https://discord.com/users/985719845314256907" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Discord">
                     <i class="fab fa-discord"></i>
                     <span class="social-nav-tooltip">Discord</span>
                 </a>
                 
                 <!-- Spotify -->
-                <a href="https://open.spotify.com/user/31rzzoudad4su6yskfv3eypjsw7a?si=b05292d71bbe485b" target="_blank" class="social-nav-link" title="Spotify">
+                <a href="https://open.spotify.com/user/31rzzoudad4su6yskfv3eypjsw7a?si=b05292d71bbe485b" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Spotify">
                     <i class="fab fa-spotify"></i>
                     <span class="social-nav-tooltip">Spotify</span>
                 </a>
@@ -181,31 +162,31 @@
             <div class="mobile-social-menu">
                 <div class="social-menu-title">SOCIAL</div>
                 <div class="social-menu-links">
-                    <a href="https://github.com/terecya" target="_blank" class="social-menu-link">
+                    <a href="https://github.com/trcya" target="_blank" rel="noopener noreferrer" class="social-menu-link">
                         <i data-lucide="github"></i>
                         <span>GitHub</span>
                     </a>
-                    <a href="https://www.instagram.com/rere_.gt?igsh=dWp2aXZybHVtMTls" target="_blank" class="social-menu-link">
+                    <a href="https://www.instagram.com/rere_.gt?igsh=dWp2aXZybHVtMTls" target="_blank" rel="noopener noreferrer" class="social-menu-link">
                         <i data-lucide="instagram"></i>
                         <span>Instagram</span>
                     </a>
-                    <a href="https://x.com/DavidFlashs" target="_blank" class="social-menu-link">
+                    <a href="https://x.com/DavidFlashs" target="_blank" rel="noopener noreferrer" class="social-menu-link">
                         <i data-lucide="twitter"></i>
                         <span>Twitter</span>
                     </a>
-                    <a href="https://youtube.com/@terecya?si=JFKqtoXitT9EW4VQ" target="_blank" class="social-menu-link">
+                    <a href="https://youtube.com/@terecya?si=JFKqtoXitT9EW4VQ" target="_blank" rel="noopener noreferrer" class="social-menu-link">
                         <i data-lucide="youtube"></i>
                         <span>YouTube</span>
                     </a>
-                    <a href="https://www.tiktok.com/@terecya__?_r=1&_t=ZS-94FQPJcBNNy" target="_blank" class="social-menu-link">
+                    <a href="https://www.tiktok.com/@terecya__?_r=1&_t=ZS-94FQPJcBNNy" target="_blank" rel="noopener noreferrer" class="social-menu-link">
                         <i class="fab fa-tiktok"></i>
                         <span>TikTok</span>
                     </a>
-                    <a href="https://discord.com/users/985719845314256907" target="_blank" class="social-menu-link">
+                    <a href="https://discord.com/users/985719845314256907" target="_blank" rel="noopener noreferrer" class="social-menu-link">
                         <i class="fab fa-discord"></i>
                         <span>Discord</span>
                     </a>
-                    <a href="https://open.spotify.com/user/31rzzoudad4su6yskfv3eypjsw7a?si=b05292d71bbe485b" target="_blank" class="social-menu-link">
+                    <a href="https://open.spotify.com/user/31rzzoudad4su6yskfv3eypjsw7a?si=b05292d71bbe485b" target="_blank" rel="noopener noreferrer" class="social-menu-link">
                         <i class="fab fa-spotify"></i>
                         <span>Spotify</span>
                     </a>
@@ -232,7 +213,7 @@
                         <!-- Profile Card -->
                         <aside class="profile-card">
                             <div class="image-wrapper">
-                                <img src="photo/me.jpg" alt="Profile">
+                                <img src="photo/me.jpg" alt="Profile" loading="lazy">
                             </div>
                         </aside>
 
@@ -341,7 +322,7 @@
                         <!-- Atomic -->
                         <div class="comm-card">
                             <div class="card-image">
-                                <img src="icons/atom.jpg" alt="Atomic">
+                                <img src="icons/atom.jpg" alt="Atomic" loading="lazy">
                                 <span class="status-badge">STAFF</span>
                             </div>
                             <div class="card-content">
@@ -350,14 +331,14 @@
                                 <div class="tags">
                                     <span class="tag">94K+ MEMBERS</span>
                                 </div>
-                                <a href="https://discord.gg/getsades" target="_blank" class="btn-join">JOIN</a>
+                                <a href="https://discord.gg/getsades" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
                         
                         <!-- P4KONGTOOLS -->
                         <div class="comm-card">
                             <div class="card-image">
-                                <img src="icons/p4kong.jpeg" alt="P4KONGTOOLS">
+                                <img src="icons/p4kong.jpeg" alt="P4KONGTOOLS" loading="lazy">
                                 <span class="status-badge">STAFF</span>
                             </div>
                             <div class="card-content">
@@ -366,14 +347,14 @@
                                 <div class="tags">
                                     <span class="tag">16K+ MEMBERS</span>
                                 </div>
-                                <a href="https://discord.gg/p4kongtools" target="_blank" class="btn-join">JOIN</a>
+                                <a href="https://discord.gg/p4kongtools" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
                         
                         <!-- ROCKHUB -->
                         <div class="comm-card">
                             <div class="card-image">
-                                <img src="icons/rockhub.jpeg" alt="ROCKHUB">
+                                <img src="icons/rockhub.jpeg" alt="ROCKHUB" loading="lazy">
                                 <span class="status-badge">HEAD MANAGER</span>
                             </div>
                             <div class="card-content">
@@ -382,14 +363,14 @@
                                 <div class="tags">
                                     <span class="tag">7K+ MEMBERS</span>
                                 </div>
-                                <a href="https://discord.gg/rockhub" target="_blank" class="btn-join">JOIN</a>
+                                <a href="https://discord.gg/rockhub" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
                         
                         <!-- SHADEX -->
                         <div class="comm-card">
                             <div class="card-image">
-                                <img src="icons/shadex.png" alt="SHADEX">
+                                <img src="icons/shadex.png" alt="SHADEX" loading="lazy">
                                 <span class="status-badge">STAFF</span>
                             </div>
                             <div class="card-content">
@@ -398,14 +379,14 @@
                                 <div class="tags">
                                     <span class="tag">COMING SOON</span>
                                 </div>
-                                <a href="https://discord.gg/shadex" target="_blank" class="btn-join">JOIN</a>
+                                <a href="https://discord.gg/shadex" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
                         
                         <!-- VORAHUB -->
                         <div class="comm-card">
                             <div class="card-image">
-                                <img src="icons/vora.jpg" alt="VORAHUB">
+                                <img src="icons/vora.jpg" alt="VORAHUB" loading="lazy">
                                 <span class="status-badge">HELPER</span>
                             </div>
                             <div class="card-content">
@@ -414,14 +395,14 @@
                                 <div class="tags">
                                     <span class="tag">11K+ MEMBERS</span>
                                 </div>
-                                <a href="https://discord.gg/vorahub" target="_blank" class="btn-join">JOIN</a>
+                                <a href="https://discord.gg/vorahub" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
                         
                         <!-- Terehub -->
                         <div class="comm-card">
                             <div class="card-image">
-                                <img src="icons/terehub.png" alt="Terehub">
+                                <img src="icons/terehub.png" alt="Terehub" loading="lazy">
                                 <span class="status-badge">Developer</span>
                             </div>
                             <div class="card-content">
@@ -430,7 +411,7 @@
                                 <div class="tags">
                                     <span class="tag">COMING SOON</span>
                                 </div>
-                                <a href="https://discord.gg/terecya" target="_blank" class="btn-join">JOIN</a>
+                                <a href="https://discord.gg/terecya" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
                     </div>
@@ -487,7 +468,7 @@
                             <!-- 2. Miniso M38T -->
                             <div class="gear-card">
                                 <div class="gear-image">
-                                    <img src="gear/Miniso.png" alt="Miniso M38T" loading="lazy">
+                                    <img src="gear/miniso.png" alt="Miniso M38T" loading="lazy">
                                 </div>
                                 <div class="gear-content">
                                     <h3>Miniso M38T</h3>
@@ -643,7 +624,7 @@
 
                     <div class="spotify-embed">
                         <iframe 
-                            src="https://open.spotify.com/embed/playlist/33Tpm340TrDU6pmdJFEXxe?si=07825c1e16864cc2" 
+                            src="https://open.spotify.com/embed/playlist/33Tpm340TrDU6pmdJFEXxe?si=07825c1e16864cc2&utm_source=generator" 
                             width="100%" 
                             height="352" 
                             frameBorder="0" 
@@ -662,7 +643,7 @@
         </div>
     </main>
 
-    <!-- ===== THEME SWITCHER ===== -->
+    <!-- ===== THEME SWITCHER - 4 WARNA (BIRU, PINK, UNGU, HIJAU) ===== -->
     <div class="theme-switcher">
         <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Ganti Tema">
             <i data-lucide="palette"></i>
@@ -673,14 +654,14 @@
                 <button class="theme-close" id="themeClose">&times;</button>
             </div>
             <div class="theme-colors">
+                <!-- Biru -->
                 <div class="theme-color" data-color="blue" style="background: #3b82f6;" title="Biru"></div>
-                <div class="theme-color" data-color="purple" style="background: #8b5cf6;" title="Ungu"></div>
-                <div class="theme-color" data-color="green" style="background: #10b981;" title="Hijau"></div>
-                <div class="theme-color" data-color="red" style="background: #ef4444;" title="Merah"></div>
-                <div class="theme-color" data-color="orange" style="background: #f97316;" title="Orange"></div>
+                <!-- Pink -->
                 <div class="theme-color" data-color="pink" style="background: #ec4899;" title="Pink"></div>
-                <div class="theme-color" data-color="cyan" style="background: #06b6d4;" title="Cyan"></div>
-                <div class="theme-color" data-color="yellow" style="background: #eab308;" title="Kuning"></div>
+                <!-- Ungu -->
+                <div class="theme-color" data-color="purple" style="background: #8b5cf6;" title="Ungu"></div>
+                <!-- Hijau -->
+                <div class="theme-color" data-color="green" style="background: #10b981;" title="Hijau"></div>
             </div>
             <div class="theme-reset">
                 <button id="themeReset">Reset ke Biru</button>
@@ -693,33 +674,29 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <script>
-        // Deteksi mobile/desktop
+        // HANYA DETEKSI MOBILE - TIDAK ADA THEME SWITCHER DI SINI
         (function() {
             function isMobile() {
                 return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
             }
             
-            // Jika mobile, matikan particles dan tambah class
+            // Sembunyikan particles
+            const particles = document.getElementById('particles-js');
+            if (particles) {
+                particles.style.display = 'none';
+            }
+            
+            // Tambah class mobile-device jika mobile
             if (isMobile()) {
-                // Sembunyikan particles
-                const particles = document.getElementById('particles-js');
-                if (particles) particles.style.display = 'none';
-                
-                // Tambah class ke body untuk background mobile
                 document.body.classList.add('mobile-device');
-                
-                console.log('Mode mobile: particles dimatikan');
+                console.log('Mode mobile');
             } else {
-                // Desktop: jalankan particles
-                if (typeof particlesJS !== 'undefined') {
-                    particlesJS.load('particles-js', 'particles.json', function() {
-                        console.log('Particles.js loaded - Desktop mode');
-                    });
-                }
+                console.log('Desktop mode');
             }
         })();
     </script>
     
+    <!-- PASTIKAN script.js SUDAH MENGGUNAKAN VERSI 4 WARNA BARU -->
     <script src="script.js"></script>
 </body>
 </html>

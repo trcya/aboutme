@@ -1,63 +1,4 @@
 /* ==========================================================================
-   #PARTICLES JS CONFIG
-   ========================================================================== */
-particlesJS("particles-js", {
-    particles: {
-        number: { 
-            value: 80, 
-            density: { 
-                enable: true, 
-                value_area: 800 
-            } 
-        },
-        color: { 
-            value: "#3b82f6" 
-        },
-        shape: { 
-            type: "circle" 
-        },
-        opacity: { 
-            value: 0.5, 
-            random: false 
-        },
-        size: { 
-            value: 3, 
-            random: true 
-        },
-        line_linked: { 
-            enable: true, 
-            distance: 150, 
-            color: "#3b82f6", 
-            opacity: 0.4, 
-            width: 1 
-        },
-        move: { 
-            enable: true, 
-            speed: 2, 
-            direction: "none", 
-            random: false, 
-            straight: false, 
-            out_mode: "out", 
-            bounce: false 
-        }
-    },
-    interactivity: {
-        detect_on: "canvas",
-        events: {
-            onhover: { 
-                enable: true, 
-                mode: "grab" 
-            },
-            onclick: { 
-                enable: true, 
-                mode: "push" 
-            }
-        }
-    },
-    retina_detect: true
-});
-
-/* ==========================================================================
    #DISCORD STATUS WITH LANYARD API
    ========================================================================== */
 const DISCORD_ID = "985719845314256907";
@@ -312,11 +253,11 @@ function initHamburgerMenu() {
 }
 
 /* ==========================================================================
-   #THEME SWITCHER
+   #THEME SWITCHER - 4 WARNA (BIRU, PINK, UNGU, HIJAU)
    ========================================================================== */
 
 /**
- * Inisialisasi theme switcher
+ * Inisialisasi theme switcher untuk 4 warna baru
  */
 function initThemeSwitcher() {
     const themeToggleBtn = document.getElementById('themeToggleBtn');
@@ -325,16 +266,36 @@ function initThemeSwitcher() {
     const themeColors = document.querySelectorAll('.theme-color');
     const themeReset = document.getElementById('themeReset');
     
-    // Mapping warna
+    // Mapping warna untuk background grid
     const themeColorsMap = {
-        'blue': { hex: '#3b82f6', rgb: '59, 130, 246' },
-        'purple': { hex: '#8b5cf6', rgb: '139, 92, 246' },
-        'green': { hex: '#10b981', rgb: '16, 185, 129' },
-        'red': { hex: '#ef4444', rgb: '239, 68, 68' },
-        'orange': { hex: '#f97316', rgb: '249, 115, 22' },
-        'pink': { hex: '#ec4899', rgb: '236, 72, 153' },
-        'cyan': { hex: '#06b6d4', rgb: '6, 182, 212' },
-        'yellow': { hex: '#eab308', rgb: '234, 179, 8' }
+        'blue': { 
+            name: 'Biru',
+            grid: 'rgba(59, 130, 246, 0.07)',
+            glow: 'rgba(59, 130, 246, 0.03)',
+            accent: '#3b82f6',
+            accentRgb: '59, 130, 246'
+        },
+        'pink': { 
+            name: 'Pink',
+            grid: 'rgba(236, 72, 153, 0.07)',
+            glow: 'rgba(236, 72, 153, 0.03)',
+            accent: '#ec4899',
+            accentRgb: '236, 72, 153'
+        },
+        'purple': { 
+            name: 'Ungu',
+            grid: 'rgba(139, 92, 246, 0.07)',
+            glow: 'rgba(139, 92, 246, 0.03)',
+            accent: '#8b5cf6',
+            accentRgb: '139, 92, 246'
+        },
+        'green': { 
+            name: 'Hijau',
+            grid: 'rgba(16, 185, 129, 0.07)',
+            glow: 'rgba(16, 185, 129, 0.03)',
+            accent: '#10b981',
+            accentRgb: '16, 185, 129'
+        }
     };
     
     if (!themeToggleBtn) return;
@@ -360,7 +321,7 @@ function initThemeSwitcher() {
     });
 
     /**
-     * Force update icon dengan warna baru
+     * Update icon dengan warna baru
      * @param {string} hexValue - Nilai hex warna
      */
     function forceIconUpdate(hexValue) {
@@ -377,28 +338,49 @@ function initThemeSwitcher() {
     }
 
     /**
+     * Update background grid
+     * @param {string} gridColor - Warna grid
+     */
+    function updateBackgroundGrid(gridColor, glowColor) {
+        // Update background grid
+        document.body.style.backgroundImage = 
+            `linear-gradient(${gridColor} 1px, transparent 1px), ` +
+            `linear-gradient(90deg, ${gridColor} 1px, transparent 1px)`;
+        
+        // Hapus style glow lama jika ada
+        const oldStyle = document.getElementById('dynamic-glow');
+        if (oldStyle) oldStyle.remove();
+        
+        // Buat style glow baru
+        const style = document.createElement('style');
+        style.id = 'dynamic-glow';
+        style.textContent = `
+            body::after {
+                background: radial-gradient(circle at 20% 30%, ${glowColor} 0%, transparent 50%),
+                            radial-gradient(circle at 80% 70%, ${glowColor} 0%, transparent 50%) !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    /**
      * Set tema warna
      * @param {string} color - Nama warna
-     * @param {Object} colorData - Data warna (hex dan rgb)
+     * @param {Object} colorData - Data warna
      */
     function setTheme(color, colorData) {
-        const hexValue = colorData.hex;
-        const rgbValue = colorData.rgb;
+        // Update background grid
+        updateBackgroundGrid(colorData.grid, colorData.glow);
         
-        // Update CSS variables
-        document.documentElement.style.setProperty('--accent-blue', hexValue);
-        document.documentElement.style.setProperty('--accent-blue-rgb', rgbValue);
-        document.documentElement.style.setProperty('--accent-glow', `rgba(${rgbValue}, 0.5)`);
-        
-        // Update particles jika ada
-        if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
-            window.pJSDom[0].pJS.particles.color.value = hexValue;
-            window.pJSDom[0].pJS.particles.line_linked.color = hexValue;
-            window.pJSDom[0].pJS.fn.particlesRefresh();
+        // Update accent color
+        if (colorData.accent) {
+            document.documentElement.style.setProperty('--accent-blue', colorData.accent);
+            document.documentElement.style.setProperty('--accent-blue-rgb', colorData.accentRgb);
+            document.documentElement.style.setProperty('--accent-glow', `rgba(${colorData.accentRgb}, 0.5)`);
+            
+            // Update icons
+            forceIconUpdate(colorData.accent);
         }
-        
-        // Update icons
-        forceIconUpdate(hexValue);
         
         // Update active class
         themeColors.forEach(el => {
@@ -411,8 +393,10 @@ function initThemeSwitcher() {
         
         // Simpan ke localStorage
         localStorage.setItem('theme-color', color);
-        localStorage.setItem('theme-hex', hexValue);
-        localStorage.setItem('theme-rgb', rgbValue);
+        localStorage.setItem('theme-grid', colorData.grid);
+        localStorage.setItem('theme-glow', colorData.glow);
+        localStorage.setItem('theme-accent', colorData.accent);
+        localStorage.setItem('theme-accent-rgb', colorData.accentRgb);
     }
 
     // Event listener untuk setiap warna
@@ -437,11 +421,8 @@ function initThemeSwitcher() {
 
     // Load saved theme
     const savedColor = localStorage.getItem('theme-color');
-    const savedHex = localStorage.getItem('theme-hex');
-    const savedRgb = localStorage.getItem('theme-rgb');
-    
-    if (savedColor && savedHex && savedRgb && themeColorsMap[savedColor]) {
-        setTheme(savedColor, { hex: savedHex, rgb: savedRgb });
+    if (savedColor && themeColorsMap[savedColor]) {
+        setTheme(savedColor, themeColorsMap[savedColor]);
     } else {
         setTheme('blue', themeColorsMap['blue']);
     }
@@ -464,16 +445,11 @@ function isMobileDevice() {
  */
 function initDeviceSpecific() {
     if (isMobileDevice()) {
-        // Sembunyikan particles di mobile
-        const particles = document.getElementById('particles-js');
-        if (particles) particles.style.display = 'none';
-        
-        // Tambah class ke body
+        // Tambah class ke body untuk mobile
         document.body.classList.add('mobile-device');
-        
-        console.log('Mobile mode: particles dimatikan');
+        console.log('Mobile mode');
     } else {
-        console.log('Desktop mode: particles aktif');
+        console.log('Desktop mode');
     }
 }
 

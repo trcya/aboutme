@@ -9,10 +9,14 @@
     --success: #10b981;
     --danger: #ef4444;
     --warning: #f0b232;
+    
+    /* VARIABEL WARNA DEFAULT - BIRU */
+    --grid-color: rgba(59, 130, 246, 0.07);
+    --glow-color: rgba(59, 130, 246, 0.03);
 }
 
 /* ==========================================================================
-   #RESET & BASE - DOT KELAP-KELIP (FINAL)
+   #RESET & BASE - BACKGROUND KOTAK (GRID)
    ========================================================================== */
 * {
     margin: 0;
@@ -20,30 +24,27 @@
     box-sizing: border-box;
 }
 
+html {
+    background-color: #020617;
+}
+
 body {
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
+    overflow-y: auto;
     background-color: #020617;
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 50px 50px;
     color: white;
     font-family: 'Inter', sans-serif;
+    -webkit-overflow-scrolling: touch;
+    transition: background-image 0.3s ease;
 }
 
-/* LAPISAN 1 - DOT STATIS (dasar) */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.1) 1px, transparent 0);
-    background-size: 30px 30px;
-    pointer-events: none;
-    z-index: -2;
-}
-
-/* LAPISAN 2 - DOT KELAP-KELIP */
+/* Efek glow halus di pojok */
 body::after {
     content: "";
     position: fixed;
@@ -51,41 +52,28 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        radial-gradient(circle at 10px 20px, rgba(59, 130, 246, 0.25) 2px, transparent 2px),
-        radial-gradient(circle at 30px 45px, rgba(59, 130, 246, 0.2) 2px, transparent 2px),
-        radial-gradient(circle at 50px 15px, rgba(59, 130, 246, 0.15) 2px, transparent 2px),
-        radial-gradient(circle at 70px 60px, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 80px 80px;
-    animation: kelapKelip 2s infinite alternate ease-in-out;
+    background: radial-gradient(circle at 20% 30%, var(--glow-color) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, var(--glow-color) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
+    transition: background 0.3s ease;
 }
 
-/* ANIMASI KELAP-KELIP */
-@keyframes kelapKelip {
-    0% { opacity: 0.2; }
-    25% { opacity: 0.9; }
-    50% { opacity: 0.3; }
-    75% { opacity: 0.8; }
-    100% { opacity: 0.2; }
-}
-
-/* GLOW HALUS (opsional) */
-.glow-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* Hapus particles.js */
+/* ==========================================================================
+   #PARTICLES.JS DIMATIKAN
+   ========================================================================== */
 #particles-js {
     display: none;
+}
+
+/* ==========================================================================
+   #OVERRIDE MOBILE-DEVICE CLASS
+   ========================================================================== */
+body.mobile-device {
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 50px 50px;
 }
 
 /* ==========================================================================
@@ -177,6 +165,9 @@ body::after {
     margin-right: 220px;
     margin-left: 80px;
     padding: 40px 20px;
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
 }
 
 .container {
@@ -194,6 +185,7 @@ body::after {
     padding: 35px;
     overflow: hidden;
     border-radius: 30px;
+    z-index: 1;
 }
 
 /* ==========================================================================
@@ -257,7 +249,6 @@ body::after {
     gap: 30px;
 }
 
-/* Profile Card */
 .profile-card {
     height: 100%;
     min-height: 400px;
@@ -277,7 +268,6 @@ body::after {
     object-fit: cover;
 }
 
-/* Right Content */
 .right-content {
     display: flex;
     flex-direction: column;
@@ -290,7 +280,6 @@ body::after {
     gap: 15px;
 }
 
-/* Small Cards */
 .small-card {
     position: relative;
     display: flex;
@@ -326,7 +315,6 @@ body::after {
     box-shadow: 0 10px 25px -5px var(--accent-glow);
 }
 
-/* Badges */
 .card-header {
     margin-bottom: 10px;
 }
@@ -373,7 +361,6 @@ body::after {
     color: white;
 }
 
-/* Large Card */
 .large-card {
     position: relative;
     padding: 20px;
@@ -395,7 +382,7 @@ body::after {
 }
 
 /* ==========================================================================
-   #EXPERIENCE SECTION (COMMISSIONS)
+   #EXPERIENCE SECTION
    ========================================================================== */
 .commission-grid {
     display: flex;
@@ -421,7 +408,6 @@ body::after {
     background: var(--accent-blue);
 }
 
-/* Commission Card */
 .comm-card {
     display: flex;
     flex-direction: column;
@@ -532,7 +518,7 @@ body::after {
 }
 
 /* ==========================================================================
-   #GEAR SECTION - TANPA LINGKARAN (SCROLL LANCAR)
+   #GEAR SECTION - SCROLL LANCAR
    ========================================================================== */
 .gear-slider {
     width: 100%;
@@ -579,7 +565,6 @@ body::after {
     will-change: transform;
 }
 
-/* Gear Card */
 .gear-card {
     display: flex;
     flex-direction: column;
@@ -621,7 +606,6 @@ body::after {
     transform: scale(1.1);
 }
 
-/* Hapus semua styling gear-category */
 .gear-category,
 .gear-category-above {
     display: none !important;
@@ -645,7 +629,6 @@ body::after {
     letter-spacing: 0.5px;
 }
 
-/* Gear Specs */
 .gear-specs {
     display: flex;
     gap: 8px;
@@ -700,7 +683,6 @@ body::after {
     color: var(--text-muted);
 }
 
-/* Gear Badges */
 .gear-badges {
     display: flex;
     flex-wrap: wrap;
@@ -752,7 +734,7 @@ body::after {
 }
 
 /* ==========================================================================
-   #SIDE NAVIGATION (KANAN)
+   #SIDE NAVIGATION
    ========================================================================== */
 .side-nav {
     position: fixed;
@@ -777,7 +759,6 @@ body::after {
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Garis Bersinar Navbar */
 .nav-container-box::before,
 .nav-container-box::after {
     content: "";
@@ -1338,6 +1319,10 @@ body::after {
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
 }
 
 .spotify-embed iframe {
@@ -1346,6 +1331,7 @@ body::after {
     height: 352px;
     border-radius: 12px;
     transition: transform 0.3s ease;
+    border: none;
 }
 
 .spotify-embed iframe:hover {
@@ -1365,6 +1351,7 @@ body::after {
     border: 1px solid rgba(var(--accent-blue-rgb), 0.2);
     border-radius: 30px;
     background: rgba(var(--accent-blue-rgb), 0.1);
+    backdrop-filter: blur(4px);
 }
 
 /* ==========================================================================
@@ -1518,7 +1505,7 @@ body::after {
 }
 
 /* ==========================================================================
-   #ABOUT SECTION - DESCRIPTION CARD WITH ICONS
+   #ABOUT SECTION - DESCRIPTION CARD
    ========================================================================== */
 .large-card.description {
     padding: 20px;
@@ -1577,8 +1564,6 @@ body::after {
 /* ==========================================================================
    #ICON STYLES
    ========================================================================== */
-
-/* Paksa semua icon menggunakan warna tema */
 i, 
 i.fab, 
 i.fas, 
@@ -1605,14 +1590,12 @@ svg[data-lucide],
     fill: currentColor !important;
 }
 
-/* Untuk SVG Lucide */
 svg[data-lucide] {
     fill: none !important;
     color: var(--accent-blue) !important;
     stroke: var(--accent-blue) !important;
 }
 
-/* Hover state */
 a:hover i,
 a:hover svg,
 button:hover i,
@@ -1628,8 +1611,6 @@ button:hover svg,
 /* ==========================================================================
    #RESPONSIVE DESIGN
    ========================================================================== */
-
-/* Tablet (max-width: 1024px) */
 @media (max-width: 1024px) {
     .main-layout {
         grid-template-columns: 1fr;
@@ -1651,15 +1632,13 @@ button:hover svg,
     }
 }
 
-/* Mobile (max-width: 768px) */
 @media (max-width: 768px) {
-    /* Main Content */
     .main-content {
         margin: 0;
         padding: 80px 15px 30px;
+        background-color: transparent;
     }
 
-    /* Mobile Header */
     .mobile-header {
         position: fixed;
         top: 0;
@@ -1703,7 +1682,6 @@ button:hover svg,
     .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* Navigation Overlay */
     .nav-overlay {
         position: fixed;
         top: 0;
@@ -1720,7 +1698,6 @@ button:hover svg,
         display: block;
     }
 
-    /* Side Navigation Mobile */
     .side-nav {
         right: auto;
         left: -100%;
@@ -1751,7 +1728,6 @@ button:hover svg,
         display: none;
     }
 
-    /* Mobile Social Menu */
     .mobile-social-menu {
         display: block;
         margin: 20px 0;
@@ -1813,7 +1789,6 @@ button:hover svg,
         color: white !important;
     }
 
-    /* Container Adjustments */
     .bento-container,
     .experience-container,
     .gear-container,
@@ -1834,7 +1809,6 @@ button:hover svg,
         min-width: 260px;
     }
 
-    /* Gear Slider Mobile */
     .gear-slider {
         margin: 15px -5px;
         padding: 5px 5px 15px;
@@ -1896,7 +1870,6 @@ button:hover svg,
         font-size: 0.55rem;
     }
 
-    /* Hapus semua badge di mobile */
     .gear-category {
         display: none !important;
     }
@@ -1905,14 +1878,16 @@ button:hover svg,
         display: block;
     }
 
-    /* Spotify Mobile */
     .spotify-embed {
-        width: calc(100% + 20px);
-        margin: 15px -10px 10px;
+        width: 100%;
+        margin: 15px 0 10px;
+        transform: translateZ(0);
     }
     
     .spotify-embed iframe {
-        height: 152px !important;
+        height: 180px !important;
+        min-height: 180px;
+        max-height: 200px;
         border-radius: 8px;
     }
     
@@ -1930,9 +1905,11 @@ button:hover svg,
         padding: 6px 15px;
         font-size: 0.8rem;
         box-sizing: border-box;
+        white-space: normal;
+        word-break: break-word;
+        line-height: 1.4;
     }
     
-    /* Theme Switcher Mobile */
     .theme-switcher {
         right: 20px;
         bottom: 20px;
@@ -1949,7 +1926,6 @@ button:hover svg,
         width: 250px;
     }
 
-    /* Matikan efek glow yang berat */
     .bento-container::after,
     .experience-container::after,
     .gear-container::after,
@@ -1958,7 +1934,6 @@ button:hover svg,
         opacity: 0.2 !important;
     }
     
-    /* Kurangi blur efek */
     .glass,
     .bento-container,
     .experience-container,
@@ -1974,14 +1949,12 @@ button:hover svg,
         -webkit-backdrop-filter: blur(4px) !important;
     }
     
-    /* Kurangi box-shadow */
     .gear-card:hover,
     .comm-card:hover,
     .small-card:hover {
         box-shadow: 0 5px 15px var(--accent-glow) !important;
     }
     
-    /* Responsive description */
     .description-item {
         gap: 10px;
         margin-bottom: 14px;
@@ -1997,7 +1970,6 @@ button:hover svg,
     }
 }
 
-/* Small Mobile (max-width: 480px) */
 @media (max-width: 480px) {
     .profile-card {
         min-height: 280px;
@@ -2031,7 +2003,7 @@ button:hover svg,
     }
 
     .spotify-embed iframe {
-        height: 132px !important;
+        height: 152px !important;
     }
     
     .spotify-info p {
@@ -2040,15 +2012,12 @@ button:hover svg,
     }
 }
 
-/* Untuk android low-end */
 @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
-    /* Matikan semua transisi */
     * {
         transition: none !important;
         animation: none !important;
     }
     
-    /* Background polos */
     .gear-container,
     .bento-container,
     .experience-container,
