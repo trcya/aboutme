@@ -12,7 +12,7 @@
 }
 
 /* ==========================================================================
-   #RESET & BASE
+   #RESET & BASE - DOT KELAP-KELIP (FINAL)
    ========================================================================== */
 * {
     margin: 0;
@@ -24,36 +24,78 @@ body {
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
-    background-color: var(--bg-dark);
+    background-color: #020617;
     color: white;
     font-family: 'Inter', sans-serif;
 }
 
-/* Background untuk mobile (diaktifkan oleh JS) */
-body.mobile-device {
-    background: linear-gradient(145deg, #020617 0%, #0f172a 100%);
-}
-
-body.mobile-device::before {
+/* LAPISAN 1 - DOT STATIS (dasar) */
+body::before {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.03) 0px, transparent 100px);
+    background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.1) 1px, transparent 0);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* LAPISAN 2 - DOT KELAP-KELIP */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 10px 20px, rgba(59, 130, 246, 0.25) 2px, transparent 2px),
+        radial-gradient(circle at 30px 45px, rgba(59, 130, 246, 0.2) 2px, transparent 2px),
+        radial-gradient(circle at 50px 15px, rgba(59, 130, 246, 0.15) 2px, transparent 2px),
+        radial-gradient(circle at 70px 60px, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 80px 80px;
+    animation: kelapKelip 2s infinite alternate ease-in-out;
     pointer-events: none;
     z-index: -1;
 }
 
-#particles-js {
+/* ANIMASI KELAP-KELIP */
+@keyframes kelapKelip {
+    0% {
+        opacity: 0.2;
+    }
+    25% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    75% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+/* GLOW HALUS (opsional) */
+.glow-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: -1;
     width: 100%;
     height: 100%;
+    background: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
     pointer-events: none;
+    z-index: -1;
+}
+
+/* Hapus particles.js */
+#particles-js {
+    display: none;
 }
 
 /* ==========================================================================
@@ -500,7 +542,7 @@ body.mobile-device::before {
 }
 
 /* ==========================================================================
-   #GEAR SECTION - BADGE LINGKARAN (HANYA ICON)
+   #GEAR SECTION - TANPA LINGKARAN
    ========================================================================== */
 .gear-slider {
     width: 100%;
@@ -570,39 +612,8 @@ body.mobile-device::before {
     transform: scale(1.1);
 }
 
-/* BADGE LINGKARAN - HANYA ICON (TANPA TEKS) */
-.gear-category {
-    position: absolute !important;
-    top: 12px !important;
-    left: 12px !important;
-    z-index: 10 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 50px !important;
-    height: 50px !important;
-    padding: 0 !important;
-    border: 2px solid rgba(255, 255, 255, 0.3) !important;
-    border-radius: 50% !important;
-    background: var(--accent-blue) !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
-}
-
-.gear-category .category-icon {
-    width: 24px !important;
-    height: 24px !important;
-    color: white !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-/* SEMBUNYIKAN TEKS DI DALAM LINGKARAN */
-.gear-category span {
-    display: none !important;
-}
-
-/* Sembunyikan kategori di atas merk (jika ada) */
+/* Hapus semua styling gear-category */
+.gear-category,
 .gear-category-above {
     display: none !important;
 }
@@ -1819,17 +1830,9 @@ button:hover svg,
         height: 140px;
     }
 
-    /* Badge lingkaran untuk mobile - HANYA ICON */
+    /* Hapus semua badge di mobile */
     .gear-category {
-        width: 42px !important;
-        height: 42px !important;
-        top: 8px !important;
-        left: 8px !important;
-    }
-
-    .gear-category .category-icon {
-        width: 20px !important;
-        height: 20px !important;
+        display: none !important;
     }
 
     .gear-progress {
@@ -1884,9 +1887,13 @@ button:hover svg,
         width: 250px;
     }
 
-    /* Matikan particles.js di mobile */
-    #particles-js {
-        display: none !important;
+    /* Matikan efek glow yang berat */
+    .bento-container::after,
+    .experience-container::after,
+    .gear-container::after,
+    .spotify-container::after {
+        animation: none !important;
+        opacity: 0.2 !important;
     }
     
     /* Kurangi blur efek */
@@ -1905,15 +1912,6 @@ button:hover svg,
         -webkit-backdrop-filter: blur(4px) !important;
     }
     
-    /* Matikan animasi glow yang berat */
-    .bento-container::after,
-    .experience-container::after,
-    .gear-container::after,
-    .spotify-container::after {
-        animation: none !important;
-        opacity: 0.2 !important;
-    }
-    
     /* Kurangi box-shadow */
     .gear-card:hover,
     .comm-card:hover,
@@ -1921,14 +1919,6 @@ button:hover svg,
         box-shadow: 0 5px 15px var(--accent-glow) !important;
     }
     
-    /* Sederhanakan gradient background */
-    .bento-container::before,
-    .experience-container::before,
-    .gear-container::before,
-    .spotify-container::before {
-        background-image: radial-gradient(circle at 20% 30%, rgba(var(--accent-blue-rgb), 0.05) 0px, transparent 50px) !important;
-    }
-
     /* Responsive description */
     .description-item {
         gap: 10px;
@@ -1967,17 +1957,6 @@ button:hover svg,
 
     .gear-spec-item span {
         font-size: 0.6rem;
-    }
-
-    /* Badge lingkaran untuk small mobile - HANYA ICON */
-    .gear-category {
-        width: 38px !important;
-        height: 38px !important;
-    }
-
-    .gear-category .category-icon {
-        width: 18px !important;
-        height: 18px !important;
     }
 
     .spotify-embed iframe {

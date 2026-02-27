@@ -389,14 +389,14 @@
                         <!-- SHADEX -->
                         <div class="comm-card">
                             <div class="card-image">
-                                <img src="photo/project4.png" alt="SHADEX">
+                                <img src="icons/shadex.png" alt="SHADEX">
                                 <span class="status-badge">STAFF</span>
                             </div>
                             <div class="card-content">
                                 <h3>SHADEX</h3>
                                 <p>COMING SOON.</p>
                                 <div class="tags">
-                                    <span class="tag">COMING SOON.</span>
+                                    <span class="tag">COMING SOON</span>
                                 </div>
                                 <a href="https://discord.gg/shadex" target="_blank" class="btn-join">JOIN</a>
                             </div>
@@ -430,7 +430,7 @@
                                 <div class="tags">
                                     <span class="tag">COMING SOON</span>
                                 </div>
-                                <a href="https://discord.gg/experience6" target="_blank" class="btn-join">JOIN</a>
+                                <a href="https://discord.gg/terecya" target="_blank" class="btn-join">JOIN</a>
                             </div>
                         </div>
                     </div>
@@ -460,7 +460,6 @@
                             <div class="gear-card">
                                 <div class="gear-image">
                                     <img src="gear/loq.png" alt="Lenovo LOQ M100">
-                                    <!-- LINGKARAN DIHAPUS -->
                                 </div>
                                 <div class="gear-content">
                                     <h3>Lenovo LOQ M100</h3>
@@ -489,7 +488,6 @@
                             <div class="gear-card">
                                 <div class="gear-image">
                                     <img src="gear/miniso.png" alt="Miniso M38T">
-                                    <!-- LINGKARAN DIHAPUS -->
                                 </div>
                                 <div class="gear-content">
                                     <h3>Miniso M38T</h3>
@@ -519,7 +517,6 @@
                             <div class="gear-card">
                                 <div class="gear-image">
                                     <img src="gear/wawawa.png" alt="WAWAWA WA-26">
-                                    <!-- LINGKARAN DIHAPUS -->
                                 </div>
                                 <div class="gear-content">
                                     <h3>WAWAWA WA-26</h3>
@@ -548,7 +545,6 @@
                             <div class="gear-card">
                                 <div class="gear-image">
                                     <img src="gear/poco.png" alt="Poco X3 GT">
-                                    <!-- LINGKARAN DIHAPUS -->
                                 </div>
                                 <div class="gear-content">
                                     <h3>Poco X3 GT</h3>
@@ -578,7 +574,6 @@
                             <div class="gear-card">
                                 <div class="gear-image">
                                     <img src="gear/victus.png" alt="HP Victus 15">
-                                    <!-- LINGKARAN DIHAPUS -->
                                 </div>
                                 <div class="gear-content">
                                     <h3>HP Victus 15</h3>
@@ -607,7 +602,6 @@
                             <div class="gear-card">
                                 <div class="gear-image">
                                     <img src="gear/vortex.png" alt="Vortex Mono V2">
-                                    <!-- LINGKARAN DIHAPUS -->
                                 </div>
                                 <div class="gear-content">
                                     <h3>Vortex Mono V2</h3>
@@ -637,34 +631,34 @@
             </section>
 
             <!-- ===== SPOTIFY PLAYLIST SECTION ===== -->
-            <section id="spotify">
-                <div class="spotify-container reveal">
-                    <header class="section-header">
-                        <div class="header-with-icon">
-                            <i data-lucide="music" class="header-icon"></i>
-                            <h2>MY PLAYLIST</h2>
-                        </div>
-                        <div class="underline"></div>
-                    </header>
+<section id="spotify">
+    <div class="spotify-container reveal">
+        <header class="section-header">
+            <div class="header-with-icon">
+                <i data-lucide="music" class="header-icon"></i>
+                <h2>MY PLAYLIST</h2>
+            </div>
+            <div class="underline"></div>
+        </header>
 
-                    <div class="spotify-embed">
-                        <iframe 
-                            src="https://open.spotify.com/embed/playlist/33Tpm340TrDU6pmdJFEXxe?utm_source=generator&theme=0" 
-                            width="100%" 
-                            height="352" 
-                            frameBorder="0" 
-                            allowfullscreen="" 
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                            loading="lazy"
-                            title="Spotify Playlist - Turu">
-                        </iframe>
-                    </div>
+        <div class="spotify-embed">
+            <iframe 
+                src="https://open.spotify.com/embed/playlist/33Tpm340TrDU6pmdJFEXxe?si=07825c1e16864cc2" 
+                width="100%" 
+                height="352" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"
+                title="Spotify Playlist - Turu">
+            </iframe>
+        </div>
 
-                    <div class="spotify-info">
-                        <p>🎵 Turu - Playlist untuk menemani tidur</p>
-                    </div>
-                </div>
-            </section>
+        <div class="spotify-info">
+            <p>🎵 Turu - Playlist untuk menemani tidur</p>
+        </div>
+    </div>
+</section>
         </div>
     </main>
 
@@ -708,7 +702,7 @@
             // Jika mobile, matikan particles dan tambah class
             if (isMobile()) {
                 // Sembunyikan particles
-                var particles = document.getElementById('particles-js');
+                const particles = document.getElementById('particles-js');
                 if (particles) particles.style.display = 'none';
                 
                 // Tambah class ke body untuk background mobile

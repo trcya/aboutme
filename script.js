@@ -504,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* ==========================================================================
-    #WINDOW RESIZE HANDLER
+   #WINDOW RESIZE HANDLER
    ========================================================================== */
 let resizeTimer;
 window.addEventListener('resize', function() {
