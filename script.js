@@ -449,7 +449,7 @@ function initDeviceSpecific() {
         document.body.classList.add('mobile-device');
         console.log('Mobile mode');
     } else {
-        console.log('Desktop mode');
+        
     }
 }
 
@@ -493,4 +493,38 @@ window.addEventListener('resize', function() {
             document.body.classList.remove('mobile-device');
         }
     }, 250);
+});
+
+// Profile Card Touch Animation
+document.addEventListener('DOMContentLoaded', function() {
+    const profileCards = document.querySelectorAll('.profile-card');
+    
+    profileCards.forEach(card => {
+        // Untuk touch devices
+        card.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            this.classList.add('touch-active');
+        }, { passive: false });
+        
+        card.addEventListener('touchend', function() {
+            this.classList.remove('touch-active');
+        });
+        
+        card.addEventListener('touchcancel', function() {
+            this.classList.remove('touch-active');
+        });
+        
+        // Untuk mouse (optional, untuk konsistensi)
+        card.addEventListener('mouseenter', function() {
+            if (!('ontouchstart' in window)) {
+                this.classList.add('touch-active');
+            }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            if (!('ontouchstart' in window)) {
+                this.classList.remove('touch-active');
+            }
+        });
+    });
 });

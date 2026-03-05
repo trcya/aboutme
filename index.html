@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Portofolio | Terecya</title>
     
-    <!-- Fonts & CSS -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
@@ -13,10 +13,258 @@
     
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* ===== CLICK TO ENTER STYLES ===== */
+        .enter-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark, #020617);
+            z-index: 999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .enter-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .enter-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .enter-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        
+        .enter-subtitle {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .enter-decoration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 2.5rem;
+        }
+        
+        .enter-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+        }
+        
+        .enter-icon {
+            width: 40px;
+            height: 40px;
+            color: #3b82f6;
+            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+            animation: spinSlow 10s linear infinite;
+        }
+        
+        .enter-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 48px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid #3b82f6;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .enter-btn:hover {
+            background: #3b82f6;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+        }
+        
+        .enter-btn i {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .enter-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(59, 130, 246, 0.8); }
+        }
+        
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Sembunyikan main content saat overlay aktif */
+        body.overlay-active .main-content,
+        body.overlay-active .social-nav,
+        body.overlay-active .side-nav,
+        body.overlay-active .mobile-header,
+        body.overlay-active .theme-switcher {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        body:not(.overlay-active) .main-content,
+        body:not(.overlay-active) .social-nav,
+        body:not(.overlay-active) .side-nav,
+        body:not(.overlay-active) .mobile-header,
+        body:not(.overlay-active) .theme-switcher {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease 0.3s, visibility 0.5s ease 0.3s;
+        }
+        
+        /* ===== SNOW EFFECT ===== */
+        .enter-overlay .snow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .enter-overlay .snow-flake {
+            position: absolute;
+            top: -10px;
+            color: rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+            font-size: 1rem;
+            text-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            from { transform: translateY(0) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* ===== PROFILE HOVER EFFECT ===== */
+        .profile-hover-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-image-default {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            z-index: 2;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .profile-hover-container:hover .profile-image-default {
+            transform: scale(1.05);
+        }
+
+        .profile-hover-container:hover .profile-image-hover {
+            opacity: 1;
+        }
+
+        /* Mobile touch effect */
+        .profile-hover-container.touch-active .profile-image-default {
+            opacity: 0;
+        }
+
+        .profile-hover-container.touch-active .profile-image-hover {
+            opacity: 1;
+        }
+
+        /* Hint text - HIDE BY DEFAULT */
+        .profile-hint {
+            display: none;
+        }
+
+        /* Smooth transition */
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
 </head>
-<body>
-    <!-- ===== BACKGROUND (PARTICLES DIMATIKAN) ===== -->
-    <div id="particles-js" style="display:none !important;"></div>
+<body class="overlay-active">
+    <!-- ===== ENTER OVERLAY ===== -->
+    <div class="enter-overlay" id="enterOverlay">
+        <div class="snow-container" id="snowContainer"></div>
+        
+        <div class="enter-container">
+            <div class="enter-title">TERECYA</div>
+            <div class="enter-subtitle">PORTFOLIO</div>
+            
+            <div class="enter-decoration">
+                <div class="enter-line"></div>
+                <i data-lucide="sparkles" class="enter-icon"></i>
+                <div class="enter-line"></div>
+            </div>
+            
+            <button class="enter-btn" id="enterBtn">
+                <span>Click to Enter</span>
+                <i data-lucide="arrow-right"></i>
+            </button>
+        </div>
+    </div>
 
     <!-- ===== MOBILE HEADER ===== -->
     <header class="mobile-header">
@@ -31,7 +279,7 @@
     <!-- Navigation Overlay -->
     <div id="navOverlay" class="nav-overlay"></div>
 
-    <!-- ===== SOCIAL MEDIA LEFT NAVIGATION ===== -->
+    <!-- ===== SOCIAL MEDIA LEFT NAV ===== -->
     <nav class="social-nav desktop-only">
         <div class="social-nav-container">
             <div class="social-nav-header">
@@ -40,43 +288,30 @@
             </div>
 
             <div class="social-nav-links">
-                <!-- GitHub -->
                 <a href="https://github.com/trcya" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="GitHub">
                     <i data-lucide="github"></i>
                     <span class="social-nav-tooltip">GitHub</span>
                 </a>
-                
-                <!-- Instagram -->
                 <a href="https://www.instagram.com/rere_.gt?igsh=dWp2aXZybHVtMTls" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Instagram">
                     <i data-lucide="instagram"></i>
                     <span class="social-nav-tooltip">Instagram</span>
                 </a>
-                
-                <!-- Twitter -->
                 <a href="https://x.com/DavidFlashs" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Twitter">
                     <i data-lucide="twitter"></i>
                     <span class="social-nav-tooltip">Twitter</span>
                 </a>
-                
-                <!-- YouTube -->
                 <a href="https://youtube.com/@terecya?si=JFKqtoXitT9EW4VQ" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="YouTube">
                     <i data-lucide="youtube"></i>
                     <span class="social-nav-tooltip">YouTube</span>
                 </a>
-                
-                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@terecya__?_r=1&_t=ZS-94FQPJcBNNy" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="TikTok">
                     <i class="fab fa-tiktok"></i>
                     <span class="social-nav-tooltip">TikTok</span>
                 </a>
-                
-                <!-- Discord -->
                 <a href="https://discord.com/users/985719845314256907" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Discord">
                     <i class="fab fa-discord"></i>
                     <span class="social-nav-tooltip">Discord</span>
                 </a>
-                
-                <!-- Spotify -->
                 <a href="https://open.spotify.com/user/31rzzoudad4su6yskfv3eypjsw7a?si=b05292d71bbe485b" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Spotify">
                     <i class="fab fa-spotify"></i>
                     <span class="social-nav-tooltip">Spotify</span>
@@ -90,49 +325,24 @@
         </div>
     </nav>
 
-    <!-- ===== SIDE NAVIGATION (KANAN) ===== -->
+    <!-- ===== RIGHT SIDE NAV ===== -->
     <nav class="side-nav" id="mainNav">
         <div class="nav-container-box">
-            <!-- Navigation Menu -->
             <div class="nav-group">
-                <a href="#about" class="nav-item">
-                    <i data-lucide="user"></i>
-                    <span>ABOUT</span>
-                </a>
-                <a href="#experience" class="nav-item">
-                    <i data-lucide="briefcase"></i>
-                    <span>EXP</span>
-                </a>
-                <a href="#gear" class="nav-item">
-                    <i data-lucide="cpu"></i>
-                    <span>GEAR</span>
-                </a>
-                <a href="#spotify" class="nav-item">
-                    <i data-lucide="music"></i>
-                    <span>SONG</span>
-                </a>
+                <a href="#about" class="nav-item"><i data-lucide="user"></i><span>ABOUT</span></a>
+                <a href="#experience" class="nav-item"><i data-lucide="briefcase"></i><span>EXP</span></a>
+                <a href="#gear" class="nav-item"><i data-lucide="cpu"></i><span>GEAR</span></a>
+                <a href="#spotify" class="nav-item"><i data-lucide="music"></i><span>SONG</span></a>
             </div>
 
-            <!-- Spacer -->
             <div class="nav-spacer"></div>
 
-            <!-- Simple Stats -->
             <div class="simple-stats">
-                <div class="simple-stat">
-                    <i data-lucide="code"></i>
-                    <span>6</span>
-                </div>
-                <div class="simple-stat">
-                    <i data-lucide="award"></i>
-                    <span>2</span>
-                </div>
-                <div class="simple-stat">
-                    <i data-lucide="clock"></i>
-                    <span>1y</span>
-                </div>
+                <div class="simple-stat"><i data-lucide="code"></i><span>6</span></div>
+                <div class="simple-stat"><i data-lucide="award"></i><span>2</span></div>
+                <div class="simple-stat"><i data-lucide="clock"></i><span>1y</span></div>
             </div>
 
-            <!-- Clock Section -->
             <div class="malang-clock">
                 <div class="clock-label">MALANG, ID</div>
                 <div class="analog-clock">
@@ -144,7 +354,6 @@
                 <div id="digitalClock" class="clock-time">00:00:00</div>
             </div>
 
-            <!-- Discord Status -->
             <div class="discord-status-card">
                 <div class="discord-info">
                     <div class="discord-avatar-wrapper">
@@ -158,38 +367,17 @@
                 </div>
             </div>
 
-            <!-- Social Media untuk Mobile -->
+            <!-- Mobile Social Menu -->
             <div class="mobile-social-menu">
                 <div class="social-menu-title">SOCIAL</div>
                 <div class="social-menu-links">
-                    <a href="https://github.com/trcya" target="_blank" rel="noopener noreferrer" class="social-menu-link">
-                        <i data-lucide="github"></i>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.instagram.com/rere_.gt?igsh=dWp2aXZybHVtMTls" target="_blank" rel="noopener noreferrer" class="social-menu-link">
-                        <i data-lucide="instagram"></i>
-                        <span>Instagram</span>
-                    </a>
-                    <a href="https://x.com/DavidFlashs" target="_blank" rel="noopener noreferrer" class="social-menu-link">
-                        <i data-lucide="twitter"></i>
-                        <span>Twitter</span>
-                    </a>
-                    <a href="https://youtube.com/@terecya?si=JFKqtoXitT9EW4VQ" target="_blank" rel="noopener noreferrer" class="social-menu-link">
-                        <i data-lucide="youtube"></i>
-                        <span>YouTube</span>
-                    </a>
-                    <a href="https://www.tiktok.com/@terecya__?_r=1&_t=ZS-94FQPJcBNNy" target="_blank" rel="noopener noreferrer" class="social-menu-link">
-                        <i class="fab fa-tiktok"></i>
-                        <span>TikTok</span>
-                    </a>
-                    <a href="https://discord.com/users/985719845314256907" target="_blank" rel="noopener noreferrer" class="social-menu-link">
-                        <i class="fab fa-discord"></i>
-                        <span>Discord</span>
-                    </a>
-                    <a href="https://open.spotify.com/user/31rzzoudad4su6yskfv3eypjsw7a?si=b05292d71bbe485b" target="_blank" rel="noopener noreferrer" class="social-menu-link">
-                        <i class="fab fa-spotify"></i>
-                        <span>Spotify</span>
-                    </a>
+                    <a href="https://github.com/trcya" target="_blank" rel="noopener noreferrer" class="social-menu-link"><i data-lucide="github"></i><span>GitHub</span></a>
+                    <a href="https://www.instagram.com/rere_.gt?igsh=dWp2aXZybHVtMTls" target="_blank" rel="noopener noreferrer" class="social-menu-link"><i data-lucide="instagram"></i><span>Instagram</span></a>
+                    <a href="https://x.com/DavidFlashs" target="_blank" rel="noopener noreferrer" class="social-menu-link"><i data-lucide="twitter"></i><span>Twitter</span></a>
+                    <a href="https://youtube.com/@terecya?si=JFKqtoXitT9EW4VQ" target="_blank" rel="noopener noreferrer" class="social-menu-link"><i data-lucide="youtube"></i><span>YouTube</span></a>
+                    <a href="https://www.tiktok.com/@terecya__?_r=1&_t=ZS-94FQPJcBNNy" target="_blank" rel="noopener noreferrer" class="social-menu-link"><i class="fab fa-tiktok"></i><span>TikTok</span></a>
+                    <a href="https://discord.com/users/985719845314256907" target="_blank" rel="noopener noreferrer" class="social-menu-link"><i class="fab fa-discord"></i><span>Discord</span></a>
+                    <a href="https://open.spotify.com/user/31rzzoudad4su6yskfv3eypjsw7a?si=b05292d71bbe485b" target="_blank" rel="noopener noreferrer" class="social-menu-link"><i class="fab fa-spotify"></i><span>Spotify</span></a>
                 </div>
             </div>
         </div>
@@ -198,7 +386,7 @@
     <!-- ===== MAIN CONTENT ===== -->
     <main class="main-content">
         <div class="container">
-            <!-- ===== ABOUT SECTION ===== -->
+            <!-- ABOUT SECTION -->
             <section id="about">
                 <div class="bento-container reveal">
                     <header class="section-header">
@@ -209,208 +397,127 @@
                         <div class="underline"></div>
                     </header>
 
-                    <div class="main-layout">
-                        <!-- Profile Card -->
-                        <aside class="profile-card">
-                            <div class="image-wrapper">
-                                <img src="photo/me.jpg" alt="Profile" loading="lazy">
-                            </div>
-                        </aside>
-
-                        <!-- Info Cards -->
+                    <div class="main-layout reverse-layout"> <!-- Foto di KANAN -->
+                        <!-- Info Cards (KIRI) -->
                         <div class="right-content">
                             <div class="info-grid">
-                                <!-- Penname -->
                                 <div class="small-card">
                                     <div class="card-header">
-                                        <div class="badge">
-                                            <i data-lucide="star"></i>
-                                            <span class="label">PENNAME</span>
-                                        </div>
+                                        <div class="badge"><i data-lucide="star"></i><span class="label">PENNAME</span></div>
                                     </div>
                                     <p class="value">Terecya</p>
                                 </div>
-                                
-                                <!-- Favorite Food -->
                                 <div class="small-card">
                                     <div class="card-header">
-                                        <div class="badge">
-                                            <i data-lucide="utensils-crossed"></i>
-                                            <span class="label">FAVORITE-FOOD</span>
-                                        </div>
+                                        <div class="badge"><i data-lucide="utensils-crossed"></i><span class="label">FAVORITE-FOOD</span></div>
                                     </div>
                                     <p class="value">Fried Chicken, Salad, Noodles</p>
                                 </div>
-                                
-                                <!-- Location -->
                                 <div class="small-card">
                                     <div class="card-header">
-                                        <div class="badge">
-                                            <i data-lucide="map-pin"></i>
-                                            <span class="label">LOCATION</span>
-                                        </div>
+                                        <div class="badge"><i data-lucide="map-pin"></i><span class="label">LOCATION</span></div>
                                     </div>
                                     <p class="value">Malang, ID</p>
                                 </div>
-                                
-                                <!-- Real Name -->
                                 <div class="small-card">
                                     <div class="card-header">
-                                        <div class="badge">
-                                            <i data-lucide="user"></i>
-                                            <span class="label">REALNAME</span>
-                                        </div>
+                                        <div class="badge"><i data-lucide="user"></i><span class="label">REALNAME</span></div>
                                     </div>
                                     <p class="value">David</p>
                                 </div>
-                                
-                                <!-- Favorite Drink -->
                                 <div class="small-card">
                                     <div class="card-header">
-                                        <div class="badge">
-                                            <i data-lucide="coffee"></i>
-                                            <span class="label">FAVORITE-DRINK</span>
-                                        </div>
+                                        <div class="badge"><i data-lucide="coffee"></i><span class="label">FAVORITE-DRINK</span></div>
                                     </div>
                                     <p class="value">Matcha, Milk, Coffee</p>
                                 </div>
-                                
-                                <!-- Age -->
                                 <div class="small-card">
                                     <div class="card-header">
-                                        <div class="badge">
-                                            <i data-lucide="cake"></i>
-                                            <span class="label">AGE</span>
-                                        </div>
+                                        <div class="badge"><i data-lucide="cake"></i><span class="label">AGE</span></div>
                                     </div>
                                     <p class="value">16</p>
                                 </div>
                             </div>
 
-                            <!-- Description Card -->
                             <div class="large-card description">
-                                <div class="description-item">
-                                    <i data-lucide="user" class="description-icon"></i>
-                                    <p>My name is <strong>David</strong>.</p>
-                                </div>
-                                <div class="description-item">
-                                    <i data-lucide="code" class="description-icon"></i>
-                                    <p>I work as a <strong>Junior Web Developer</strong>.</p>
-                                </div>
-                                <div class="description-item">
-                                    <i data-lucide="lightbulb" class="description-icon"></i>
-                                    <p>I have many projects in development and love learning new tech.</p>
-                                </div>
+                                <div class="description-item"><i data-lucide="user" class="description-icon"></i><p>My name is <strong>David</strong>.</p></div>
+                                <div class="description-item"><i data-lucide="code" class="description-icon"></i><p>I work as a <strong>Junior Web Developer</strong>.</p></div>
+                                <div class="description-item"><i data-lucide="lightbulb" class="description-icon"></i><p>I have many projects in development and love learning new tech.</p></div>
                             </div>
                         </div>
+
+                        <!-- Profile Card (KANAN) -->
+                        <aside class="profile-card">
+                            <div class="profile-hover-container" id="profileHover">
+                                <img src="photo/photo1.png" alt="Profile Default" class="profile-image profile-image-default" loading="lazy">
+                                <img src="photo/photo2.png" alt="Profile Hover" class="profile-image profile-image-hover" loading="lazy">
+                            </div>
+                        </aside>
                     </div>
                 </div>
             </section>
 
-            <!-- ===== EXPERIENCE SECTION ===== -->
+            <!-- EXPERIENCE SECTION -->
             <section id="experience">
                 <div class="experience-container reveal">
                     <header class="section-header">
-                        <div class="header-with-icon">
-                            <i data-lucide="briefcase" class="header-icon"></i>
-                            <h2>EXPERIENCE</h2>
-                        </div>
+                        <div class="header-with-icon"><i data-lucide="briefcase" class="header-icon"></i><h2>EXPERIENCE</h2></div>
                         <div class="underline"></div>
                     </header>
 
                     <div class="commission-grid">
-                        <!-- Atomic -->
+                        <!-- Experience Cards -->
                         <div class="comm-card">
-                            <div class="card-image">
-                                <img src="icons/atom.jpg" alt="Atomic" loading="lazy">
-                                <span class="status-badge">STAFF</span>
-                            </div>
+                            <div class="card-image"><img src="icons/atom.jpg" alt="Atomic" loading="lazy"><span class="status-badge">STAFF</span></div>
                             <div class="card-content">
                                 <h3>ATOMIC</h3>
                                 <p>Customer Support & Public Relations for player assistance and community communication.</p>
-                                <div class="tags">
-                                    <span class="tag">94K+ MEMBERS</span>
-                                </div>
+                                <div class="tags"><span class="tag">94K+ MEMBERS</span></div>
                                 <a href="https://discord.gg/getsades" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
-                        
-                        <!-- P4KONGTOOLS -->
                         <div class="comm-card">
-                            <div class="card-image">
-                                <img src="icons/p4kong.jpeg" alt="P4KONGTOOLS" loading="lazy">
-                                <span class="status-badge">STAFF</span>
-                            </div>
+                            <div class="card-image"><img src="icons/p4kong.jpeg" alt="P4KONGTOOLS" loading="lazy"><span class="status-badge">STAFF</span></div>
                             <div class="card-content">
                                 <h3>P4KONGTOOLS</h3>
                                 <p>Customer Support & Community Management for player assistance and communication.</p>
-                                <div class="tags">
-                                    <span class="tag">16K+ MEMBERS</span>
-                                </div>
+                                <div class="tags"><span class="tag">16K+ MEMBERS</span></div>
                                 <a href="https://discord.gg/p4kongtools" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
-                        
-                        <!-- ROCKHUB -->
                         <div class="comm-card">
-                            <div class="card-image">
-                                <img src="icons/rockhub.jpeg" alt="ROCKHUB" loading="lazy">
-                                <span class="status-badge">HEAD MANAGER</span>
-                            </div>
+                            <div class="card-image"><img src="icons/rockhub.jpeg" alt="ROCKHUB" loading="lazy"><span class="status-badge">HEAD MANAGER</span></div>
                             <div class="card-content">
                                 <h3>ROCKHUB</h3>
                                 <p>Head helper & Community Management for player assistance and communication.</p>
-                                <div class="tags">
-                                    <span class="tag">7K+ MEMBERS</span>
-                                </div>
+                                <div class="tags"><span class="tag">7K+ MEMBERS</span></div>
                                 <a href="https://discord.gg/rockhub" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
-                        
-                        <!-- SHADEX -->
                         <div class="comm-card">
-                            <div class="card-image">
-                                <img src="icons/shadex.png" alt="SHADEX" loading="lazy">
-                                <span class="status-badge">STAFF</span>
-                            </div>
+                            <div class="card-image"><img src="icons/shadex.png" alt="SHADEX" loading="lazy"><span class="status-badge">STAFF</span></div>
                             <div class="card-content">
                                 <h3>SHADEX</h3>
                                 <p>COMING SOON.</p>
-                                <div class="tags">
-                                    <span class="tag">COMING SOON</span>
-                                </div>
+                                <div class="tags"><span class="tag">COMING SOON</span></div>
                                 <a href="https://discord.gg/shadex" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
-                        
-                        <!-- VORAHUB -->
                         <div class="comm-card">
-                            <div class="card-image">
-                                <img src="icons/vora.jpg" alt="VORAHUB" loading="lazy">
-                                <span class="status-badge">HELPER</span>
-                            </div>
+                            <div class="card-image"><img src="icons/vora.jpg" alt="VORAHUB" loading="lazy"><span class="status-badge">HELPER</span></div>
                             <div class="card-content">
                                 <h3>VORAHUB</h3>
                                 <p>Customer Support & Community Management for player assistance and communication.</p>
-                                <div class="tags">
-                                    <span class="tag">11K+ MEMBERS</span>
-                                </div>
+                                <div class="tags"><span class="tag">11K+ MEMBERS</span></div>
                                 <a href="https://discord.gg/vorahub" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
-                        
-                        <!-- Terehub -->
                         <div class="comm-card">
-                            <div class="card-image">
-                                <img src="icons/terehub.png" alt="Terehub" loading="lazy">
-                                <span class="status-badge">Developer</span>
-                            </div>
+                            <div class="card-image"><img src="icons/terehub.png" alt="Terehub" loading="lazy"><span class="status-badge">Developer</span></div>
                             <div class="card-content">
                                 <h3>Terehub</h3>
                                 <p>COMING SOON.</p>
-                                <div class="tags">
-                                    <span class="tag">COMING SOON</span>
-                                </div>
+                                <div class="tags"><span class="tag">COMING SOON</span></div>
                                 <a href="https://discord.gg/terecya" target="_blank" rel="noopener noreferrer" class="btn-join">JOIN</a>
                             </div>
                         </div>
@@ -418,192 +525,89 @@
                 </div>
             </section>
 
-            <!-- ===== MY GEAR SECTION ===== -->
+            <!-- MY GEAR SECTION -->
             <section id="gear">
                 <div class="gear-container reveal">
                     <header class="section-header">
-                        <div class="header-with-icon">
-                            <i data-lucide="smartphone" class="header-icon"></i>
-                            <h2>MY GEAR</h2>
-                        </div>
+                        <div class="header-with-icon"><i data-lucide="smartphone" class="header-icon"></i><h2>MY GEAR</h2></div>
                         <div class="underline"></div>
                     </header>
 
-                    <!-- Scroll Hint untuk Mobile -->
-                    <div class="gear-scroll-hint">
-                        <span>← Geser untuk lihat gear lainnya (6 items) →</span>
-                    </div>
+                    <div class="gear-scroll-hint"><span>← Geser untuk lihat gear lainnya (6 items) →</span></div>
 
-                    <!-- Sliding Gear Container -->
                     <div class="gear-slider">
                         <div class="gear-track" id="gearTrack">
-                            <!-- 1. Lenovo LOQ M100 -->
+                            <!-- Gear Cards -->
                             <div class="gear-card">
-                                <div class="gear-image">
-                                    <img src="gear/loq.png" alt="Lenovo LOQ M100" loading="lazy">
-                                </div>
+                                <div class="gear-image"><img src="gear/loq.png" alt="Lenovo LOQ M100" loading="lazy"></div>
                                 <div class="gear-content">
                                     <h3>Lenovo LOQ M100</h3>
                                     <div class="gear-specs">
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="target" class="spec-icon"></i>
-                                            <span>8K DPI</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="mouse-pointer" class="spec-icon"></i>
-                                            <span>Gaming</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="usb" class="spec-icon"></i>
-                                            <span>Wired</span>
-                                        </div>
+                                        <div class="gear-spec-item"><i data-lucide="target" class="spec-icon"></i><span>8K DPI</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="mouse-pointer" class="spec-icon"></i><span>Gaming</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="usb" class="spec-icon"></i><span>Wired</span></div>
                                     </div>
-                                    <div class="gear-badges">
-                                        <span class="gear-badge">RGB</span>
-                                        <span class="gear-badge">6Btn</span>
-                                    </div>
+                                    <div class="gear-badges"><span class="gear-badge">RGB</span><span class="gear-badge">6Btn</span></div>
                                 </div>
                             </div>
-                            
-                            <!-- 2. Miniso M38T -->
                             <div class="gear-card">
-                                <div class="gear-image">
-                                    <img src="gear/Miniso.png" alt="Miniso M38T" loading="lazy">
-                                </div>
+                                <div class="gear-image"><img src="gear/Miniso.png" alt="Miniso M38T" loading="lazy"></div>
                                 <div class="gear-content">
                                     <h3>Miniso M38T</h3>
                                     <div class="gear-specs">
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="bluetooth" class="spec-icon"></i>
-                                            <span>BT5.3</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="battery-charging" class="spec-icon"></i>
-                                            <span>30h</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="mic" class="spec-icon"></i>
-                                            <span>Mic</span>
-                                        </div>
+                                        <div class="gear-spec-item"><i data-lucide="bluetooth" class="spec-icon"></i><span>BT5.3</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="battery-charging" class="spec-icon"></i><span>30h</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="mic" class="spec-icon"></i><span>Mic</span></div>
                                     </div>
-                                    <div class="gear-badges">
-                                        <span class="gear-badge">Miniso</span>
-                                        <span class="gear-badge">M38T</span>
-                                        <span class="gear-badge">Wireless</span>
-                                    </div>
+                                    <div class="gear-badges"><span class="gear-badge">Miniso</span><span class="gear-badge">M38T</span><span class="gear-badge">Wireless</span></div>
                                 </div>
                             </div>
-                            
-                            <!-- 3. WAWAWA WA-26 -->
                             <div class="gear-card">
-                                <div class="gear-image">
-                                    <img src="gear/wawawa.png" alt="WAWAWA WA-26" loading="lazy">
-                                </div>
+                                <div class="gear-image"><img src="gear/wawawa.png" alt="WAWAWA WA-26" loading="lazy"></div>
                                 <div class="gear-content">
                                     <h3>WAWAWA WA-26</h3>
                                     <div class="gear-specs">
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="bluetooth" class="spec-icon"></i>
-                                            <span>BT5.0</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="battery-charging" class="spec-icon"></i>
-                                            <span>24h</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="mic" class="spec-icon"></i>
-                                            <span>Mic</span>
-                                        </div>
+                                        <div class="gear-spec-item"><i data-lucide="bluetooth" class="spec-icon"></i><span>BT5.0</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="battery-charging" class="spec-icon"></i><span>24h</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="mic" class="spec-icon"></i><span>Mic</span></div>
                                     </div>
-                                    <div class="gear-badges">
-                                        <span class="gear-badge">Default</span>
-                                        <span class="gear-badge">IPX4</span>
-                                    </div>
+                                    <div class="gear-badges"><span class="gear-badge">Default</span><span class="gear-badge">IPX4</span></div>
                                 </div>
                             </div>
-                            
-                            <!-- 4. Poco X3 GT -->
                             <div class="gear-card">
-                                <div class="gear-image">
-                                    <img src="gear/poco.png" alt="Poco X3 GT" loading="lazy">
-                                </div>
+                                <div class="gear-image"><img src="gear/poco.png" alt="Poco X3 GT" loading="lazy"></div>
                                 <div class="gear-content">
                                     <h3>Poco X3 GT</h3>
                                     <div class="gear-specs">
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="hard-drive" class="spec-icon"></i>
-                                            <span>256GB</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="cpu" class="spec-icon"></i>
-                                            <span>Dimensity</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="eye" class="spec-icon"></i>
-                                            <span>120Hz</span>
-                                        </div>
+                                        <div class="gear-spec-item"><i data-lucide="hard-drive" class="spec-icon"></i><span>256GB</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="cpu" class="spec-icon"></i><span>Dimensity</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="eye" class="spec-icon"></i><span>120Hz</span></div>
                                     </div>
-                                    <div class="gear-badges">
-                                        <span class="gear-badge">8GB</span>
-                                        <span class="gear-badge">5G</span>
-                                        <span class="gear-badge">67W</span>
-                                    </div>
+                                    <div class="gear-badges"><span class="gear-badge">8GB</span><span class="gear-badge">5G</span><span class="gear-badge">67W</span></div>
                                 </div>
                             </div>
-                            
-                            <!-- 5. HP Victus 15 -->
                             <div class="gear-card">
-                                <div class="gear-image">
-                                    <img src="gear/victus.png" alt="HP Victus 15" loading="lazy">
-                                </div>
+                                <div class="gear-image"><img src="gear/victus.png" alt="HP Victus 15" loading="lazy"></div>
                                 <div class="gear-content">
                                     <h3>HP Victus 15</h3>
                                     <div class="gear-specs">
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="cpu" class="spec-icon"></i>
-                                            <span>R5 7000</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="gpu" class="spec-icon"></i>
-                                            <span>RTX 2050</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="hard-drive" class="spec-icon"></i>
-                                            <span>512GB</span>
-                                        </div>
+                                        <div class="gear-spec-item"><i data-lucide="cpu" class="spec-icon"></i><span>R5 7000</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="gpu" class="spec-icon"></i><span>RTX 2050</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="hard-drive" class="spec-icon"></i><span>512GB</span></div>
                                     </div>
-                                    <div class="gear-badges">
-                                        <span class="gear-badge">16GB</span>
-                                        <span class="gear-badge">144Hz</span>
-                                    </div>
+                                    <div class="gear-badges"><span class="gear-badge">16GB</span><span class="gear-badge">144Hz</span></div>
                                 </div>
                             </div>
-                            
-                            <!-- 6. Vortex Mono V2 -->
                             <div class="gear-card">
-                                <div class="gear-image">
-                                    <img src="gear/vortex.png" alt="Vortex Mono V2" loading="lazy">
-                                </div>
+                                <div class="gear-image"><img src="gear/vortex.png" alt="Vortex Mono V2" loading="lazy"></div>
                                 <div class="gear-content">
                                     <h3>Vortex Mono V2</h3>
                                     <div class="gear-specs">
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="maximize" class="spec-icon"></i>
-                                            <span>75%</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="type" class="spec-icon"></i>
-                                            <span>Gateron</span>
-                                        </div>
-                                        <div class="gear-spec-item">
-                                            <i data-lucide="palette" class="spec-icon"></i>
-                                            <span>RGB</span>
-                                        </div>
+                                        <div class="gear-spec-item"><i data-lucide="maximize" class="spec-icon"></i><span>75%</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="type" class="spec-icon"></i><span>Gateron</span></div>
+                                        <div class="gear-spec-item"><i data-lucide="palette" class="spec-icon"></i><span>RGB</span></div>
                                     </div>
-                                    <div class="gear-badges">
-                                        <span class="gear-badge">Hot-swap</span>
-                                        <span class="gear-badge">Wireless</span>
-                                    </div>
+                                    <div class="gear-badges"><span class="gear-badge">Hot-swap</span><span class="gear-badge">Wireless</span></div>
                                 </div>
                             </div>
                         </div>
@@ -611,92 +615,132 @@
                 </div>
             </section>
 
-            <!-- ===== SPOTIFY PLAYLIST SECTION ===== -->
+            <!-- SPOTIFY SECTION -->
             <section id="spotify">
                 <div class="spotify-container reveal">
                     <header class="section-header">
-                        <div class="header-with-icon">
-                            <i data-lucide="music" class="header-icon"></i>
-                            <h2>MY PLAYLIST</h2>
-                        </div>
+                        <div class="header-with-icon"><i data-lucide="music" class="header-icon"></i><h2>MY PLAYLIST</h2></div>
                         <div class="underline"></div>
                     </header>
 
                     <div class="spotify-embed">
-                        <iframe 
-                            src="https://open.spotify.com/embed/playlist/33Tpm340TrDU6pmdJFEXxe?si=07825c1e16864cc2&utm_source=generator" 
-                            width="100%" 
-                            height="352" 
-                            frameBorder="0" 
-                            allowfullscreen="" 
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                            loading="lazy"
-                            title="Spotify Playlist - Turu">
-                        </iframe>
+                        <iframe src="https://open.spotify.com/embed/playlist/33Tpm340TrDU6pmdJFEXxe?si=07825c1e16864cc2&utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Playlist - Turu"></iframe>
                     </div>
 
-                    <div class="spotify-info">
-                        <p>🎵 Turu - Playlist untuk menemani tidur</p>
-                    </div>
+                    <div class="spotify-info"><p>🎵 Turu - Playlist untuk menemani tidur</p></div>
                 </div>
             </section>
         </div>
     </main>
 
-    <!-- ===== THEME SWITCHER - 4 WARNA (BIRU, PINK, UNGU, HIJAU) ===== -->
+    <!-- THEME SWITCHER -->
     <div class="theme-switcher">
-        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Ganti Tema">
-            <i data-lucide="palette"></i>
-        </button>
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Ganti Tema"><i data-lucide="palette"></i></button>
         <div class="theme-panel" id="themePanel">
-            <div class="theme-panel-header">
-                <span>Pilih Tema Warna</span>
-                <button class="theme-close" id="themeClose">&times;</button>
-            </div>
+            <div class="theme-panel-header"><span>Pilih Tema Warna</span><button class="theme-close" id="themeClose">&times;</button></div>
             <div class="theme-colors">
-                <!-- Biru -->
                 <div class="theme-color" data-color="blue" style="background: #3b82f6;" title="Biru"></div>
-                <!-- Pink -->
                 <div class="theme-color" data-color="pink" style="background: #ec4899;" title="Pink"></div>
-                <!-- Ungu -->
                 <div class="theme-color" data-color="purple" style="background: #8b5cf6;" title="Ungu"></div>
-                <!-- Hijau -->
                 <div class="theme-color" data-color="green" style="background: #10b981;" title="Hijau"></div>
             </div>
-            <div class="theme-reset">
-                <button id="themeReset">Reset ke Biru</button>
-            </div>
+            <div class="theme-reset"><button id="themeReset">Reset ke Biru</button></div>
         </div>
     </div>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <script>
-        // HANYA DETEKSI MOBILE - TIDAK ADA THEME SWITCHER DI SINI
-        (function() {
-            function isMobile() {
-                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
-            }
+        // Snow Effect
+        function createSnowForOverlay() {
+            const snowContainer = document.getElementById('snowContainer');
+            if (!snowContainer) return;
             
-            // Sembunyikan particles
+            snowContainer.innerHTML = '';
+            const snowCount = window.innerWidth < 768 ? 40 : 80;
+            const snowChars = ['❄️', '❄️', '❄️', '❄️', '❄️', '•', '·', '*'];
+            
+            for (let i = 0; i < snowCount; i++) {
+                const snow = document.createElement('div');
+                snow.className = 'snow-flake';
+                snow.textContent = snowChars[Math.floor(Math.random() * snowChars.length)];
+                snow.style.fontSize = (0.8 + Math.random() * 1.5) + 'rem';
+                snow.style.left = Math.random() * 100 + '%';
+                snow.style.animationDuration = (8 + Math.random() * 12) + 's';
+                snow.style.animationDelay = Math.random() * 8 + 's';
+                snow.style.opacity = 0.4 + Math.random() * 0.5;
+                snowContainer.appendChild(snow);
+            }
+        }
+        
+        // Profile Hover Effect
+        function initProfileHover() {
+            const profileHover = document.getElementById('profileHover');
+            if (!profileHover) return;
+
+            // Preload images
+            ['photo/photo1.png', 'photo/photo2.png'].forEach(src => new Image().src = src);
+
+            // Touch support
+            if ('ontouchstart' in window) {
+                profileHover.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    this.classList.toggle('touch-active');
+                });
+
+                document.addEventListener('touchstart', function(e) {
+                    if (!profileHover.contains(e.target)) {
+                        profileHover.classList.remove('touch-active');
+                    }
+                });
+            }
+        }
+
+        // Click to Enter
+        document.addEventListener('DOMContentLoaded', function() {
+            createSnowForOverlay();
+            initProfileHover();
+            
+            const enterOverlay = document.getElementById('enterOverlay');
+            const enterBtn = document.getElementById('enterBtn');
+            
+            if (enterBtn && enterOverlay) {
+                enterBtn.addEventListener('click', function() {
+                    enterOverlay.classList.add('hidden');
+                    document.body.classList.remove('overlay-active');
+                    
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+                });
+                
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' && !enterOverlay.classList.contains('hidden')) {
+                        enterBtn.click();
+                    }
+                });
+            }
+
+            
+            
+            // Mobile detection
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+            if (isMobile) document.body.classList.add('mobile-device');
+            
+            // Hide particles
             const particles = document.getElementById('particles-js');
-            if (particles) {
-                particles.style.display = 'none';
+            if (particles) particles.style.display = 'none';
+        });
+
+        window.addEventListener('resize', function() {
+            if (document.getElementById('enterOverlay') && 
+                !document.getElementById('enterOverlay').classList.contains('hidden')) {
+                createSnowForOverlay();
             }
-            
-            // Tambah class mobile-device jika mobile
-            if (isMobile()) {
-                document.body.classList.add('mobile-device');
-                console.log('Mode mobile');
-            } else {
-                console.log('Desktop mode');
-            }
-        })();
+        });
     </script>
     
-    <!-- PASTIKAN script.js SUDAH MENGGUNAKAN VERSI 4 WARNA BARU -->
     <script src="script.js"></script>
 </body>
 </html>
